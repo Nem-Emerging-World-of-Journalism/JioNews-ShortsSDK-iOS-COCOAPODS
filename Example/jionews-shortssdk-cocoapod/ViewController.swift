@@ -9,13 +9,19 @@
 import UIKit
 import jionews_shortssdk_cocoapod
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, ShortsViewDelegate {
+   
+    func didTapOnShareButton(_ brief: jionews_shortssdk_cocoapod.ShortsVideoBrief) {
+        
+    }
+    
+    @IBOutlet weak var shortsView: ShortsView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //shortsView.configure(with: "U2FsdGVkX18BPThCMH6XBQXr1IEiKKufHmYFoflb9UnylpcCW4CNfoy7IGmhL7hD")
-        //shortsView.openShortsByBriefId(briefId: "65c1d56dbe473f0b88adebef")
-       // shortsView.delegate = self
+        shortsView.configure(with: "U2FsdGVkX18BPThCMH6XBQXr1IEiKKufHmYFoflb9UnylpcCW4CNfoy7IGmhL7hD")
+        shortsView.openShortsByBriefId(briefId: "65c1d56dbe473f0b88adebef")
+        shortsView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {

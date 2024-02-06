@@ -1,5 +1,5 @@
 import XCTest
-import jionews-shortssdk-cocoapod
+//import jionews-shortssdk-cocoapod
 
 class Tests: XCTestCase {
     
