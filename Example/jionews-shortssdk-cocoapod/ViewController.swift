@@ -20,7 +20,7 @@ class ViewController: UIViewController, ShortsViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         shortsView.configure(with: "U2FsdGVkX18BPThCMH6XBQXr1IEiKKufHmYFoflb9UnylpcCW4CNfoy7IGmhL7hD")
-        shortsView.openShortsByBriefId(briefId: "65c1d56dbe473f0b88adebef")
+        //shortsView.openShortsByBriefId(briefId: "65c1d56dbe473f0b88adebef")
         shortsView.delegate = self
     }
 
