@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import jionews_shortssdk_cocoapod
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //shortsView.configure(with: "U2FsdGVkX18BPThCMH6XBQXr1IEiKKufHmYFoflb9UnylpcCW4CNfoy7IGmhL7hD")
+        //shortsView.openShortsByBriefId(briefId: "65c1d56dbe473f0b88adebef")
+       // shortsView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {

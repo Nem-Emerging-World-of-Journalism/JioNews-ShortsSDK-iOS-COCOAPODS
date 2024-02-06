@@ -1,0 +1,779 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0578384B2288EB10B63CC61DDC69DB78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		36B67E6FDAA89274AB7C6C5309C0CE18 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		3C8CCF8F9A67B2427AA9880B19EF3090 /* Pods-jionews-shortssdk-cocoapod_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EA353832D7D833C130D417D24B9B6BE /* Pods-jionews-shortssdk-cocoapod_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C72A568BE49C911D7D4C5ECAE315E6E /* Pods-jionews-shortssdk-cocoapod_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55998FCDC624B478EA88FAB00766D007 /* Pods-jionews-shortssdk-cocoapod_Example-dummy.m */; };
+		5817343A8A7F6F556C13BEB2FAD9E1E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		6D6183F6B602B0E41A0DD0750E7F7A78 /* jionews-shortssdk-cocoapod-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A09C9CE1079AAC41F5BCFBD0B6A589 /* jionews-shortssdk-cocoapod-dummy.m */; };
+		7237F1DDD25FF43B5373E8229607DF5B /* jionews-shortssdk-cocoapod-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C4A0337D0C56E74287C720BBCB452966 /* jionews-shortssdk-cocoapod-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BAEF93E4D14F1FE7F52968F8D8C299E5 /* Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8650D8F9FB7A380BDA0D9FF60484D688 /* Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9983657058A33837E70A18483F4890B /* Pods-jionews-shortssdk-cocoapod_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC4AFB077542D28B57A16450EAAAC86 /* Pods-jionews-shortssdk-cocoapod_Tests-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F2DA2E4E14E35C6C60BE5B24535DBAC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC22C2FEA8B2E775839B1FDCD8D3DF83;
+			remoteInfo = "Pods-jionews-shortssdk-cocoapod_Example";
+		};
+		F85322241D4A0E6CE9CF3A69FA19B528 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9BB2ED657043AEE81C911AC6E037B8F1;
+			remoteInfo = "jionews-shortssdk-cocoapod";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		06B403290EFF0D04D3E29A7BA2914764 /* Pods-jionews-shortssdk-cocoapod_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-jionews-shortssdk-cocoapod_Tests.modulemap"; sourceTree = "<group>"; };
+		2BA29D6E8238E4D20555D4496FCA197A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		34915F33A4DD34FFC00FA59D593AE8E9 /* Pods-jionews-shortssdk-cocoapod_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-jionews-shortssdk-cocoapod_Tests"; path = Pods_jionews_shortssdk_cocoapod_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38A09C9CE1079AAC41F5BCFBD0B6A589 /* jionews-shortssdk-cocoapod-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "jionews-shortssdk-cocoapod-dummy.m"; sourceTree = "<group>"; };
+		3AC24BA05AC669B42A36EFB422D1F837 /* Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4988960E8E436E1EC320364D347A0876 /* Pods-jionews-shortssdk-cocoapod_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jionews-shortssdk-cocoapod_Tests-Info.plist"; sourceTree = "<group>"; };
+		5498098E69CC634B4717BD9AF99A5037 /* jionews-shortssdk-cocoapod */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "jionews-shortssdk-cocoapod"; path = jionews_shortssdk_cocoapod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55998FCDC624B478EA88FAB00766D007 /* Pods-jionews-shortssdk-cocoapod_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-jionews-shortssdk-cocoapod_Example-dummy.m"; sourceTree = "<group>"; };
+		646145611EE838113D1C5230CE0F71F5 /* jionews-shortssdk-cocoapod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "jionews-shortssdk-cocoapod.debug.xcconfig"; sourceTree = "<group>"; };
+		70D3BB3F90F465C3F5CEFE827EE7AA8D /* jionews-shortssdk-cocoapod.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "jionews-shortssdk-cocoapod.modulemap"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		793D888C14697BC7574C78F728682641 /* jionews-shortssdk-cocoapod-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "jionews-shortssdk-cocoapod-Info.plist"; sourceTree = "<group>"; };
+		8650D8F9FB7A380BDA0D9FF60484D688 /* Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h"; sourceTree = "<group>"; };
+		8AE330C16F9B67B7EFC3393373DB92E2 /* jionews-shortssdk-cocoapod.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "jionews-shortssdk-cocoapod.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8EA353832D7D833C130D417D24B9B6BE /* Pods-jionews-shortssdk-cocoapod_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-jionews-shortssdk-cocoapod_Example-umbrella.h"; sourceTree = "<group>"; };
+		8F81E94BAA03849FB39A2179CCB47DAF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		97D68F0F2CBA1616FC1163B11AD80B66 /* Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E1662270E3FF3680D628EFB6E2CEE00 /* jionews-shortssdk-cocoapod-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "jionews-shortssdk-cocoapod-prefix.pch"; sourceTree = "<group>"; };
+		A3E0B93675146F36E72BD806BE9D474F /* Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		B3714A1D6AA24DF4BB3078A4C8947D27 /* Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		BC493E97F3E2C5E4DEAEE23B6FE981A2 /* Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		C23B0C60971DE84AB8F8B820F30BA2CF /* Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig"; sourceTree = "<group>"; };
+		C4A0337D0C56E74287C720BBCB452966 /* jionews-shortssdk-cocoapod-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "jionews-shortssdk-cocoapod-umbrella.h"; sourceTree = "<group>"; };
+		CB137412BF16FD74D6E3B80989C4E56E /* Pods-jionews-shortssdk-cocoapod_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-jionews-shortssdk-cocoapod_Example.modulemap"; sourceTree = "<group>"; };
+		CD56420BB1F78363F67988F24FD38EAA /* Pods-jionews-shortssdk-cocoapod_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-jionews-shortssdk-cocoapod_Example"; path = Pods_jionews_shortssdk_cocoapod_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF21A6135FDD45407ECACE35CCD19E3C /* Pods-jionews-shortssdk-cocoapod_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jionews-shortssdk-cocoapod_Example-Info.plist"; sourceTree = "<group>"; };
+		E6A02B1DF8971ECABDD5F973CD903684 /* Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		ECFA0716952883691D58DDAD34C7A40C /* Pods-jionews-shortssdk-cocoapod_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-jionews-shortssdk-cocoapod_Example-frameworks.sh"; sourceTree = "<group>"; };
+		F2EF75EE4F1537223801E7ED7110B9DC /* jionews-shortssdk-cocoapod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "jionews-shortssdk-cocoapod.release.xcconfig"; sourceTree = "<group>"; };
+		FDC4AFB077542D28B57A16450EAAAC86 /* Pods-jionews-shortssdk-cocoapod_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-jionews-shortssdk-cocoapod_Tests-dummy.m"; sourceTree = "<group>"; };
+		FFF7B20E796D5CB2C919555BCEB3A136 /* Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		33C1A8BF7977AFB5AFB75F57B1603D74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0578384B2288EB10B63CC61DDC69DB78 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA4EB7CCE879D248ED33AF70DF71FFBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5817343A8A7F6F556C13BEB2FAD9E1E1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD34FBC1969C110654D1F8BCD370C85C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36B67E6FDAA89274AB7C6C5309C0CE18 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3BADE863674A51922DB97C49FF569F09 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F6146574DFB7AC1B52F2697EA313A158 /* Pods-jionews-shortssdk-cocoapod_Example */,
+				CBDFCFE5EB558DC8C609A4DBC2E3AC84 /* Pods-jionews-shortssdk-cocoapod_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5A08F78D517084BC0FA597F815CF95D0 /* jionews-shortssdk-cocoapod */ = {
+			isa = PBXGroup;
+			children = (
+				6AC9BD372B723EFA00656355 /* SourceCode */,
+				8BD2F13A83AA0B73521D204C913D2F02 /* Pod */,
+				B0109B697299069BA04F7E3724D3A6EF /* Support Files */,
+			);
+			name = "jionews-shortssdk-cocoapod";
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		6AC9BD372B723EFA00656355 /* SourceCode */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SourceCode;
+			sourceTree = "<group>";
+		};
+		740CC2332DD68AF1514F159595A72B52 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5A08F78D517084BC0FA597F815CF95D0 /* jionews-shortssdk-cocoapod */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		805EA48A0FF5FFE8FD56165425174432 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5498098E69CC634B4717BD9AF99A5037 /* jionews-shortssdk-cocoapod */,
+				CD56420BB1F78363F67988F24FD38EAA /* Pods-jionews-shortssdk-cocoapod_Example */,
+				34915F33A4DD34FFC00FA59D593AE8E9 /* Pods-jionews-shortssdk-cocoapod_Tests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8BD2F13A83AA0B73521D204C913D2F02 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				8AE330C16F9B67B7EFC3393373DB92E2 /* jionews-shortssdk-cocoapod.podspec */,
+				8F81E94BAA03849FB39A2179CCB47DAF /* LICENSE */,
+				2BA29D6E8238E4D20555D4496FCA197A /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		B0109B697299069BA04F7E3724D3A6EF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				70D3BB3F90F465C3F5CEFE827EE7AA8D /* jionews-shortssdk-cocoapod.modulemap */,
+				38A09C9CE1079AAC41F5BCFBD0B6A589 /* jionews-shortssdk-cocoapod-dummy.m */,
+				793D888C14697BC7574C78F728682641 /* jionews-shortssdk-cocoapod-Info.plist */,
+				9E1662270E3FF3680D628EFB6E2CEE00 /* jionews-shortssdk-cocoapod-prefix.pch */,
+				C4A0337D0C56E74287C720BBCB452966 /* jionews-shortssdk-cocoapod-umbrella.h */,
+				646145611EE838113D1C5230CE0F71F5 /* jionews-shortssdk-cocoapod.debug.xcconfig */,
+				F2EF75EE4F1537223801E7ED7110B9DC /* jionews-shortssdk-cocoapod.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/jionews-shortssdk-cocoapod";
+			sourceTree = "<group>";
+		};
+		CBDFCFE5EB558DC8C609A4DBC2E3AC84 /* Pods-jionews-shortssdk-cocoapod_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				06B403290EFF0D04D3E29A7BA2914764 /* Pods-jionews-shortssdk-cocoapod_Tests.modulemap */,
+				3AC24BA05AC669B42A36EFB422D1F837 /* Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.markdown */,
+				A3E0B93675146F36E72BD806BE9D474F /* Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.plist */,
+				FDC4AFB077542D28B57A16450EAAAC86 /* Pods-jionews-shortssdk-cocoapod_Tests-dummy.m */,
+				4988960E8E436E1EC320364D347A0876 /* Pods-jionews-shortssdk-cocoapod_Tests-Info.plist */,
+				8650D8F9FB7A380BDA0D9FF60484D688 /* Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h */,
+				B3714A1D6AA24DF4BB3078A4C8947D27 /* Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig */,
+				FFF7B20E796D5CB2C919555BCEB3A136 /* Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig */,
+			);
+			name = "Pods-jionews-shortssdk-cocoapod_Tests";
+			path = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Tests";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				740CC2332DD68AF1514F159595A72B52 /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				805EA48A0FF5FFE8FD56165425174432 /* Products */,
+				3BADE863674A51922DB97C49FF569F09 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F6146574DFB7AC1B52F2697EA313A158 /* Pods-jionews-shortssdk-cocoapod_Example */ = {
+			isa = PBXGroup;
+			children = (
+				CB137412BF16FD74D6E3B80989C4E56E /* Pods-jionews-shortssdk-cocoapod_Example.modulemap */,
+				97D68F0F2CBA1616FC1163B11AD80B66 /* Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.markdown */,
+				E6A02B1DF8971ECABDD5F973CD903684 /* Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.plist */,
+				55998FCDC624B478EA88FAB00766D007 /* Pods-jionews-shortssdk-cocoapod_Example-dummy.m */,
+				ECFA0716952883691D58DDAD34C7A40C /* Pods-jionews-shortssdk-cocoapod_Example-frameworks.sh */,
+				CF21A6135FDD45407ECACE35CCD19E3C /* Pods-jionews-shortssdk-cocoapod_Example-Info.plist */,
+				8EA353832D7D833C130D417D24B9B6BE /* Pods-jionews-shortssdk-cocoapod_Example-umbrella.h */,
+				BC493E97F3E2C5E4DEAEE23B6FE981A2 /* Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig */,
+				C23B0C60971DE84AB8F8B820F30BA2CF /* Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig */,
+			);
+			name = "Pods-jionews-shortssdk-cocoapod_Example";
+			path = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Example";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		59E480BCEB808E3289BADA27BE40151F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7237F1DDD25FF43B5373E8229607DF5B /* jionews-shortssdk-cocoapod-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5AC28E9686BF01DE65D70FC10B163246 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C8CCF8F9A67B2427AA9880B19EF3090 /* Pods-jionews-shortssdk-cocoapod_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5ACB154D0B398C8602BC05DC228D557 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAEF93E4D14F1FE7F52968F8D8C299E5 /* Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		9BB2ED657043AEE81C911AC6E037B8F1 /* jionews-shortssdk-cocoapod */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F3459D3C2A634B4E67909E6C430B40C /* Build configuration list for PBXNativeTarget "jionews-shortssdk-cocoapod" */;
+			buildPhases = (
+				59E480BCEB808E3289BADA27BE40151F /* Headers */,
+				0519D9BEEFADE071303DEDD69251D242 /* Sources */,
+				BA4EB7CCE879D248ED33AF70DF71FFBD /* Frameworks */,
+				4564083F9227C20AD9E9CDD40BA110B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "jionews-shortssdk-cocoapod";
+			productName = jionews_shortssdk_cocoapod;
+			productReference = 5498098E69CC634B4717BD9AF99A5037 /* jionews-shortssdk-cocoapod */;
+			productType = "com.apple.product-type.framework";
+		};
+		AC22C2FEA8B2E775839B1FDCD8D3DF83 /* Pods-jionews-shortssdk-cocoapod_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 937BE99FF2C3BADD2C4C7AFBE1100E5F /* Build configuration list for PBXNativeTarget "Pods-jionews-shortssdk-cocoapod_Example" */;
+			buildPhases = (
+				5AC28E9686BF01DE65D70FC10B163246 /* Headers */,
+				715FE62DEA3CB9E172551148099761A6 /* Sources */,
+				DD34FBC1969C110654D1F8BCD370C85C /* Frameworks */,
+				BB4F5761369534C33A7E9E0BCAF4BD05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				596FCD1A35F99018AA4F2ABF2C23BD1A /* PBXTargetDependency */,
+			);
+			name = "Pods-jionews-shortssdk-cocoapod_Example";
+			productName = Pods_jionews_shortssdk_cocoapod_Example;
+			productReference = CD56420BB1F78363F67988F24FD38EAA /* Pods-jionews-shortssdk-cocoapod_Example */;
+			productType = "com.apple.product-type.framework";
+		};
+		E4AFAAE734DE2EE1A679638E82224D74 /* Pods-jionews-shortssdk-cocoapod_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F463B6994F827E29FEF8A049DB903BEC /* Build configuration list for PBXNativeTarget "Pods-jionews-shortssdk-cocoapod_Tests" */;
+			buildPhases = (
+				D5ACB154D0B398C8602BC05DC228D557 /* Headers */,
+				8AA30A909D37433444B53B41D7655028 /* Sources */,
+				33C1A8BF7977AFB5AFB75F57B1603D74 /* Frameworks */,
+				DB6A6BA4A1D466EBA2BB3334945EA92D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1ABB494CD1937974A930B65925F71A16 /* PBXTargetDependency */,
+			);
+			name = "Pods-jionews-shortssdk-cocoapod_Tests";
+			productName = Pods_jionews_shortssdk_cocoapod_Tests;
+			productReference = 34915F33A4DD34FFC00FA59D593AE8E9 /* Pods-jionews-shortssdk-cocoapod_Tests */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 805EA48A0FF5FFE8FD56165425174432 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9BB2ED657043AEE81C911AC6E037B8F1 /* jionews-shortssdk-cocoapod */,
+				AC22C2FEA8B2E775839B1FDCD8D3DF83 /* Pods-jionews-shortssdk-cocoapod_Example */,
+				E4AFAAE734DE2EE1A679638E82224D74 /* Pods-jionews-shortssdk-cocoapod_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4564083F9227C20AD9E9CDD40BA110B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB4F5761369534C33A7E9E0BCAF4BD05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB6A6BA4A1D466EBA2BB3334945EA92D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0519D9BEEFADE071303DEDD69251D242 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D6183F6B602B0E41A0DD0750E7F7A78 /* jionews-shortssdk-cocoapod-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		715FE62DEA3CB9E172551148099761A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C72A568BE49C911D7D4C5ECAE315E6E /* Pods-jionews-shortssdk-cocoapod_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AA30A909D37433444B53B41D7655028 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9983657058A33837E70A18483F4890B /* Pods-jionews-shortssdk-cocoapod_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1ABB494CD1937974A930B65925F71A16 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-jionews-shortssdk-cocoapod_Example";
+			target = AC22C2FEA8B2E775839B1FDCD8D3DF83 /* Pods-jionews-shortssdk-cocoapod_Example */;
+			targetProxy = F2DA2E4E14E35C6C60BE5B24535DBAC0 /* PBXContainerItemProxy */;
+		};
+		596FCD1A35F99018AA4F2ABF2C23BD1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "jionews-shortssdk-cocoapod";
+			target = 9BB2ED657043AEE81C911AC6E037B8F1 /* jionews-shortssdk-cocoapod */;
+			targetProxy = F85322241D4A0E6CE9CF3A69FA19B528 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		128C2215711ACD39D5BED4ABD580E8C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 646145611EE838113D1C5230CE0F71F5 /* jionews-shortssdk-cocoapod.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/jionews-shortssdk-cocoapod/jionews-shortssdk-cocoapod-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/jionews-shortssdk-cocoapod/jionews-shortssdk-cocoapod-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/jionews-shortssdk-cocoapod/jionews-shortssdk-cocoapod.modulemap";
+				PRODUCT_MODULE_NAME = jionews_shortssdk_cocoapod;
+				PRODUCT_NAME = jionews_shortssdk_cocoapod;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2BAFE8EB61F7BD3570B304A452800CAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3714A1D6AA24DF4BB3078A4C8947D27 /* Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Tests/Pods-jionews-shortssdk-cocoapod_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Tests/Pods-jionews-shortssdk-cocoapod_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5054D39AD73B1F46B92B8A4512337EF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C23B0C60971DE84AB8F8B820F30BA2CF /* Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Example/Pods-jionews-shortssdk-cocoapod_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Example/Pods-jionews-shortssdk-cocoapod_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5C85989ED48E6C7DE2A124DCD2A362A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFF7B20E796D5CB2C919555BCEB3A136 /* Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Tests/Pods-jionews-shortssdk-cocoapod_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Tests/Pods-jionews-shortssdk-cocoapod_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7EE7A78859F657F6BEFC651185B43192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		BACC89D6BED8D2B5642E9AF41C510BE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2EF75EE4F1537223801E7ED7110B9DC /* jionews-shortssdk-cocoapod.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/jionews-shortssdk-cocoapod/jionews-shortssdk-cocoapod-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/jionews-shortssdk-cocoapod/jionews-shortssdk-cocoapod-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/jionews-shortssdk-cocoapod/jionews-shortssdk-cocoapod.modulemap";
+				PRODUCT_MODULE_NAME = jionews_shortssdk_cocoapod;
+				PRODUCT_NAME = jionews_shortssdk_cocoapod;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D299434AB35E7FD6F7921C8EF24742FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		FBCC14FD933D0ED58554CB00EAFB8CF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC493E97F3E2C5E4DEAEE23B6FE981A2 /* Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Example/Pods-jionews-shortssdk-cocoapod_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Example/Pods-jionews-shortssdk-cocoapod_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D299434AB35E7FD6F7921C8EF24742FF /* Debug */,
+				7EE7A78859F657F6BEFC651185B43192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F3459D3C2A634B4E67909E6C430B40C /* Build configuration list for PBXNativeTarget "jionews-shortssdk-cocoapod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				128C2215711ACD39D5BED4ABD580E8C0 /* Debug */,
+				BACC89D6BED8D2B5642E9AF41C510BE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		937BE99FF2C3BADD2C4C7AFBE1100E5F /* Build configuration list for PBXNativeTarget "Pods-jionews-shortssdk-cocoapod_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBCC14FD933D0ED58554CB00EAFB8CF5 /* Debug */,
+				5054D39AD73B1F46B92B8A4512337EF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F463B6994F827E29FEF8A049DB903BEC /* Build configuration list for PBXNativeTarget "Pods-jionews-shortssdk-cocoapod_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BAFE8EB61F7BD3570B304A452800CAA /* Debug */,
+				5C85989ED48E6C7DE2A124DCD2A362A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

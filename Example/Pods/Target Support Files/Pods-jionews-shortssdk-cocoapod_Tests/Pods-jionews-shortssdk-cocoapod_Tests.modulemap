@@ -1,0 +1,6 @@
+framework module Pods_jionews_shortssdk_cocoapod_Tests {
+  umbrella header "Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

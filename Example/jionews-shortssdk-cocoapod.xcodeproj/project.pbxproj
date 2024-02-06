@@ -28,7 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		093A1148945C81D95B2E5267 /* jionews-shortssdk-cocoapod.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = "jionews-shortssdk-cocoapod.podspec"; path = "../jionews-shortssdk-cocoapod.podspec"; sourceTree = "<group>"; };
+		093A1148945C81D95B2E5267 /* jionews-shortssdk-cocoapod.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = "jionews-shortssdk-cocoapod.podspec"; path = "../jionews-shortssdk-cocoapod.podspec"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		127580FB616950C89486DD68 /* Pods_jionews_shortssdk_cocoapod_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_jionews_shortssdk_cocoapod_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A9082E3B5362DA2B43BD81F /* Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig"; path = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Tests/Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		59EA7B4FA2FD9C5678B31F48 /* Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig"; path = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Example/Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -44,9 +44,9 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		95EF4755CE548691650D96B3 /* Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig"; path = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Example/Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A68D57A14D623E3370426C56 /* Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig"; path = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Tests/Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C09E62DA8FE8B89A1D4ED127 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		C09E62DA8FE8B89A1D4ED127 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		CCD93FBC30C41CD975F242D2 /* Pods_jionews_shortssdk_cocoapod_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_jionews_shortssdk_cocoapod_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6EEA96EE8D02FAC31AAEF10 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		F6EEA96EE8D02FAC31AAEF10 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +156,6 @@
 				A68D57A14D623E3370426C56 /* Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig */,
 				1A9082E3B5362DA2B43BD81F /* Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
