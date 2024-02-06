@@ -9,12 +9,8 @@
 import UIKit
 import jionews_shortssdk_cocoapod
 
-class ViewController: UIViewController, ShortsViewDelegate {
+class ViewController: UIViewController {
    
-    func didTapOnShareButton(_ brief: jionews_shortssdk_cocoapod.ShortsVideoBrief) {
-        
-    }
-    
     @IBOutlet weak var shortsView: ShortsView!
     
     override func viewDidLoad() {
@@ -24,10 +20,12 @@ class ViewController: UIViewController, ShortsViewDelegate {
         shortsView.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 
+extension ViewController: ShortsViewDelegate {
+    
+    func didTapOnShareButton(_ brief: ShortsVideoBrief) {
+        print("Tapped on share button for \(brief.title ?? "")")
+    }
+    
+}
