@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'jionews-shortssdk-cocoapod_Example' do
+  pod 'jionews-shortssdk-cocoapod', :path => '../'
+
+  target 'jionews-shortssdk-cocoapod_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
