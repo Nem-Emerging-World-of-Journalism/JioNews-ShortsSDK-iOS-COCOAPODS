@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "summary": "A short description of jionews-shortssdk-cocoapod.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/Saif/jionews-shortssdk-cocoapod",
+  "homepage": "https://github.com/Nem-Emerging-World-of-Journalism/JioNews-ShortsSDK-iOS-COCOAPODS",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,7 +12,7 @@
     "Saif": "saif.mukadam@ril.com"
   },
   "source": {
-    "git": "https://github.com/Saif/jionews-shortssdk-cocoapod.git",
+    "git": "https://github.com/Nem-Emerging-World-of-Journalism/JioNews-ShortsSDK-iOS-COCOAPODS.git",
     "tag": "0.1.0"
   },
   "platforms": {

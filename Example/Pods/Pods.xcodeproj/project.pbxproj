@@ -6,151 +6,36 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		9BB2ED657043AEE81C911AC6E037B8F1 /* jionews-shortssdk-cocoapod */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 116CC6D717FC3C1C78674C8265F78B6B /* Build configuration list for PBXAggregateTarget "jionews-shortssdk-cocoapod" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = "jionews-shortssdk-cocoapod";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		0578384B2288EB10B63CC61DDC69DB78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		36B67E6FDAA89274AB7C6C5309C0CE18 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		3C8CCF8F9A67B2427AA9880B19EF3090 /* Pods-jionews-shortssdk-cocoapod_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EA353832D7D833C130D417D24B9B6BE /* Pods-jionews-shortssdk-cocoapod_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C72A568BE49C911D7D4C5ECAE315E6E /* Pods-jionews-shortssdk-cocoapod_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55998FCDC624B478EA88FAB00766D007 /* Pods-jionews-shortssdk-cocoapod_Example-dummy.m */; };
-		5817343A8A7F6F556C13BEB2FAD9E1E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		6A43C1302B725452007D0927 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0932B725452007D0927 /* Constants.swift */; };
-		6A43C1312B725452007D0927 /* SkeletonDebugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0992B725452007D0927 /* SkeletonDebugTests.swift */; };
-		6A43C1322B725452007D0927 /* SkeletonConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C09D2B725452007D0927 /* SkeletonConfig.swift */; };
-		6A43C1332B725452007D0927 /* SkeletonMultilinesLayerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C09E2B725452007D0927 /* SkeletonMultilinesLayerConfig.swift */; };
-		6A43C1342B725452007D0927 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0A02B725452007D0927 /* Int+Extensions.swift */; };
-		6A43C1352B725452007D0927 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0A12B725452007D0927 /* DispatchQueue+Extensions.swift */; };
-		6A43C1362B725452007D0927 /* Notification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0A22B725452007D0927 /* Notification+Extensions.swift */; };
-		6A43C1372B725452007D0927 /* ProcessInfo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0A32B725452007D0927 /* ProcessInfo+Extensions.swift */; };
-		6A43C1382B725452007D0927 /* SkeletonLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0A52B725452007D0927 /* SkeletonLayer.swift */; };
-		6A43C1392B725452007D0927 /* RecoverableViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0A62B725452007D0927 /* RecoverableViewState.swift */; };
-		6A43C13A2B725452007D0927 /* SkeletonTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0A82B725452007D0927 /* SkeletonTreeNode.swift */; };
-		6A43C13B2B725452007D0927 /* PrepareViewForSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0AA2B725452007D0927 /* PrepareViewForSkeleton.swift */; };
-		6A43C13C2B725452007D0927 /* SubviewsSkeletonables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0AB2B725452007D0927 /* SubviewsSkeletonables.swift */; };
-		6A43C13D2B725452007D0927 /* GradientDirection+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0AC2B725452007D0927 /* GradientDirection+Animations.swift */; };
-		6A43C13E2B725452007D0927 /* Recoverable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0AD2B725452007D0927 /* Recoverable.swift */; };
-		6A43C13F2B725452007D0927 /* SkeletonTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0AE2B725452007D0927 /* SkeletonTextNode.swift */; };
-		6A43C1402B725452007D0927 /* SkeletonFlowHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0AF2B725452007D0927 /* SkeletonFlowHandler.swift */; };
-		6A43C1412B725452007D0927 /* SkeletonReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0B12B725452007D0927 /* SkeletonReusableCell.swift */; };
-		6A43C1422B725452007D0927 /* SkeletonCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0B22B725452007D0927 /* SkeletonCollectionDataSource.swift */; };
-		6A43C1432B725452007D0927 /* SkeletonCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0B32B725452007D0927 /* SkeletonCollectionDelegate.swift */; };
-		6A43C1442B725452007D0927 /* CollectionSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0B42B725452007D0927 /* CollectionSkeleton.swift */; };
-		6A43C1452B725452007D0927 /* UIView+AppLifecycleNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0B62B725452007D0927 /* UIView+AppLifecycleNotifications.swift */; };
-		6A43C1462B725452007D0927 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0B72B725452007D0927 /* UIView+Extensions.swift */; };
-		6A43C1472B725452007D0927 /* UIView+SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0B82B725452007D0927 /* UIView+SkeletonView.swift */; };
-		6A43C1482B725452007D0927 /* SkeletonTreeNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0B92B725452007D0927 /* SkeletonTreeNode+Extensions.swift */; };
-		6A43C1492B725452007D0927 /* UICollectionView+CollectionSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0BA2B725452007D0927 /* UICollectionView+CollectionSkeleton.swift */; };
-		6A43C14A2B725452007D0927 /* UIColor+Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0BB2B725452007D0927 /* UIColor+Skeleton.swift */; };
-		6A43C14B2B725452007D0927 /* UITableView+CollectionSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0BC2B725452007D0927 /* UITableView+CollectionSkeleton.swift */; };
-		6A43C14C2B725452007D0927 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0BD2B725452007D0927 /* CALayer+Extensions.swift */; };
-		6A43C14D2B725452007D0927 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0BE2B725452007D0927 /* UITableView+Extensions.swift */; };
-		6A43C14E2B725452007D0927 /* UIView+AssociatedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0BF2B725452007D0927 /* UIView+AssociatedObjects.swift */; };
-		6A43C14F2B725452007D0927 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0C02B725452007D0927 /* UILabel+Extensions.swift */; };
-		6A43C1502B725452007D0927 /* UIView+Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0C12B725452007D0927 /* UIView+Transitions.swift */; };
-		6A43C1512B725452007D0927 /* UIView+CollectionSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0C22B725452007D0927 /* UIView+CollectionSkeleton.swift */; };
-		6A43C1522B725452007D0927 /* UIView+Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0C32B725452007D0927 /* UIView+Swizzling.swift */; };
-		6A43C1532B725452007D0927 /* SkeletonMultilineLayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0C52B725452007D0927 /* SkeletonMultilineLayerBuilder.swift */; };
-		6A43C1542B725452007D0927 /* SkeletonLayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0C62B725452007D0927 /* SkeletonLayerBuilder.swift */; };
-		6A43C1552B725452007D0927 /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0C82B725452007D0927 /* Swizzling.swift */; };
-		6A43C1562B725452007D0927 /* AssociationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0C92B725452007D0927 /* AssociationPolicy.swift */; };
-		6A43C1572B725452007D0927 /* Recursive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0CA2B725452007D0927 /* Recursive.swift */; };
-		6A43C1582B725452007D0927 /* SkeletonDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0CC2B725452007D0927 /* SkeletonDebug.swift */; };
-		6A43C1592B725452007D0927 /* SkeletonExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0CF2B725452007D0927 /* SkeletonExtended.swift */; };
-		6A43C15A2B725452007D0927 /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0D02B725452007D0927 /* SkeletonView.swift */; };
-		6A43C15B2B725452007D0927 /* SkeletonAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0D22B725452007D0927 /* SkeletonAppearance.swift */; };
-		6A43C15C2B725452007D0927 /* Notification+SkeletonFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0D42B725452007D0927 /* Notification+SkeletonFlow.swift */; };
-		6A43C15D2B725452007D0927 /* SkeletonGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0D62B725452007D0927 /* SkeletonGradient.swift */; };
-		6A43C15E2B725452007D0927 /* SkeletonTextNumberOfLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0D72B725452007D0927 /* SkeletonTextNumberOfLines.swift */; };
-		6A43C15F2B725452007D0927 /* GradientDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0D82B725452007D0927 /* GradientDirection.swift */; };
-		6A43C1602B725452007D0927 /* SkeletonTextLineHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0D92B725452007D0927 /* SkeletonTextLineHeight.swift */; };
-		6A43C1612B725452007D0927 /* SkeletonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0DA2B725452007D0927 /* SkeletonType.swift */; };
-		6A43C1622B725452007D0927 /* SkeletonTransitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0DB2B725452007D0927 /* SkeletonTransitionStyle.swift */; };
-		6A43C1632B725452007D0927 /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0DC2B725452007D0927 /* Deprecated.swift */; };
-		6A43C1642B725452007D0927 /* SkeletonTableViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0DF2B725452007D0927 /* SkeletonTableViewProtocols.swift */; };
-		6A43C1652B725452007D0927 /* SkeletonCollectionViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0E12B725452007D0927 /* SkeletonCollectionViewProtocols.swift */; };
-		6A43C1662B725452007D0927 /* UILabel+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0E32B725452007D0927 /* UILabel+IBInspectable.swift */; };
-		6A43C1672B725452007D0927 /* UITextView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0E42B725452007D0927 /* UITextView+IBInspectable.swift */; };
-		6A43C1682B725452007D0927 /* UILabel+SKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0E52B725452007D0927 /* UILabel+SKExtensions.swift */; };
-		6A43C1692B725452007D0927 /* CALayer+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0E62B725452007D0927 /* CALayer+Animations.swift */; };
-		6A43C16A2B725452007D0927 /* UITextView+SKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0E72B725452007D0927 /* UITextView+SKExtensions.swift */; };
-		6A43C16B2B725452007D0927 /* UIView+SKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0E82B725452007D0927 /* UIView+SKExtensions.swift */; };
-		6A43C16C2B725452007D0927 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0E92B725452007D0927 /* UICollectionView+Extensions.swift */; };
-		6A43C16D2B725452007D0927 /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0EA2B725452007D0927 /* UIView+IBInspectable.swift */; };
-		6A43C16E2B725452007D0927 /* SkeletonAnimationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C0EC2B725452007D0927 /* SkeletonAnimationBuilder.swift */; };
-		6A43C16F2B725452007D0927 /* solid.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0EE2B725452007D0927 /* solid.png */; };
-		6A43C1702B725452007D0927 /* header2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0EF2B725452007D0927 /* header2.jpg */; };
-		6A43C1712B725452007D0927 /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0F02B725452007D0927 /* gradient.png */; };
-		6A43C1722B725452007D0927 /* multiline_lastline.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0F12B725452007D0927 /* multiline_lastline.png */; };
-		6A43C1732B725452007D0927 /* sliding_topLeft_to_bottomRight.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0F22B725452007D0927 /* sliding_topLeft_to_bottomRight.gif */; };
-		6A43C1742B725452007D0927 /* all_skeletonables_result.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0F32B725452007D0927 /* all_skeletonables_result.png */; };
-		6A43C1752B725452007D0927 /* solid_animated2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0F42B725452007D0927 /* solid_animated2.gif */; };
-		6A43C1762B725452007D0927 /* sliding_bottomRight_to_topLeft.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0F52B725452007D0927 /* sliding_bottomRight_to_topLeft.gif */; };
-		6A43C1772B725452007D0927 /* container_skeletonable_result.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0F62B725452007D0927 /* container_skeletonable_result.png */; };
-		6A43C1782B725452007D0927 /* multiline_lineHeight.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0F72B725452007D0927 /* multiline_lineHeight.png */; };
-		6A43C1792B725452007D0927 /* no_skeletonable.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0F82B725452007D0927 /* no_skeletonable.jpg */; };
-		6A43C17A2B725452007D0927 /* solid_animated.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0F92B725452007D0927 /* solid_animated.gif */; };
-		6A43C17B2B725452007D0927 /* debug_mode.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0FA2B725452007D0927 /* debug_mode.png */; };
-		6A43C17C2B725452007D0927 /* multiline_insets.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0FB2B725452007D0927 /* multiline_insets.png */; };
-		6A43C17D2B725452007D0927 /* all_skeletonables.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0FC2B725452007D0927 /* all_skeletonables.jpg */; };
-		6A43C17E2B725452007D0927 /* skeleton_transition_fade.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0FD2B725452007D0927 /* skeleton_transition_fade.gif */; };
-		6A43C17F2B725452007D0927 /* tableview_scheme.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0FE2B725452007D0927 /* tableview_scheme.png */; };
-		6A43C1802B725452007D0927 /* tableview_skeletonable_result.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C0FF2B725452007D0927 /* tableview_skeletonable_result.png */; };
-		6A43C1812B725452007D0927 /* multiline_customize.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1002B725452007D0927 /* multiline_customize.png */; };
-		6A43C1822B725452007D0927 /* debug_description.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1012B725452007D0927 /* debug_description.png */; };
-		6A43C1832B725452007D0927 /* no_skeletonables_result.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1022B725452007D0927 /* no_skeletonables_result.png */; };
-		6A43C1842B725452007D0927 /* skeleton_transition_nofade.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1032B725452007D0927 /* skeleton_transition_nofade.gif */; };
-		6A43C1852B725452007D0927 /* multiline_lineSpacing.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1042B725452007D0927 /* multiline_lineSpacing.png */; };
-		6A43C1862B725452007D0927 /* tableview_skeletonable.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1052B725452007D0927 /* tableview_skeletonable.jpg */; };
-		6A43C1872B725452007D0927 /* sliding_top_to_bottom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1062B725452007D0927 /* sliding_top_to_bottom.gif */; };
-		6A43C1882B725452007D0927 /* header.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1072B725452007D0927 /* header.jpg */; };
-		6A43C1892B725452007D0927 /* tableview_no_skeletonable_result.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1082B725452007D0927 /* tableview_no_skeletonable_result.png */; };
-		6A43C18A2B725452007D0927 /* storyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1092B725452007D0927 /* storyboard.png */; };
-		6A43C18B2B725452007D0927 /* tableview_no_skeletonable.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C10A2B725452007D0927 /* tableview_no_skeletonable.jpg */; };
-		6A43C18C2B725452007D0927 /* container_skeletonable.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C10B2B725452007D0927 /* container_skeletonable.jpg */; };
-		6A43C18D2B725452007D0927 /* sliding_right_to_left.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C10C2B725452007D0927 /* sliding_right_to_left.gif */; };
-		6A43C18E2B725452007D0927 /* gradient_animated.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C10D2B725452007D0927 /* gradient_animated.gif */; };
-		6A43C18F2B725452007D0927 /* flatcolors.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C10E2B725452007D0927 /* flatcolors.png */; };
-		6A43C1902B725452007D0927 /* multilines2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C10F2B725452007D0927 /* multilines2.png */; };
-		6A43C1912B725452007D0927 /* hierarchy_output.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1102B725452007D0927 /* hierarchy_output.png */; };
-		6A43C1922B725452007D0927 /* demoApp2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1112B725452007D0927 /* demoApp2.png */; };
-		6A43C1932B725452007D0927 /* thumb_getting_started.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1122B725452007D0927 /* thumb_getting_started.png */; };
-		6A43C1942B725452007D0927 /* sliding_left_to_right.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1132B725452007D0927 /* sliding_left_to_right.gif */; };
-		6A43C1952B725452007D0927 /* container_no_skeletonable.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1142B725452007D0927 /* container_no_skeletonable.jpg */; };
-		6A43C1962B725452007D0927 /* multiline_corner.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1152B725452007D0927 /* multiline_corner.png */; };
-		6A43C1972B725452007D0927 /* sliding_bottom_to_top.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1162B725452007D0927 /* sliding_bottom_to_top.gif */; };
-		6A43C1982B725452007D0927 /* README_pt-br.md in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1182B725452007D0927 /* README_pt-br.md */; };
-		6A43C1992B725452007D0927 /* README_ko.md in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C1192B725452007D0927 /* README_ko.md */; };
-		6A43C19A2B725452007D0927 /* README_es.md in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C11A2B725452007D0927 /* README_es.md */; };
-		6A43C19B2B725452007D0927 /* README_zh.md in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C11B2B725452007D0927 /* README_zh.md */; };
-		6A43C19C2B725452007D0927 /* README_fr.md in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C11C2B725452007D0927 /* README_fr.md */; };
-		6A43C19D2B725452007D0927 /* README_de.md in Resources */ = {isa = PBXBuildFile; fileRef = 6A43C11D2B725452007D0927 /* README_de.md */; };
-		6A43C19E2B725452007D0927 /* JioNewsShortsSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A43C11E2B725452007D0927 /* JioNewsShortsSDK.h */; };
-		6A43C19F2B725452007D0927 /* JioNewsShortsSDK.docc in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C11F2B725452007D0927 /* JioNewsShortsSDK.docc */; };
-		6A43C1A02B725452007D0927 /* JioShortsTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C1212B725452007D0927 /* JioShortsTheme.swift */; };
-		6A43C1A12B725452007D0927 /* SDKInitializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C1222B725452007D0927 /* SDKInitializationError.swift */; };
-		6A43C1A22B725452007D0927 /* ShortsVideoBrief.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C1232B725452007D0927 /* ShortsVideoBrief.swift */; };
-		6A43C1A32B725452007D0927 /* JioShortsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C1242B725452007D0927 /* JioShortsClient.swift */; };
-		6A43C1A42B725452007D0927 /* JioShortsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C1262B725452007D0927 /* JioShortsModel.swift */; };
-		6A43C1A52B725452007D0927 /* WKWebViewConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C1282B725452007D0927 /* WKWebViewConfigurationExtension.swift */; };
-		6A43C1A62B725452007D0927 /* URLRequestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C1292B725452007D0927 /* URLRequestExtensions.swift */; };
-		6A43C1A72B725452007D0927 /* WKWebViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C12A2B725452007D0927 /* WKWebViewExtensions.swift */; };
-		6A43C1A82B725452007D0927 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C12B2B725452007D0927 /* UserDefaultsExtension.swift */; };
-		6A43C1A92B725452007D0927 /* HTTPCookieExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C12C2B725452007D0927 /* HTTPCookieExtensions.swift */; };
-		6A43C1AA2B725452007D0927 /* ShortsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C12E2B725452007D0927 /* ShortsView.swift */; };
-		6A43C1AB2B725452007D0927 /* ShortsShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43C12F2B725452007D0927 /* ShortsShimmerView.swift */; };
-		6D6183F6B602B0E41A0DD0750E7F7A78 /* jionews-shortssdk-cocoapod-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A09C9CE1079AAC41F5BCFBD0B6A589 /* jionews-shortssdk-cocoapod-dummy.m */; };
-		7237F1DDD25FF43B5373E8229607DF5B /* jionews-shortssdk-cocoapod-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C4A0337D0C56E74287C720BBCB452966 /* jionews-shortssdk-cocoapod-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BAEF93E4D14F1FE7F52968F8D8C299E5 /* Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8650D8F9FB7A380BDA0D9FF60484D688 /* Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E9983657058A33837E70A18483F4890B /* Pods-jionews-shortssdk-cocoapod_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC4AFB077542D28B57A16450EAAAC86 /* Pods-jionews-shortssdk-cocoapod_Tests-dummy.m */; };
+		3C8CCF8F9A67B2427AA9880B19EF3090 /* Pods-jionews-shortssdk-cocoapod_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 25C8D63DAF03F2D8096E96836DE3FE41 /* Pods-jionews-shortssdk-cocoapod_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C72A568BE49C911D7D4C5ECAE315E6E /* Pods-jionews-shortssdk-cocoapod_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A60A47F1663B4C5BD0A8616DEAFF5724 /* Pods-jionews-shortssdk-cocoapod_Example-dummy.m */; };
+		BAEF93E4D14F1FE7F52968F8D8C299E5 /* Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C92CB179F8835CB06204913BE7FFA42 /* Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9983657058A33837E70A18483F4890B /* Pods-jionews-shortssdk-cocoapod_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F55E317474F7B078B24B35360D27268 /* Pods-jionews-shortssdk-cocoapod_Tests-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F2DA2E4E14E35C6C60BE5B24535DBAC0 /* PBXContainerItemProxy */ = {
+		1348C81E9589FEEC5367517D8B68A378 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = AC22C2FEA8B2E775839B1FDCD8D3DF83;
 			remoteInfo = "Pods-jionews-shortssdk-cocoapod_Example";
 		};
-		F85322241D4A0E6CE9CF3A69FA19B528 /* PBXContainerItemProxy */ = {
+		88A009FACBBB65CFA82B83C26D3A844E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -160,162 +45,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06B403290EFF0D04D3E29A7BA2914764 /* Pods-jionews-shortssdk-cocoapod_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-jionews-shortssdk-cocoapod_Tests.modulemap"; sourceTree = "<group>"; };
-		2BA29D6E8238E4D20555D4496FCA197A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		34915F33A4DD34FFC00FA59D593AE8E9 /* Pods_jionews_shortssdk_cocoapod_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_jionews_shortssdk_cocoapod_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		38A09C9CE1079AAC41F5BCFBD0B6A589 /* jionews-shortssdk-cocoapod-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "jionews-shortssdk-cocoapod-dummy.m"; sourceTree = "<group>"; };
-		3AC24BA05AC669B42A36EFB422D1F837 /* Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4988960E8E436E1EC320364D347A0876 /* Pods-jionews-shortssdk-cocoapod_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jionews-shortssdk-cocoapod_Tests-Info.plist"; sourceTree = "<group>"; };
-		5498098E69CC634B4717BD9AF99A5037 /* jionews_shortssdk_cocoapod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = jionews_shortssdk_cocoapod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		55998FCDC624B478EA88FAB00766D007 /* Pods-jionews-shortssdk-cocoapod_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-jionews-shortssdk-cocoapod_Example-dummy.m"; sourceTree = "<group>"; };
-		646145611EE838113D1C5230CE0F71F5 /* jionews-shortssdk-cocoapod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "jionews-shortssdk-cocoapod.debug.xcconfig"; sourceTree = "<group>"; };
-		6A43C0932B725452007D0927 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		6A43C0992B725452007D0927 /* SkeletonDebugTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonDebugTests.swift; sourceTree = "<group>"; };
-		6A43C09D2B725452007D0927 /* SkeletonConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonConfig.swift; sourceTree = "<group>"; };
-		6A43C09E2B725452007D0927 /* SkeletonMultilinesLayerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonMultilinesLayerConfig.swift; sourceTree = "<group>"; };
-		6A43C0A02B725452007D0927 /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
-		6A43C0A12B725452007D0927 /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
-		6A43C0A22B725452007D0927 /* Notification+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Extensions.swift"; sourceTree = "<group>"; };
-		6A43C0A32B725452007D0927 /* ProcessInfo+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+Extensions.swift"; sourceTree = "<group>"; };
-		6A43C0A52B725452007D0927 /* SkeletonLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonLayer.swift; sourceTree = "<group>"; };
-		6A43C0A62B725452007D0927 /* RecoverableViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoverableViewState.swift; sourceTree = "<group>"; };
-		6A43C0A82B725452007D0927 /* SkeletonTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonTreeNode.swift; sourceTree = "<group>"; };
-		6A43C0AA2B725452007D0927 /* PrepareViewForSkeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrepareViewForSkeleton.swift; sourceTree = "<group>"; };
-		6A43C0AB2B725452007D0927 /* SubviewsSkeletonables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubviewsSkeletonables.swift; sourceTree = "<group>"; };
-		6A43C0AC2B725452007D0927 /* GradientDirection+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GradientDirection+Animations.swift"; sourceTree = "<group>"; };
-		6A43C0AD2B725452007D0927 /* Recoverable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recoverable.swift; sourceTree = "<group>"; };
-		6A43C0AE2B725452007D0927 /* SkeletonTextNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonTextNode.swift; sourceTree = "<group>"; };
-		6A43C0AF2B725452007D0927 /* SkeletonFlowHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonFlowHandler.swift; sourceTree = "<group>"; };
-		6A43C0B12B725452007D0927 /* SkeletonReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonReusableCell.swift; sourceTree = "<group>"; };
-		6A43C0B22B725452007D0927 /* SkeletonCollectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonCollectionDataSource.swift; sourceTree = "<group>"; };
-		6A43C0B32B725452007D0927 /* SkeletonCollectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonCollectionDelegate.swift; sourceTree = "<group>"; };
-		6A43C0B42B725452007D0927 /* CollectionSkeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionSkeleton.swift; sourceTree = "<group>"; };
-		6A43C0B62B725452007D0927 /* UIView+AppLifecycleNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AppLifecycleNotifications.swift"; sourceTree = "<group>"; };
-		6A43C0B72B725452007D0927 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		6A43C0B82B725452007D0927 /* UIView+SkeletonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+SkeletonView.swift"; sourceTree = "<group>"; };
-		6A43C0B92B725452007D0927 /* SkeletonTreeNode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SkeletonTreeNode+Extensions.swift"; sourceTree = "<group>"; };
-		6A43C0BA2B725452007D0927 /* UICollectionView+CollectionSkeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+CollectionSkeleton.swift"; sourceTree = "<group>"; };
-		6A43C0BB2B725452007D0927 /* UIColor+Skeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Skeleton.swift"; sourceTree = "<group>"; };
-		6A43C0BC2B725452007D0927 /* UITableView+CollectionSkeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+CollectionSkeleton.swift"; sourceTree = "<group>"; };
-		6A43C0BD2B725452007D0927 /* CALayer+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
-		6A43C0BE2B725452007D0927 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
-		6A43C0BF2B725452007D0927 /* UIView+AssociatedObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AssociatedObjects.swift"; sourceTree = "<group>"; };
-		6A43C0C02B725452007D0927 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
-		6A43C0C12B725452007D0927 /* UIView+Transitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Transitions.swift"; sourceTree = "<group>"; };
-		6A43C0C22B725452007D0927 /* UIView+CollectionSkeleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+CollectionSkeleton.swift"; sourceTree = "<group>"; };
-		6A43C0C32B725452007D0927 /* UIView+Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Swizzling.swift"; sourceTree = "<group>"; };
-		6A43C0C52B725452007D0927 /* SkeletonMultilineLayerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonMultilineLayerBuilder.swift; sourceTree = "<group>"; };
-		6A43C0C62B725452007D0927 /* SkeletonLayerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonLayerBuilder.swift; sourceTree = "<group>"; };
-		6A43C0C82B725452007D0927 /* Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swizzling.swift; sourceTree = "<group>"; };
-		6A43C0C92B725452007D0927 /* AssociationPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociationPolicy.swift; sourceTree = "<group>"; };
-		6A43C0CA2B725452007D0927 /* Recursive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recursive.swift; sourceTree = "<group>"; };
-		6A43C0CC2B725452007D0927 /* SkeletonDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonDebug.swift; sourceTree = "<group>"; };
-		6A43C0CF2B725452007D0927 /* SkeletonExtended.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonExtended.swift; sourceTree = "<group>"; };
-		6A43C0D02B725452007D0927 /* SkeletonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
-		6A43C0D22B725452007D0927 /* SkeletonAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonAppearance.swift; sourceTree = "<group>"; };
-		6A43C0D42B725452007D0927 /* Notification+SkeletonFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+SkeletonFlow.swift"; sourceTree = "<group>"; };
-		6A43C0D62B725452007D0927 /* SkeletonGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonGradient.swift; sourceTree = "<group>"; };
-		6A43C0D72B725452007D0927 /* SkeletonTextNumberOfLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonTextNumberOfLines.swift; sourceTree = "<group>"; };
-		6A43C0D82B725452007D0927 /* GradientDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientDirection.swift; sourceTree = "<group>"; };
-		6A43C0D92B725452007D0927 /* SkeletonTextLineHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonTextLineHeight.swift; sourceTree = "<group>"; };
-		6A43C0DA2B725452007D0927 /* SkeletonType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonType.swift; sourceTree = "<group>"; };
-		6A43C0DB2B725452007D0927 /* SkeletonTransitionStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonTransitionStyle.swift; sourceTree = "<group>"; };
-		6A43C0DC2B725452007D0927 /* Deprecated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated.swift; sourceTree = "<group>"; };
-		6A43C0DF2B725452007D0927 /* SkeletonTableViewProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonTableViewProtocols.swift; sourceTree = "<group>"; };
-		6A43C0E12B725452007D0927 /* SkeletonCollectionViewProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonCollectionViewProtocols.swift; sourceTree = "<group>"; };
-		6A43C0E32B725452007D0927 /* UILabel+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+IBInspectable.swift"; sourceTree = "<group>"; };
-		6A43C0E42B725452007D0927 /* UITextView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+IBInspectable.swift"; sourceTree = "<group>"; };
-		6A43C0E52B725452007D0927 /* UILabel+SKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+SKExtensions.swift"; sourceTree = "<group>"; };
-		6A43C0E62B725452007D0927 /* CALayer+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Animations.swift"; sourceTree = "<group>"; };
-		6A43C0E72B725452007D0927 /* UITextView+SKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+SKExtensions.swift"; sourceTree = "<group>"; };
-		6A43C0E82B725452007D0927 /* UIView+SKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+SKExtensions.swift"; sourceTree = "<group>"; };
-		6A43C0E92B725452007D0927 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
-		6A43C0EA2B725452007D0927 /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
-		6A43C0EC2B725452007D0927 /* SkeletonAnimationBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkeletonAnimationBuilder.swift; sourceTree = "<group>"; };
-		6A43C0EE2B725452007D0927 /* solid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solid.png; sourceTree = "<group>"; };
-		6A43C0EF2B725452007D0927 /* header2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = header2.jpg; sourceTree = "<group>"; };
-		6A43C0F02B725452007D0927 /* gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradient.png; sourceTree = "<group>"; };
-		6A43C0F12B725452007D0927 /* multiline_lastline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiline_lastline.png; sourceTree = "<group>"; };
-		6A43C0F22B725452007D0927 /* sliding_topLeft_to_bottomRight.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sliding_topLeft_to_bottomRight.gif; sourceTree = "<group>"; };
-		6A43C0F32B725452007D0927 /* all_skeletonables_result.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = all_skeletonables_result.png; sourceTree = "<group>"; };
-		6A43C0F42B725452007D0927 /* solid_animated2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = solid_animated2.gif; sourceTree = "<group>"; };
-		6A43C0F52B725452007D0927 /* sliding_bottomRight_to_topLeft.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sliding_bottomRight_to_topLeft.gif; sourceTree = "<group>"; };
-		6A43C0F62B725452007D0927 /* container_skeletonable_result.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container_skeletonable_result.png; sourceTree = "<group>"; };
-		6A43C0F72B725452007D0927 /* multiline_lineHeight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiline_lineHeight.png; sourceTree = "<group>"; };
-		6A43C0F82B725452007D0927 /* no_skeletonable.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = no_skeletonable.jpg; sourceTree = "<group>"; };
-		6A43C0F92B725452007D0927 /* solid_animated.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = solid_animated.gif; sourceTree = "<group>"; };
-		6A43C0FA2B725452007D0927 /* debug_mode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debug_mode.png; sourceTree = "<group>"; };
-		6A43C0FB2B725452007D0927 /* multiline_insets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiline_insets.png; sourceTree = "<group>"; };
-		6A43C0FC2B725452007D0927 /* all_skeletonables.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = all_skeletonables.jpg; sourceTree = "<group>"; };
-		6A43C0FD2B725452007D0927 /* skeleton_transition_fade.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = skeleton_transition_fade.gif; sourceTree = "<group>"; };
-		6A43C0FE2B725452007D0927 /* tableview_scheme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_scheme.png; sourceTree = "<group>"; };
-		6A43C0FF2B725452007D0927 /* tableview_skeletonable_result.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_skeletonable_result.png; sourceTree = "<group>"; };
-		6A43C1002B725452007D0927 /* multiline_customize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiline_customize.png; sourceTree = "<group>"; };
-		6A43C1012B725452007D0927 /* debug_description.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = debug_description.png; sourceTree = "<group>"; };
-		6A43C1022B725452007D0927 /* no_skeletonables_result.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_skeletonables_result.png; sourceTree = "<group>"; };
-		6A43C1032B725452007D0927 /* skeleton_transition_nofade.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = skeleton_transition_nofade.gif; sourceTree = "<group>"; };
-		6A43C1042B725452007D0927 /* multiline_lineSpacing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiline_lineSpacing.png; sourceTree = "<group>"; };
-		6A43C1052B725452007D0927 /* tableview_skeletonable.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tableview_skeletonable.jpg; sourceTree = "<group>"; };
-		6A43C1062B725452007D0927 /* sliding_top_to_bottom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sliding_top_to_bottom.gif; sourceTree = "<group>"; };
-		6A43C1072B725452007D0927 /* header.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = header.jpg; sourceTree = "<group>"; };
-		6A43C1082B725452007D0927 /* tableview_no_skeletonable_result.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableview_no_skeletonable_result.png; sourceTree = "<group>"; };
-		6A43C1092B725452007D0927 /* storyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storyboard.png; sourceTree = "<group>"; };
-		6A43C10A2B725452007D0927 /* tableview_no_skeletonable.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tableview_no_skeletonable.jpg; sourceTree = "<group>"; };
-		6A43C10B2B725452007D0927 /* container_skeletonable.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = container_skeletonable.jpg; sourceTree = "<group>"; };
-		6A43C10C2B725452007D0927 /* sliding_right_to_left.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sliding_right_to_left.gif; sourceTree = "<group>"; };
-		6A43C10D2B725452007D0927 /* gradient_animated.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gradient_animated.gif; sourceTree = "<group>"; };
-		6A43C10E2B725452007D0927 /* flatcolors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flatcolors.png; sourceTree = "<group>"; };
-		6A43C10F2B725452007D0927 /* multilines2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multilines2.png; sourceTree = "<group>"; };
-		6A43C1102B725452007D0927 /* hierarchy_output.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hierarchy_output.png; sourceTree = "<group>"; };
-		6A43C1112B725452007D0927 /* demoApp2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoApp2.png; sourceTree = "<group>"; };
-		6A43C1122B725452007D0927 /* thumb_getting_started.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_getting_started.png; sourceTree = "<group>"; };
-		6A43C1132B725452007D0927 /* sliding_left_to_right.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sliding_left_to_right.gif; sourceTree = "<group>"; };
-		6A43C1142B725452007D0927 /* container_no_skeletonable.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = container_no_skeletonable.jpg; sourceTree = "<group>"; };
-		6A43C1152B725452007D0927 /* multiline_corner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiline_corner.png; sourceTree = "<group>"; };
-		6A43C1162B725452007D0927 /* sliding_bottom_to_top.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sliding_bottom_to_top.gif; sourceTree = "<group>"; };
-		6A43C1182B725452007D0927 /* README_pt-br.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "README_pt-br.md"; sourceTree = "<group>"; };
-		6A43C1192B725452007D0927 /* README_ko.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README_ko.md; sourceTree = "<group>"; };
-		6A43C11A2B725452007D0927 /* README_es.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README_es.md; sourceTree = "<group>"; };
-		6A43C11B2B725452007D0927 /* README_zh.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README_zh.md; sourceTree = "<group>"; };
-		6A43C11C2B725452007D0927 /* README_fr.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README_fr.md; sourceTree = "<group>"; };
-		6A43C11D2B725452007D0927 /* README_de.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README_de.md; sourceTree = "<group>"; };
-		6A43C11E2B725452007D0927 /* JioNewsShortsSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JioNewsShortsSDK.h; sourceTree = "<group>"; };
-		6A43C11F2B725452007D0927 /* JioNewsShortsSDK.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = JioNewsShortsSDK.docc; sourceTree = "<group>"; };
-		6A43C1212B725452007D0927 /* JioShortsTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JioShortsTheme.swift; sourceTree = "<group>"; };
-		6A43C1222B725452007D0927 /* SDKInitializationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKInitializationError.swift; sourceTree = "<group>"; };
-		6A43C1232B725452007D0927 /* ShortsVideoBrief.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortsVideoBrief.swift; sourceTree = "<group>"; };
-		6A43C1242B725452007D0927 /* JioShortsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JioShortsClient.swift; sourceTree = "<group>"; };
-		6A43C1262B725452007D0927 /* JioShortsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JioShortsModel.swift; sourceTree = "<group>"; };
-		6A43C1282B725452007D0927 /* WKWebViewConfigurationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKWebViewConfigurationExtension.swift; sourceTree = "<group>"; };
-		6A43C1292B725452007D0927 /* URLRequestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestExtensions.swift; sourceTree = "<group>"; };
-		6A43C12A2B725452007D0927 /* WKWebViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKWebViewExtensions.swift; sourceTree = "<group>"; };
-		6A43C12B2B725452007D0927 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
-		6A43C12C2B725452007D0927 /* HTTPCookieExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPCookieExtensions.swift; sourceTree = "<group>"; };
-		6A43C12E2B725452007D0927 /* ShortsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortsView.swift; sourceTree = "<group>"; };
-		6A43C12F2B725452007D0927 /* ShortsShimmerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortsShimmerView.swift; sourceTree = "<group>"; };
-		70D3BB3F90F465C3F5CEFE827EE7AA8D /* jionews-shortssdk-cocoapod.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "jionews-shortssdk-cocoapod.modulemap"; sourceTree = "<group>"; };
+		048B9BE02D50401D5F9EF857A2423F0F /* Pods-jionews-shortssdk-cocoapod_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jionews-shortssdk-cocoapod_Example-Info.plist"; sourceTree = "<group>"; };
+		08CFE882AB1994227CD85728A3B63699 /* Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1F55E317474F7B078B24B35360D27268 /* Pods-jionews-shortssdk-cocoapod_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-jionews-shortssdk-cocoapod_Tests-dummy.m"; sourceTree = "<group>"; };
+		2077584EEBFDEE23978955489EE62DFA /* Pods-jionews-shortssdk-cocoapod_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jionews-shortssdk-cocoapod_Tests-Info.plist"; sourceTree = "<group>"; };
+		25C8D63DAF03F2D8096E96836DE3FE41 /* Pods-jionews-shortssdk-cocoapod_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-jionews-shortssdk-cocoapod_Example-umbrella.h"; sourceTree = "<group>"; };
+		2C92CB179F8835CB06204913BE7FFA42 /* Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h"; sourceTree = "<group>"; };
+		34915F33A4DD34FFC00FA59D593AE8E9 /* Pods-jionews-shortssdk-cocoapod_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-jionews-shortssdk-cocoapod_Tests"; path = Pods_jionews_shortssdk_cocoapod_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		459AF68DF0C9398A8F9C7FBBC66FDAB5 /* Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		48A36F66D72A1DB46D8905F775982963 /* jionews-shortssdk-cocoapod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "jionews-shortssdk-cocoapod.debug.xcconfig"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		793D888C14697BC7574C78F728682641 /* jionews-shortssdk-cocoapod-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "jionews-shortssdk-cocoapod-Info.plist"; sourceTree = "<group>"; };
-		8650D8F9FB7A380BDA0D9FF60484D688 /* Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h"; sourceTree = "<group>"; };
-		8AE330C16F9B67B7EFC3393373DB92E2 /* jionews-shortssdk-cocoapod.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "jionews-shortssdk-cocoapod.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		8EA353832D7D833C130D417D24B9B6BE /* Pods-jionews-shortssdk-cocoapod_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-jionews-shortssdk-cocoapod_Example-umbrella.h"; sourceTree = "<group>"; };
-		8F81E94BAA03849FB39A2179CCB47DAF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		97D68F0F2CBA1616FC1163B11AD80B66 /* Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9E1662270E3FF3680D628EFB6E2CEE00 /* jionews-shortssdk-cocoapod-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "jionews-shortssdk-cocoapod-prefix.pch"; sourceTree = "<group>"; };
-		A3E0B93675146F36E72BD806BE9D474F /* Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		B3714A1D6AA24DF4BB3078A4C8947D27 /* Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		BC493E97F3E2C5E4DEAEE23B6FE981A2 /* Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		C23B0C60971DE84AB8F8B820F30BA2CF /* Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig"; sourceTree = "<group>"; };
-		C4A0337D0C56E74287C720BBCB452966 /* jionews-shortssdk-cocoapod-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "jionews-shortssdk-cocoapod-umbrella.h"; sourceTree = "<group>"; };
-		CB137412BF16FD74D6E3B80989C4E56E /* Pods-jionews-shortssdk-cocoapod_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-jionews-shortssdk-cocoapod_Example.modulemap"; sourceTree = "<group>"; };
-		CD56420BB1F78363F67988F24FD38EAA /* Pods_jionews_shortssdk_cocoapod_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_jionews_shortssdk_cocoapod_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF21A6135FDD45407ECACE35CCD19E3C /* Pods-jionews-shortssdk-cocoapod_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jionews-shortssdk-cocoapod_Example-Info.plist"; sourceTree = "<group>"; };
-		E6A02B1DF8971ECABDD5F973CD903684 /* Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		ECFA0716952883691D58DDAD34C7A40C /* Pods-jionews-shortssdk-cocoapod_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-jionews-shortssdk-cocoapod_Example-frameworks.sh"; sourceTree = "<group>"; };
-		F2EF75EE4F1537223801E7ED7110B9DC /* jionews-shortssdk-cocoapod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "jionews-shortssdk-cocoapod.release.xcconfig"; sourceTree = "<group>"; };
-		FDC4AFB077542D28B57A16450EAAAC86 /* Pods-jionews-shortssdk-cocoapod_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-jionews-shortssdk-cocoapod_Tests-dummy.m"; sourceTree = "<group>"; };
-		FFF7B20E796D5CB2C919555BCEB3A136 /* Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		73FDC5B44CED986C96C2D69CE18D8021 /* Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig"; sourceTree = "<group>"; };
+		749B72D47C0802934B7470675AD513CF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		7A2CBB5D425E67F8799D76C26CF5DBED /* Pods-jionews-shortssdk-cocoapod_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-jionews-shortssdk-cocoapod_Tests.modulemap"; sourceTree = "<group>"; };
+		7D43120AFF77681B7F41213FAD7E8137 /* Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		8EA3D5940A27520EFCFEB754D3A98115 /* Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A32BF273D22E67EC193370144183DE33 /* Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A60A47F1663B4C5BD0A8616DEAFF5724 /* Pods-jionews-shortssdk-cocoapod_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-jionews-shortssdk-cocoapod_Example-dummy.m"; sourceTree = "<group>"; };
+		B31B35D592BED94FD262551AB61A806B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		BA96353AC263F3EFEBF0C80C0D265463 /* jionews-shortssdk-cocoapod.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "jionews-shortssdk-cocoapod.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C943A80D018B0614AD42A19B2F81CC06 /* jionews-shortssdk-cocoapod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "jionews-shortssdk-cocoapod.release.xcconfig"; sourceTree = "<group>"; };
+		CD56420BB1F78363F67988F24FD38EAA /* Pods-jionews-shortssdk-cocoapod_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-jionews-shortssdk-cocoapod_Example"; path = Pods_jionews_shortssdk_cocoapod_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDBB99E9C5B92E437D9F22B7BFC8083A /* Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		FA75D70060EA97BCD276335A840F20FD /* Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		FB7F310B3E2A94E1D8E93EC4F4D74AD7 /* Pods-jionews-shortssdk-cocoapod_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-jionews-shortssdk-cocoapod_Example.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,14 +78,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0578384B2288EB10B63CC61DDC69DB78 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BA4EB7CCE879D248ED33AF70DF71FFBD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5817343A8A7F6F556C13BEB2FAD9E1E1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,13 +92,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3BADE863674A51922DB97C49FF569F09 /* Targets Support Files */ = {
+		073E9B17EEDC83FBF7C3D57CF254F20D /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F6146574DFB7AC1B52F2697EA313A158 /* Pods-jionews-shortssdk-cocoapod_Example */,
-				CBDFCFE5EB558DC8C609A4DBC2E3AC84 /* Pods-jionews-shortssdk-cocoapod_Tests */,
+				48A36F66D72A1DB46D8905F775982963 /* jionews-shortssdk-cocoapod.debug.xcconfig */,
+				C943A80D018B0614AD42A19B2F81CC06 /* jionews-shortssdk-cocoapod.release.xcconfig */,
 			);
-			name = "Targets Support Files";
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/jionews-shortssdk-cocoapod";
+			sourceTree = "<group>";
+		};
+		453468BE01060D23E714CE0966FEB7B9 /* jionews-shortssdk-cocoapod */ = {
+			isa = PBXGroup;
+			children = (
+				4783577550B66D6E69E58E43F4F66D05 /* Pod */,
+				073E9B17EEDC83FBF7C3D57CF254F20D /* Support Files */,
+			);
+			name = "jionews-shortssdk-cocoapod";
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		4783577550B66D6E69E58E43F4F66D05 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				BA96353AC263F3EFEBF0C80C0D265463 /* jionews-shortssdk-cocoapod.podspec */,
+				B31B35D592BED94FD262551AB61A806B /* LICENSE */,
+				749B72D47C0802934B7470675AD513CF /* README.md */,
+			);
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -363,466 +130,41 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		5A08F78D517084BC0FA597F815CF95D0 /* jionews-shortssdk-cocoapod */ = {
+		79271410F89F880EE88E585D7D894586 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6A43C0922B725452007D0927 /* SourceCode */,
-				8BD2F13A83AA0B73521D204C913D2F02 /* Pod */,
-				B0109B697299069BA04F7E3724D3A6EF /* Support Files */,
-			);
-			name = "jionews-shortssdk-cocoapod";
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		6A43C0922B725452007D0927 /* SourceCode */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0932B725452007D0927 /* Constants.swift */,
-				6A43C0942B725452007D0927 /* SkeletonView */,
-				6A43C11E2B725452007D0927 /* JioNewsShortsSDK.h */,
-				6A43C11F2B725452007D0927 /* JioNewsShortsSDK.docc */,
-				6A43C1202B725452007D0927 /* Enums */,
-				6A43C1252B725452007D0927 /* Models */,
-				6A43C1272B725452007D0927 /* Extensions */,
-				6A43C12D2B725452007D0927 /* Views */,
-			);
-			path = SourceCode;
-			sourceTree = "<group>";
-		};
-		6A43C0942B725452007D0927 /* SkeletonView */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0952B725452007D0927 /* SkeletonViewCore */,
-				6A43C0ED2B725452007D0927 /* Assets */,
-				6A43C1172B725452007D0927 /* Translations */,
-			);
-			path = SkeletonView;
-			sourceTree = "<group>";
-		};
-		6A43C0952B725452007D0927 /* SkeletonViewCore */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0962B725452007D0927 /* Tests */,
-				6A43C09A2B725452007D0927 /* Sources */,
-			);
-			path = SkeletonViewCore;
-			sourceTree = "<group>";
-		};
-		6A43C0962B725452007D0927 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0972B725452007D0927 /* Supporting Files */,
-				6A43C0982B725452007D0927 /* Debug */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		6A43C0972B725452007D0927 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6A43C0982B725452007D0927 /* Debug */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0992B725452007D0927 /* SkeletonDebugTests.swift */,
-			);
-			path = Debug;
-			sourceTree = "<group>";
-		};
-		6A43C09A2B725452007D0927 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C09B2B725452007D0927 /* Internal */,
-				6A43C0CD2B725452007D0927 /* Supporting Files */,
-				6A43C0CE2B725452007D0927 /* API */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		6A43C09B2B725452007D0927 /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C09C2B725452007D0927 /* SkeletonConfigs */,
-				6A43C09F2B725452007D0927 /* FoundationExtensions */,
-				6A43C0A42B725452007D0927 /* Models */,
-				6A43C0A72B725452007D0927 /* SkeletonTree */,
-				6A43C0A92B725452007D0927 /* SkeletonExtensions */,
-				6A43C0AF2B725452007D0927 /* SkeletonFlowHandler.swift */,
-				6A43C0B02B725452007D0927 /* Collections */,
-				6A43C0B52B725452007D0927 /* UIKitExtensions */,
-				6A43C0C42B725452007D0927 /* SkeletonLayerBuilders */,
-				6A43C0C72B725452007D0927 /* Helpers */,
-				6A43C0CB2B725452007D0927 /* Debug */,
-			);
-			path = Internal;
-			sourceTree = "<group>";
-		};
-		6A43C09C2B725452007D0927 /* SkeletonConfigs */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C09D2B725452007D0927 /* SkeletonConfig.swift */,
-				6A43C09E2B725452007D0927 /* SkeletonMultilinesLayerConfig.swift */,
-			);
-			path = SkeletonConfigs;
-			sourceTree = "<group>";
-		};
-		6A43C09F2B725452007D0927 /* FoundationExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0A02B725452007D0927 /* Int+Extensions.swift */,
-				6A43C0A12B725452007D0927 /* DispatchQueue+Extensions.swift */,
-				6A43C0A22B725452007D0927 /* Notification+Extensions.swift */,
-				6A43C0A32B725452007D0927 /* ProcessInfo+Extensions.swift */,
-			);
-			path = FoundationExtensions;
-			sourceTree = "<group>";
-		};
-		6A43C0A42B725452007D0927 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0A52B725452007D0927 /* SkeletonLayer.swift */,
-				6A43C0A62B725452007D0927 /* RecoverableViewState.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		6A43C0A72B725452007D0927 /* SkeletonTree */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0A82B725452007D0927 /* SkeletonTreeNode.swift */,
-			);
-			path = SkeletonTree;
-			sourceTree = "<group>";
-		};
-		6A43C0A92B725452007D0927 /* SkeletonExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0AA2B725452007D0927 /* PrepareViewForSkeleton.swift */,
-				6A43C0AB2B725452007D0927 /* SubviewsSkeletonables.swift */,
-				6A43C0AC2B725452007D0927 /* GradientDirection+Animations.swift */,
-				6A43C0AD2B725452007D0927 /* Recoverable.swift */,
-				6A43C0AE2B725452007D0927 /* SkeletonTextNode.swift */,
-			);
-			path = SkeletonExtensions;
-			sourceTree = "<group>";
-		};
-		6A43C0B02B725452007D0927 /* Collections */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0B12B725452007D0927 /* SkeletonReusableCell.swift */,
-				6A43C0B22B725452007D0927 /* SkeletonCollectionDataSource.swift */,
-				6A43C0B32B725452007D0927 /* SkeletonCollectionDelegate.swift */,
-				6A43C0B42B725452007D0927 /* CollectionSkeleton.swift */,
-			);
-			path = Collections;
-			sourceTree = "<group>";
-		};
-		6A43C0B52B725452007D0927 /* UIKitExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0B62B725452007D0927 /* UIView+AppLifecycleNotifications.swift */,
-				6A43C0B72B725452007D0927 /* UIView+Extensions.swift */,
-				6A43C0B82B725452007D0927 /* UIView+SkeletonView.swift */,
-				6A43C0B92B725452007D0927 /* SkeletonTreeNode+Extensions.swift */,
-				6A43C0BA2B725452007D0927 /* UICollectionView+CollectionSkeleton.swift */,
-				6A43C0BB2B725452007D0927 /* UIColor+Skeleton.swift */,
-				6A43C0BC2B725452007D0927 /* UITableView+CollectionSkeleton.swift */,
-				6A43C0BD2B725452007D0927 /* CALayer+Extensions.swift */,
-				6A43C0BE2B725452007D0927 /* UITableView+Extensions.swift */,
-				6A43C0BF2B725452007D0927 /* UIView+AssociatedObjects.swift */,
-				6A43C0C02B725452007D0927 /* UILabel+Extensions.swift */,
-				6A43C0C12B725452007D0927 /* UIView+Transitions.swift */,
-				6A43C0C22B725452007D0927 /* UIView+CollectionSkeleton.swift */,
-				6A43C0C32B725452007D0927 /* UIView+Swizzling.swift */,
-			);
-			path = UIKitExtensions;
-			sourceTree = "<group>";
-		};
-		6A43C0C42B725452007D0927 /* SkeletonLayerBuilders */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0C52B725452007D0927 /* SkeletonMultilineLayerBuilder.swift */,
-				6A43C0C62B725452007D0927 /* SkeletonLayerBuilder.swift */,
-			);
-			path = SkeletonLayerBuilders;
-			sourceTree = "<group>";
-		};
-		6A43C0C72B725452007D0927 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0C82B725452007D0927 /* Swizzling.swift */,
-				6A43C0C92B725452007D0927 /* AssociationPolicy.swift */,
-				6A43C0CA2B725452007D0927 /* Recursive.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		6A43C0CB2B725452007D0927 /* Debug */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0CC2B725452007D0927 /* SkeletonDebug.swift */,
-			);
-			path = Debug;
-			sourceTree = "<group>";
-		};
-		6A43C0CD2B725452007D0927 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6A43C0CE2B725452007D0927 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0CF2B725452007D0927 /* SkeletonExtended.swift */,
-				6A43C0D02B725452007D0927 /* SkeletonView.swift */,
-				6A43C0D12B725452007D0927 /* Appearance */,
-				6A43C0D32B725452007D0927 /* FoundationExtensions */,
-				6A43C0D52B725452007D0927 /* Models */,
-				6A43C0DC2B725452007D0927 /* Deprecated.swift */,
-				6A43C0DD2B725452007D0927 /* Collections */,
-				6A43C0E22B725452007D0927 /* UIKitExtensions */,
-				6A43C0EB2B725452007D0927 /* AnimationBuilder */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		6A43C0D12B725452007D0927 /* Appearance */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0D22B725452007D0927 /* SkeletonAppearance.swift */,
-			);
-			path = Appearance;
-			sourceTree = "<group>";
-		};
-		6A43C0D32B725452007D0927 /* FoundationExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0D42B725452007D0927 /* Notification+SkeletonFlow.swift */,
-			);
-			path = FoundationExtensions;
-			sourceTree = "<group>";
-		};
-		6A43C0D52B725452007D0927 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0D62B725452007D0927 /* SkeletonGradient.swift */,
-				6A43C0D72B725452007D0927 /* SkeletonTextNumberOfLines.swift */,
-				6A43C0D82B725452007D0927 /* GradientDirection.swift */,
-				6A43C0D92B725452007D0927 /* SkeletonTextLineHeight.swift */,
-				6A43C0DA2B725452007D0927 /* SkeletonType.swift */,
-				6A43C0DB2B725452007D0927 /* SkeletonTransitionStyle.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		6A43C0DD2B725452007D0927 /* Collections */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0DE2B725452007D0927 /* TableViews */,
-				6A43C0E02B725452007D0927 /* CollectionViews */,
-			);
-			path = Collections;
-			sourceTree = "<group>";
-		};
-		6A43C0DE2B725452007D0927 /* TableViews */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0DF2B725452007D0927 /* SkeletonTableViewProtocols.swift */,
-			);
-			path = TableViews;
-			sourceTree = "<group>";
-		};
-		6A43C0E02B725452007D0927 /* CollectionViews */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0E12B725452007D0927 /* SkeletonCollectionViewProtocols.swift */,
-			);
-			path = CollectionViews;
-			sourceTree = "<group>";
-		};
-		6A43C0E22B725452007D0927 /* UIKitExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0E32B725452007D0927 /* UILabel+IBInspectable.swift */,
-				6A43C0E42B725452007D0927 /* UITextView+IBInspectable.swift */,
-				6A43C0E52B725452007D0927 /* UILabel+SKExtensions.swift */,
-				6A43C0E62B725452007D0927 /* CALayer+Animations.swift */,
-				6A43C0E72B725452007D0927 /* UITextView+SKExtensions.swift */,
-				6A43C0E82B725452007D0927 /* UIView+SKExtensions.swift */,
-				6A43C0E92B725452007D0927 /* UICollectionView+Extensions.swift */,
-				6A43C0EA2B725452007D0927 /* UIView+IBInspectable.swift */,
-			);
-			path = UIKitExtensions;
-			sourceTree = "<group>";
-		};
-		6A43C0EB2B725452007D0927 /* AnimationBuilder */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0EC2B725452007D0927 /* SkeletonAnimationBuilder.swift */,
-			);
-			path = AnimationBuilder;
-			sourceTree = "<group>";
-		};
-		6A43C0ED2B725452007D0927 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C0EE2B725452007D0927 /* solid.png */,
-				6A43C0EF2B725452007D0927 /* header2.jpg */,
-				6A43C0F02B725452007D0927 /* gradient.png */,
-				6A43C0F12B725452007D0927 /* multiline_lastline.png */,
-				6A43C0F22B725452007D0927 /* sliding_topLeft_to_bottomRight.gif */,
-				6A43C0F32B725452007D0927 /* all_skeletonables_result.png */,
-				6A43C0F42B725452007D0927 /* solid_animated2.gif */,
-				6A43C0F52B725452007D0927 /* sliding_bottomRight_to_topLeft.gif */,
-				6A43C0F62B725452007D0927 /* container_skeletonable_result.png */,
-				6A43C0F72B725452007D0927 /* multiline_lineHeight.png */,
-				6A43C0F82B725452007D0927 /* no_skeletonable.jpg */,
-				6A43C0F92B725452007D0927 /* solid_animated.gif */,
-				6A43C0FA2B725452007D0927 /* debug_mode.png */,
-				6A43C0FB2B725452007D0927 /* multiline_insets.png */,
-				6A43C0FC2B725452007D0927 /* all_skeletonables.jpg */,
-				6A43C0FD2B725452007D0927 /* skeleton_transition_fade.gif */,
-				6A43C0FE2B725452007D0927 /* tableview_scheme.png */,
-				6A43C0FF2B725452007D0927 /* tableview_skeletonable_result.png */,
-				6A43C1002B725452007D0927 /* multiline_customize.png */,
-				6A43C1012B725452007D0927 /* debug_description.png */,
-				6A43C1022B725452007D0927 /* no_skeletonables_result.png */,
-				6A43C1032B725452007D0927 /* skeleton_transition_nofade.gif */,
-				6A43C1042B725452007D0927 /* multiline_lineSpacing.png */,
-				6A43C1052B725452007D0927 /* tableview_skeletonable.jpg */,
-				6A43C1062B725452007D0927 /* sliding_top_to_bottom.gif */,
-				6A43C1072B725452007D0927 /* header.jpg */,
-				6A43C1082B725452007D0927 /* tableview_no_skeletonable_result.png */,
-				6A43C1092B725452007D0927 /* storyboard.png */,
-				6A43C10A2B725452007D0927 /* tableview_no_skeletonable.jpg */,
-				6A43C10B2B725452007D0927 /* container_skeletonable.jpg */,
-				6A43C10C2B725452007D0927 /* sliding_right_to_left.gif */,
-				6A43C10D2B725452007D0927 /* gradient_animated.gif */,
-				6A43C10E2B725452007D0927 /* flatcolors.png */,
-				6A43C10F2B725452007D0927 /* multilines2.png */,
-				6A43C1102B725452007D0927 /* hierarchy_output.png */,
-				6A43C1112B725452007D0927 /* demoApp2.png */,
-				6A43C1122B725452007D0927 /* thumb_getting_started.png */,
-				6A43C1132B725452007D0927 /* sliding_left_to_right.gif */,
-				6A43C1142B725452007D0927 /* container_no_skeletonable.jpg */,
-				6A43C1152B725452007D0927 /* multiline_corner.png */,
-				6A43C1162B725452007D0927 /* sliding_bottom_to_top.gif */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		6A43C1172B725452007D0927 /* Translations */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C1182B725452007D0927 /* README_pt-br.md */,
-				6A43C1192B725452007D0927 /* README_ko.md */,
-				6A43C11A2B725452007D0927 /* README_es.md */,
-				6A43C11B2B725452007D0927 /* README_zh.md */,
-				6A43C11C2B725452007D0927 /* README_fr.md */,
-				6A43C11D2B725452007D0927 /* README_de.md */,
-			);
-			path = Translations;
-			sourceTree = "<group>";
-		};
-		6A43C1202B725452007D0927 /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C1212B725452007D0927 /* JioShortsTheme.swift */,
-				6A43C1222B725452007D0927 /* SDKInitializationError.swift */,
-				6A43C1232B725452007D0927 /* ShortsVideoBrief.swift */,
-				6A43C1242B725452007D0927 /* JioShortsClient.swift */,
-			);
-			path = Enums;
-			sourceTree = "<group>";
-		};
-		6A43C1252B725452007D0927 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C1262B725452007D0927 /* JioShortsModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		6A43C1272B725452007D0927 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C1282B725452007D0927 /* WKWebViewConfigurationExtension.swift */,
-				6A43C1292B725452007D0927 /* URLRequestExtensions.swift */,
-				6A43C12A2B725452007D0927 /* WKWebViewExtensions.swift */,
-				6A43C12B2B725452007D0927 /* UserDefaultsExtension.swift */,
-				6A43C12C2B725452007D0927 /* HTTPCookieExtensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		6A43C12D2B725452007D0927 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				6A43C12E2B725452007D0927 /* ShortsView.swift */,
-				6A43C12F2B725452007D0927 /* ShortsShimmerView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		740CC2332DD68AF1514F159595A72B52 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5A08F78D517084BC0FA597F815CF95D0 /* jionews-shortssdk-cocoapod */,
+				453468BE01060D23E714CE0966FEB7B9 /* jionews-shortssdk-cocoapod */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		805EA48A0FF5FFE8FD56165425174432 /* Products */ = {
+		7C71BB96E298FAB68AE5C67BF6005898 /* Pods-jionews-shortssdk-cocoapod_Example */ = {
 			isa = PBXGroup;
 			children = (
-				5498098E69CC634B4717BD9AF99A5037 /* jionews_shortssdk_cocoapod.framework */,
-				CD56420BB1F78363F67988F24FD38EAA /* Pods_jionews_shortssdk_cocoapod_Example.framework */,
-				34915F33A4DD34FFC00FA59D593AE8E9 /* Pods_jionews_shortssdk_cocoapod_Tests.framework */,
+				FB7F310B3E2A94E1D8E93EC4F4D74AD7 /* Pods-jionews-shortssdk-cocoapod_Example.modulemap */,
+				A32BF273D22E67EC193370144183DE33 /* Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.markdown */,
+				459AF68DF0C9398A8F9C7FBBC66FDAB5 /* Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.plist */,
+				A60A47F1663B4C5BD0A8616DEAFF5724 /* Pods-jionews-shortssdk-cocoapod_Example-dummy.m */,
+				048B9BE02D50401D5F9EF857A2423F0F /* Pods-jionews-shortssdk-cocoapod_Example-Info.plist */,
+				25C8D63DAF03F2D8096E96836DE3FE41 /* Pods-jionews-shortssdk-cocoapod_Example-umbrella.h */,
+				FA75D70060EA97BCD276335A840F20FD /* Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig */,
+				73FDC5B44CED986C96C2D69CE18D8021 /* Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig */,
 			);
-			name = Products;
+			name = "Pods-jionews-shortssdk-cocoapod_Example";
+			path = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Example";
 			sourceTree = "<group>";
 		};
-		8BD2F13A83AA0B73521D204C913D2F02 /* Pod */ = {
+		C57E0051FF205186F8152E73B3CDCDB6 /* Pods-jionews-shortssdk-cocoapod_Tests */ = {
 			isa = PBXGroup;
 			children = (
-				8AE330C16F9B67B7EFC3393373DB92E2 /* jionews-shortssdk-cocoapod.podspec */,
-				8F81E94BAA03849FB39A2179CCB47DAF /* LICENSE */,
-				2BA29D6E8238E4D20555D4496FCA197A /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		B0109B697299069BA04F7E3724D3A6EF /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				70D3BB3F90F465C3F5CEFE827EE7AA8D /* jionews-shortssdk-cocoapod.modulemap */,
-				38A09C9CE1079AAC41F5BCFBD0B6A589 /* jionews-shortssdk-cocoapod-dummy.m */,
-				793D888C14697BC7574C78F728682641 /* jionews-shortssdk-cocoapod-Info.plist */,
-				9E1662270E3FF3680D628EFB6E2CEE00 /* jionews-shortssdk-cocoapod-prefix.pch */,
-				C4A0337D0C56E74287C720BBCB452966 /* jionews-shortssdk-cocoapod-umbrella.h */,
-				646145611EE838113D1C5230CE0F71F5 /* jionews-shortssdk-cocoapod.debug.xcconfig */,
-				F2EF75EE4F1537223801E7ED7110B9DC /* jionews-shortssdk-cocoapod.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/jionews-shortssdk-cocoapod";
-			sourceTree = "<group>";
-		};
-		CBDFCFE5EB558DC8C609A4DBC2E3AC84 /* Pods-jionews-shortssdk-cocoapod_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				06B403290EFF0D04D3E29A7BA2914764 /* Pods-jionews-shortssdk-cocoapod_Tests.modulemap */,
-				3AC24BA05AC669B42A36EFB422D1F837 /* Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.markdown */,
-				A3E0B93675146F36E72BD806BE9D474F /* Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.plist */,
-				FDC4AFB077542D28B57A16450EAAAC86 /* Pods-jionews-shortssdk-cocoapod_Tests-dummy.m */,
-				4988960E8E436E1EC320364D347A0876 /* Pods-jionews-shortssdk-cocoapod_Tests-Info.plist */,
-				8650D8F9FB7A380BDA0D9FF60484D688 /* Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h */,
-				B3714A1D6AA24DF4BB3078A4C8947D27 /* Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig */,
-				FFF7B20E796D5CB2C919555BCEB3A136 /* Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig */,
+				7A2CBB5D425E67F8799D76C26CF5DBED /* Pods-jionews-shortssdk-cocoapod_Tests.modulemap */,
+				08CFE882AB1994227CD85728A3B63699 /* Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.markdown */,
+				8EA3D5940A27520EFCFEB754D3A98115 /* Pods-jionews-shortssdk-cocoapod_Tests-acknowledgements.plist */,
+				1F55E317474F7B078B24B35360D27268 /* Pods-jionews-shortssdk-cocoapod_Tests-dummy.m */,
+				2077584EEBFDEE23978955489EE62DFA /* Pods-jionews-shortssdk-cocoapod_Tests-Info.plist */,
+				2C92CB179F8835CB06204913BE7FFA42 /* Pods-jionews-shortssdk-cocoapod_Tests-umbrella.h */,
+				CDBB99E9C5B92E437D9F22B7BFC8083A /* Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig */,
+				7D43120AFF77681B7F41213FAD7E8137 /* Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig */,
 			);
 			name = "Pods-jionews-shortssdk-cocoapod_Tests";
 			path = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Tests";
@@ -832,10 +174,10 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				740CC2332DD68AF1514F159595A72B52 /* Development Pods */,
+				79271410F89F880EE88E585D7D894586 /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				805EA48A0FF5FFE8FD56165425174432 /* Products */,
-				3BADE863674A51922DB97C49FF569F09 /* Targets Support Files */,
+				DAE67DB77F9F7E9A99CA712D449E921B /* Products */,
+				DD8D97769F748BC68B9305AA96AC33E4 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -847,35 +189,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F6146574DFB7AC1B52F2697EA313A158 /* Pods-jionews-shortssdk-cocoapod_Example */ = {
+		DAE67DB77F9F7E9A99CA712D449E921B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CB137412BF16FD74D6E3B80989C4E56E /* Pods-jionews-shortssdk-cocoapod_Example.modulemap */,
-				97D68F0F2CBA1616FC1163B11AD80B66 /* Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.markdown */,
-				E6A02B1DF8971ECABDD5F973CD903684 /* Pods-jionews-shortssdk-cocoapod_Example-acknowledgements.plist */,
-				55998FCDC624B478EA88FAB00766D007 /* Pods-jionews-shortssdk-cocoapod_Example-dummy.m */,
-				ECFA0716952883691D58DDAD34C7A40C /* Pods-jionews-shortssdk-cocoapod_Example-frameworks.sh */,
-				CF21A6135FDD45407ECACE35CCD19E3C /* Pods-jionews-shortssdk-cocoapod_Example-Info.plist */,
-				8EA353832D7D833C130D417D24B9B6BE /* Pods-jionews-shortssdk-cocoapod_Example-umbrella.h */,
-				BC493E97F3E2C5E4DEAEE23B6FE981A2 /* Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig */,
-				C23B0C60971DE84AB8F8B820F30BA2CF /* Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig */,
+				CD56420BB1F78363F67988F24FD38EAA /* Pods-jionews-shortssdk-cocoapod_Example */,
+				34915F33A4DD34FFC00FA59D593AE8E9 /* Pods-jionews-shortssdk-cocoapod_Tests */,
 			);
-			name = "Pods-jionews-shortssdk-cocoapod_Example";
-			path = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Example";
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DD8D97769F748BC68B9305AA96AC33E4 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7C71BB96E298FAB68AE5C67BF6005898 /* Pods-jionews-shortssdk-cocoapod_Example */,
+				C57E0051FF205186F8152E73B3CDCDB6 /* Pods-jionews-shortssdk-cocoapod_Tests */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		59E480BCEB808E3289BADA27BE40151F /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6A43C19E2B725452007D0927 /* JioNewsShortsSDK.h in Headers */,
-				7237F1DDD25FF43B5373E8229607DF5B /* jionews-shortssdk-cocoapod-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5AC28E9686BF01DE65D70FC10B163246 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -895,24 +229,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		9BB2ED657043AEE81C911AC6E037B8F1 /* jionews-shortssdk-cocoapod */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4F3459D3C2A634B4E67909E6C430B40C /* Build configuration list for PBXNativeTarget "jionews-shortssdk-cocoapod" */;
-			buildPhases = (
-				59E480BCEB808E3289BADA27BE40151F /* Headers */,
-				0519D9BEEFADE071303DEDD69251D242 /* Sources */,
-				BA4EB7CCE879D248ED33AF70DF71FFBD /* Frameworks */,
-				4564083F9227C20AD9E9CDD40BA110B2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "jionews-shortssdk-cocoapod";
-			productName = jionews_shortssdk_cocoapod;
-			productReference = 5498098E69CC634B4717BD9AF99A5037 /* jionews_shortssdk_cocoapod.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		AC22C2FEA8B2E775839B1FDCD8D3DF83 /* Pods-jionews-shortssdk-cocoapod_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 937BE99FF2C3BADD2C4C7AFBE1100E5F /* Build configuration list for PBXNativeTarget "Pods-jionews-shortssdk-cocoapod_Example" */;
@@ -925,11 +241,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				596FCD1A35F99018AA4F2ABF2C23BD1A /* PBXTargetDependency */,
+				4F6096AB53276109A67548FA2943EA27 /* PBXTargetDependency */,
 			);
 			name = "Pods-jionews-shortssdk-cocoapod_Example";
 			productName = Pods_jionews_shortssdk_cocoapod_Example;
-			productReference = CD56420BB1F78363F67988F24FD38EAA /* Pods_jionews_shortssdk_cocoapod_Example.framework */;
+			productReference = CD56420BB1F78363F67988F24FD38EAA /* Pods-jionews-shortssdk-cocoapod_Example */;
 			productType = "com.apple.product-type.framework";
 		};
 		E4AFAAE734DE2EE1A679638E82224D74 /* Pods-jionews-shortssdk-cocoapod_Tests */ = {
@@ -944,11 +260,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				1ABB494CD1937974A930B65925F71A16 /* PBXTargetDependency */,
+				F5E91836E6AD6DAF90DAD8A5AE083A29 /* PBXTargetDependency */,
 			);
 			name = "Pods-jionews-shortssdk-cocoapod_Tests";
 			productName = Pods_jionews_shortssdk_cocoapod_Tests;
-			productReference = 34915F33A4DD34FFC00FA59D593AE8E9 /* Pods_jionews_shortssdk_cocoapod_Tests.framework */;
+			productReference = 34915F33A4DD34FFC00FA59D593AE8E9 /* Pods-jionews-shortssdk-cocoapod_Tests */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -969,7 +285,7 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 805EA48A0FF5FFE8FD56165425174432 /* Products */;
+			productRefGroup = DAE67DB77F9F7E9A99CA712D449E921B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -981,60 +297,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4564083F9227C20AD9E9CDD40BA110B2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6A43C1882B725452007D0927 /* header.jpg in Resources */,
-				6A43C1952B725452007D0927 /* container_no_skeletonable.jpg in Resources */,
-				6A43C18B2B725452007D0927 /* tableview_no_skeletonable.jpg in Resources */,
-				6A43C1792B725452007D0927 /* no_skeletonable.jpg in Resources */,
-				6A43C17B2B725452007D0927 /* debug_mode.png in Resources */,
-				6A43C1942B725452007D0927 /* sliding_left_to_right.gif in Resources */,
-				6A43C1752B725452007D0927 /* solid_animated2.gif in Resources */,
-				6A43C17C2B725452007D0927 /* multiline_insets.png in Resources */,
-				6A43C19D2B725452007D0927 /* README_de.md in Resources */,
-				6A43C1872B725452007D0927 /* sliding_top_to_bottom.gif in Resources */,
-				6A43C1862B725452007D0927 /* tableview_skeletonable.jpg in Resources */,
-				6A43C1832B725452007D0927 /* no_skeletonables_result.png in Resources */,
-				6A43C18E2B725452007D0927 /* gradient_animated.gif in Resources */,
-				6A43C19A2B725452007D0927 /* README_es.md in Resources */,
-				6A43C1982B725452007D0927 /* README_pt-br.md in Resources */,
-				6A43C16F2B725452007D0927 /* solid.png in Resources */,
-				6A43C1972B725452007D0927 /* sliding_bottom_to_top.gif in Resources */,
-				6A43C1742B725452007D0927 /* all_skeletonables_result.png in Resources */,
-				6A43C1712B725452007D0927 /* gradient.png in Resources */,
-				6A43C18F2B725452007D0927 /* flatcolors.png in Resources */,
-				6A43C1802B725452007D0927 /* tableview_skeletonable_result.png in Resources */,
-				6A43C17D2B725452007D0927 /* all_skeletonables.jpg in Resources */,
-				6A43C1902B725452007D0927 /* multilines2.png in Resources */,
-				6A43C1932B725452007D0927 /* thumb_getting_started.png in Resources */,
-				6A43C1702B725452007D0927 /* header2.jpg in Resources */,
-				6A43C1772B725452007D0927 /* container_skeletonable_result.png in Resources */,
-				6A43C1762B725452007D0927 /* sliding_bottomRight_to_topLeft.gif in Resources */,
-				6A43C1912B725452007D0927 /* hierarchy_output.png in Resources */,
-				6A43C1732B725452007D0927 /* sliding_topLeft_to_bottomRight.gif in Resources */,
-				6A43C1782B725452007D0927 /* multiline_lineHeight.png in Resources */,
-				6A43C1992B725452007D0927 /* README_ko.md in Resources */,
-				6A43C1962B725452007D0927 /* multiline_corner.png in Resources */,
-				6A43C1722B725452007D0927 /* multiline_lastline.png in Resources */,
-				6A43C17F2B725452007D0927 /* tableview_scheme.png in Resources */,
-				6A43C19B2B725452007D0927 /* README_zh.md in Resources */,
-				6A43C1812B725452007D0927 /* multiline_customize.png in Resources */,
-				6A43C17E2B725452007D0927 /* skeleton_transition_fade.gif in Resources */,
-				6A43C19C2B725452007D0927 /* README_fr.md in Resources */,
-				6A43C1922B725452007D0927 /* demoApp2.png in Resources */,
-				6A43C1842B725452007D0927 /* skeleton_transition_nofade.gif in Resources */,
-				6A43C1852B725452007D0927 /* multiline_lineSpacing.png in Resources */,
-				6A43C18D2B725452007D0927 /* sliding_right_to_left.gif in Resources */,
-				6A43C1822B725452007D0927 /* debug_description.png in Resources */,
-				6A43C18C2B725452007D0927 /* container_skeletonable.jpg in Resources */,
-				6A43C1892B725452007D0927 /* tableview_no_skeletonable_result.png in Resources */,
-				6A43C18A2B725452007D0927 /* storyboard.png in Resources */,
-				6A43C17A2B725452007D0927 /* solid_animated.gif in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BB4F5761369534C33A7E9E0BCAF4BD05 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1052,90 +314,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0519D9BEEFADE071303DEDD69251D242 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6A43C1592B725452007D0927 /* SkeletonExtended.swift in Sources */,
-				6D6183F6B602B0E41A0DD0750E7F7A78 /* jionews-shortssdk-cocoapod-dummy.m in Sources */,
-				6A43C15D2B725452007D0927 /* SkeletonGradient.swift in Sources */,
-				6A43C16A2B725452007D0927 /* UITextView+SKExtensions.swift in Sources */,
-				6A43C1A82B725452007D0927 /* UserDefaultsExtension.swift in Sources */,
-				6A43C1422B725452007D0927 /* SkeletonCollectionDataSource.swift in Sources */,
-				6A43C15C2B725452007D0927 /* Notification+SkeletonFlow.swift in Sources */,
-				6A43C16C2B725452007D0927 /* UICollectionView+Extensions.swift in Sources */,
-				6A43C1672B725452007D0927 /* UITextView+IBInspectable.swift in Sources */,
-				6A43C1A12B725452007D0927 /* SDKInitializationError.swift in Sources */,
-				6A43C1492B725452007D0927 /* UICollectionView+CollectionSkeleton.swift in Sources */,
-				6A43C1442B725452007D0927 /* CollectionSkeleton.swift in Sources */,
-				6A43C1612B725452007D0927 /* SkeletonType.swift in Sources */,
-				6A43C1AA2B725452007D0927 /* ShortsView.swift in Sources */,
-				6A43C15A2B725452007D0927 /* SkeletonView.swift in Sources */,
-				6A43C1302B725452007D0927 /* Constants.swift in Sources */,
-				6A43C13C2B725452007D0927 /* SubviewsSkeletonables.swift in Sources */,
-				6A43C14B2B725452007D0927 /* UITableView+CollectionSkeleton.swift in Sources */,
-				6A43C1562B725452007D0927 /* AssociationPolicy.swift in Sources */,
-				6A43C1A72B725452007D0927 /* WKWebViewExtensions.swift in Sources */,
-				6A43C14E2B725452007D0927 /* UIView+AssociatedObjects.swift in Sources */,
-				6A43C1A52B725452007D0927 /* WKWebViewConfigurationExtension.swift in Sources */,
-				6A43C13F2B725452007D0927 /* SkeletonTextNode.swift in Sources */,
-				6A43C1462B725452007D0927 /* UIView+Extensions.swift in Sources */,
-				6A43C1512B725452007D0927 /* UIView+CollectionSkeleton.swift in Sources */,
-				6A43C1372B725452007D0927 /* ProcessInfo+Extensions.swift in Sources */,
-				6A43C1632B725452007D0927 /* Deprecated.swift in Sources */,
-				6A43C14D2B725452007D0927 /* UITableView+Extensions.swift in Sources */,
-				6A43C1642B725452007D0927 /* SkeletonTableViewProtocols.swift in Sources */,
-				6A43C1A92B725452007D0927 /* HTTPCookieExtensions.swift in Sources */,
-				6A43C16D2B725452007D0927 /* UIView+IBInspectable.swift in Sources */,
-				6A43C1A02B725452007D0927 /* JioShortsTheme.swift in Sources */,
-				6A43C13B2B725452007D0927 /* PrepareViewForSkeleton.swift in Sources */,
-				6A43C1532B725452007D0927 /* SkeletonMultilineLayerBuilder.swift in Sources */,
-				6A43C1432B725452007D0927 /* SkeletonCollectionDelegate.swift in Sources */,
-				6A43C1392B725452007D0927 /* RecoverableViewState.swift in Sources */,
-				6A43C1502B725452007D0927 /* UIView+Transitions.swift in Sources */,
-				6A43C16B2B725452007D0927 /* UIView+SKExtensions.swift in Sources */,
-				6A43C13E2B725452007D0927 /* Recoverable.swift in Sources */,
-				6A43C1652B725452007D0927 /* SkeletonCollectionViewProtocols.swift in Sources */,
-				6A43C1362B725452007D0927 /* Notification+Extensions.swift in Sources */,
-				6A43C14A2B725452007D0927 /* UIColor+Skeleton.swift in Sources */,
-				6A43C1AB2B725452007D0927 /* ShortsShimmerView.swift in Sources */,
-				6A43C1382B725452007D0927 /* SkeletonLayer.swift in Sources */,
-				6A43C1552B725452007D0927 /* Swizzling.swift in Sources */,
-				6A43C16E2B725452007D0927 /* SkeletonAnimationBuilder.swift in Sources */,
-				6A43C1622B725452007D0927 /* SkeletonTransitionStyle.swift in Sources */,
-				6A43C13D2B725452007D0927 /* GradientDirection+Animations.swift in Sources */,
-				6A43C15E2B725452007D0927 /* SkeletonTextNumberOfLines.swift in Sources */,
-				6A43C1352B725452007D0927 /* DispatchQueue+Extensions.swift in Sources */,
-				6A43C1692B725452007D0927 /* CALayer+Animations.swift in Sources */,
-				6A43C1322B725452007D0927 /* SkeletonConfig.swift in Sources */,
-				6A43C1402B725452007D0927 /* SkeletonFlowHandler.swift in Sources */,
-				6A43C1412B725452007D0927 /* SkeletonReusableCell.swift in Sources */,
-				6A43C1A62B725452007D0927 /* URLRequestExtensions.swift in Sources */,
-				6A43C14F2B725452007D0927 /* UILabel+Extensions.swift in Sources */,
-				6A43C13A2B725452007D0927 /* SkeletonTreeNode.swift in Sources */,
-				6A43C1472B725452007D0927 /* UIView+SkeletonView.swift in Sources */,
-				6A43C1A22B725452007D0927 /* ShortsVideoBrief.swift in Sources */,
-				6A43C1342B725452007D0927 /* Int+Extensions.swift in Sources */,
-				6A43C1602B725452007D0927 /* SkeletonTextLineHeight.swift in Sources */,
-				6A43C1662B725452007D0927 /* UILabel+IBInspectable.swift in Sources */,
-				6A43C1A42B725452007D0927 /* JioShortsModel.swift in Sources */,
-				6A43C1522B725452007D0927 /* UIView+Swizzling.swift in Sources */,
-				6A43C1582B725452007D0927 /* SkeletonDebug.swift in Sources */,
-				6A43C1682B725452007D0927 /* UILabel+SKExtensions.swift in Sources */,
-				6A43C19F2B725452007D0927 /* JioNewsShortsSDK.docc in Sources */,
-				6A43C1312B725452007D0927 /* SkeletonDebugTests.swift in Sources */,
-				6A43C1332B725452007D0927 /* SkeletonMultilinesLayerConfig.swift in Sources */,
-				6A43C14C2B725452007D0927 /* CALayer+Extensions.swift in Sources */,
-				6A43C1482B725452007D0927 /* SkeletonTreeNode+Extensions.swift in Sources */,
-				6A43C1572B725452007D0927 /* Recursive.swift in Sources */,
-				6A43C15B2B725452007D0927 /* SkeletonAppearance.swift in Sources */,
-				6A43C1A32B725452007D0927 /* JioShortsClient.swift in Sources */,
-				6A43C15F2B725452007D0927 /* GradientDirection.swift in Sources */,
-				6A43C1542B725452007D0927 /* SkeletonLayerBuilder.swift in Sources */,
-				6A43C1452B725452007D0927 /* UIView+AppLifecycleNotifications.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		715FE62DEA3CB9E172551148099761A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1155,55 +333,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1ABB494CD1937974A930B65925F71A16 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-jionews-shortssdk-cocoapod_Example";
-			target = AC22C2FEA8B2E775839B1FDCD8D3DF83 /* Pods-jionews-shortssdk-cocoapod_Example */;
-			targetProxy = F2DA2E4E14E35C6C60BE5B24535DBAC0 /* PBXContainerItemProxy */;
-		};
-		596FCD1A35F99018AA4F2ABF2C23BD1A /* PBXTargetDependency */ = {
+		4F6096AB53276109A67548FA2943EA27 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "jionews-shortssdk-cocoapod";
 			target = 9BB2ED657043AEE81C911AC6E037B8F1 /* jionews-shortssdk-cocoapod */;
-			targetProxy = F85322241D4A0E6CE9CF3A69FA19B528 /* PBXContainerItemProxy */;
+			targetProxy = 88A009FACBBB65CFA82B83C26D3A844E /* PBXContainerItemProxy */;
+		};
+		F5E91836E6AD6DAF90DAD8A5AE083A29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-jionews-shortssdk-cocoapod_Example";
+			target = AC22C2FEA8B2E775839B1FDCD8D3DF83 /* Pods-jionews-shortssdk-cocoapod_Example */;
+			targetProxy = 1348C81E9589FEEC5367517D8B68A378 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		128C2215711ACD39D5BED4ABD580E8C0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 646145611EE838113D1C5230CE0F71F5 /* jionews-shortssdk-cocoapod.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/jionews-shortssdk-cocoapod/jionews-shortssdk-cocoapod-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/jionews-shortssdk-cocoapod/jionews-shortssdk-cocoapod-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/jionews-shortssdk-cocoapod/jionews-shortssdk-cocoapod.modulemap";
-				PRODUCT_MODULE_NAME = jionews_shortssdk_cocoapod;
-				PRODUCT_NAME = jionews_shortssdk_cocoapod;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		2BAFE8EB61F7BD3570B304A452800CAA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3714A1D6AA24DF4BB3078A4C8947D27 /* Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig */;
+			baseConfigurationReference = CDBB99E9C5B92E437D9F22B7BFC8083A /* Pods-jionews-shortssdk-cocoapod_Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1217,7 +364,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Tests/Pods-jionews-shortssdk-cocoapod_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Tests/Pods-jionews-shortssdk-cocoapod_Tests.modulemap";
@@ -1234,9 +381,23 @@
 			};
 			name = Debug;
 		};
+		3A572EDC2A19A2A6B3F9BD1C67A3AF6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48A36F66D72A1DB46D8905F775982963 /* jionews-shortssdk-cocoapod.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		5054D39AD73B1F46B92B8A4512337EF4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C23B0C60971DE84AB8F8B820F30BA2CF /* Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig */;
+			baseConfigurationReference = 73FDC5B44CED986C96C2D69CE18D8021 /* Pods-jionews-shortssdk-cocoapod_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1250,7 +411,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Example/Pods-jionews-shortssdk-cocoapod_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Example/Pods-jionews-shortssdk-cocoapod_Example.modulemap";
@@ -1270,7 +431,7 @@
 		};
 		5C85989ED48E6C7DE2A124DCD2A362A9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FFF7B20E796D5CB2C919555BCEB3A136 /* Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig */;
+			baseConfigurationReference = 7D43120AFF77681B7F41213FAD7E8137 /* Pods-jionews-shortssdk-cocoapod_Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1284,7 +445,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Tests/Pods-jionews-shortssdk-cocoapod_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Tests/Pods-jionews-shortssdk-cocoapod_Tests.modulemap";
@@ -1352,46 +513,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		BACC89D6BED8D2B5642E9AF41C510BE1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2EF75EE4F1537223801E7ED7110B9DC /* jionews-shortssdk-cocoapod.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/jionews-shortssdk-cocoapod/jionews-shortssdk-cocoapod-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/jionews-shortssdk-cocoapod/jionews-shortssdk-cocoapod-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/jionews-shortssdk-cocoapod/jionews-shortssdk-cocoapod.modulemap";
-				PRODUCT_MODULE_NAME = jionews_shortssdk_cocoapod;
-				PRODUCT_NAME = jionews_shortssdk_cocoapod;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -1448,7 +578,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1463,7 +593,7 @@
 		};
 		FBCC14FD933D0ED58554CB00EAFB8CF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC493E97F3E2C5E4DEAEE23B6FE981A2 /* Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig */;
+			baseConfigurationReference = FA75D70060EA97BCD276335A840F20FD /* Pods-jionews-shortssdk-cocoapod_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1477,7 +607,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Example/Pods-jionews-shortssdk-cocoapod_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-jionews-shortssdk-cocoapod_Example/Pods-jionews-shortssdk-cocoapod_Example.modulemap";
@@ -1494,23 +624,38 @@
 			};
 			name = Debug;
 		};
+		FE2A332858E37EE32A7B28450C44282E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C943A80D018B0614AD42A19B2F81CC06 /* jionews-shortssdk-cocoapod.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		116CC6D717FC3C1C78674C8265F78B6B /* Build configuration list for PBXAggregateTarget "jionews-shortssdk-cocoapod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A572EDC2A19A2A6B3F9BD1C67A3AF6D /* Debug */,
+				FE2A332858E37EE32A7B28450C44282E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D299434AB35E7FD6F7921C8EF24742FF /* Debug */,
 				7EE7A78859F657F6BEFC651185B43192 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4F3459D3C2A634B4E67909E6C430B40C /* Build configuration list for PBXNativeTarget "jionews-shortssdk-cocoapod" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				128C2215711ACD39D5BED4ABD580E8C0 /* Debug */,
-				BACC89D6BED8D2B5642E9AF41C510BE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

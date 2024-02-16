@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  jionews-shortssdk-cocoapod: bd00de4d7c3f1e97b370c2cadb4508e7797275fc
+  jionews-shortssdk-cocoapod: 5652a376c509f26d9a402ff60bcee32fa5def78e
 
 PODFILE CHECKSUM: be66dd8ea7914631ab68927421622001c1c19784
 
