@@ -1,5 +1,5 @@
 PODS:
-  - jionews-shortssdk-cocoapod (0.1.0)
+  - jionews-shortssdk-cocoapod (1.0.0)
 
 DEPENDENCIES:
   - jionews-shortssdk-cocoapod (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  jionews-shortssdk-cocoapod: 5652a376c509f26d9a402ff60bcee32fa5def78e
+  jionews-shortssdk-cocoapod: 5abca310f38f9531b62e20fe929f6ee775aa1a00
 
-PODFILE CHECKSUM: be66dd8ea7914631ab68927421622001c1c19784
+PODFILE CHECKSUM: ec658462f46b7945be691b926b021edb9b7a4dd3
 
 COCOAPODS: 1.14.3
