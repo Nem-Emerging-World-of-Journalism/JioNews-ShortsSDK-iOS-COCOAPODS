@@ -8,7 +8,7 @@
 import Foundation
 
 internal struct Constants {
-    static let shortsURL = "https://stgjionews.pie.news/short_video"
+    static let shortsURL = "https://jionews.com/short_video"
     static let platform = "iOS"
     static let language = "English"
     static let source = "Direct"

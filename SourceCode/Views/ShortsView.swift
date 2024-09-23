@@ -26,7 +26,7 @@ public class ShortsView: UIView {
     private var client: JioShortsClient = .myJio
     private var theme: JioShortsTheme = .dark
     private var shortsModel: JioShortsModel!
-    private var webURL = "https://stgjionews.pie.news/short_video"
+    private var webURL = "https://jionews.com/short_video"
     private var currentBrief: ShortsVideoBrief?
     private var isMuted: Bool = false
     public weak var delegate: ShortsViewDelegate?
@@ -151,10 +151,10 @@ extension ShortsView {
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
         config.mediaTypesRequiringUserActionForPlayback = []
-        
+
         let source = """
             window.addEventListener('message', function(e) {
-                if(e.origin==="https://devjionews.pie.news" ||e.origin==="https://stgjionews.pie.news" || e.origin==="https://jionews.pie.news") {
+                if(e.origin==="https://devjionews.pie.news" ||e.origin==="https://stgjionews.pie.news" || e.origin==="https://jionews.pie.news" || e.origin==="https://stgapp.jionews.com" || e.origin==="https://jionews.com") {
                     window.webkit.messageHandlers.shortsEventListner.postMessage(e.data);
                 }
             });
