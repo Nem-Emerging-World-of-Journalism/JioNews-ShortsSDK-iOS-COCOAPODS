@@ -30,7 +30,7 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '13.0'
 
-  s.source_files = 'jionews-shortssdk-cocoapod/SourceCode/'
+  s.source_files = 'SourceCode/**/*.{swift,m,h}'
 
   
   # s.resource_bundles = {
