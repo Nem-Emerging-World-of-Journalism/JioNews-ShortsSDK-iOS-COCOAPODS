@@ -15,8 +15,8 @@ import UIKit
 
 extension Notification.Name {
     
-    static let applicationDidBecomeActiveNotification = Notification.Name.UIApplicationDidEnterBackground
-    static let applicationWillTerminateNotification = Notification.Name.UIApplicationWillTerminate
-    static let applicationDidEnterForegroundNotification = Notification.Name.UIApplicationWillEnterForeground
+    static let applicationDidBecomeActiveNotification = UIApplication.didEnterBackgroundNotification
+    static let applicationWillTerminateNotification = UIApplication.willTerminateNotification
+    static let applicationDidEnterForegroundNotification = UIApplication.willEnterForegroundNotification
     
 }

@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "JioNewsShortsSDK.h"
 
 FOUNDATION_EXPORT double jionews_shortssdk_cocoapodVersionNumber;
 FOUNDATION_EXPORT const unsigned char jionews_shortssdk_cocoapodVersionString[];
