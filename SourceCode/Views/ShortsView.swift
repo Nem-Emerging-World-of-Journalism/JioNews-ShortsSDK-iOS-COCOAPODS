@@ -130,7 +130,7 @@ extension ShortsView {
         }
         
         let clientPackageName = Bundle.main.bundleIdentifier
-        if !(clientPackageName == "com.jio.myjio" || clientPackageName == "com.jio.shorts" || clientPackageName == "com.jio.media.jioxpressnews" || clientPackageName == "org.cocoapods.demo.jionews-shortssdk-cocoapod-Example") {
+        if !(clientPackageName == "com.jio.myjio" || clientPackageName == "com.jio.shorts" || clientPackageName == "com.jio.media.jioxpressnews" || clientPackageName == "org.cocoapods.demo.jionews-shortssdk-cocoapod-Example" || clientPackageName == "com.jio.staging.myjio") {
             fatalError(SDKInitializationError.invalidClient.message)
         }
     }
