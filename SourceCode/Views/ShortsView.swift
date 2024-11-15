@@ -239,7 +239,7 @@ extension ShortsView {
             setBrief(from: currentBrief)
         }
         
-        if let currentBrief = eventData["video"] as? [String: Any] {
+        if let currentBrief = eventData as? [String: Any] {
             setBrief(from: currentBrief)
         }
         
