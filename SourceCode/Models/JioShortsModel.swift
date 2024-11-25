@@ -34,7 +34,8 @@ internal struct JioShortsModel {
             "platform": self.platform,
             "theme": self.theme,
             "localization": "",
-            "extraAnalyticsValue": self.analyticsValue.asString()
+            "extraAnalyticsValue": self.analyticsValue.asString(),
+            "disableShareTray" : "true"
         ]
     }
 }
