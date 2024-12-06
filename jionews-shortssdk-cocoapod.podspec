@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'jionews-shortssdk-cocoapod'
-  s.version          = '2.1.3'
+  s.version          = '2.1.4'
   s.summary          = 'A short description of jionews-shortssdk-cocoapod. This is SDK/Cocoapod to access Jio Short Video feature.'
 
 # This description is used to generate tags and improve search results.

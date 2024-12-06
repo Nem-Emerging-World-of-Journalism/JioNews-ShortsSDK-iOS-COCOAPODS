@@ -145,15 +145,6 @@ extension ShortsView {
             webView.leadingAnchor.constraint(equalTo: leadingAnchor),
             webView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
-       
-        webView.scrollView.minimumZoomScale = 1.0
-        webView.scrollView.maximumZoomScale = 1.0
-       
-        if #available(iOS 14.0, *) {
-            webView.pageZoom = 0
-        } else {
-            // Fallback on earlier versions
-        }
     }
     
     private func setupWebView() {
@@ -324,7 +315,7 @@ extension ShortsView {
     }
     
     @objc internal func appBecomeActive() {
-        //startVideo()
+          //startVideo()
     }
     
     @objc internal func appResignActive() {
