@@ -29,6 +29,8 @@ public class ShortsView: UIView {
     private var webURL = "https://jionews.com/short_video"
     private var currentBrief: ShortsVideoBrief?
     private var isMuted: Bool = false
+    public var isSetupCompleted = false
+    public var videoPlayerState = ""
     public weak var delegate: ShortsViewDelegate?
     
     override public init(frame: CGRect) {
@@ -60,6 +62,7 @@ public class ShortsView: UIView {
         self.briefId = briefId
         self.client = redirectSource
         self.theme = theme
+        isSetupCompleted = true
         checkInitialisation()
         setupBaseView()
     }
@@ -247,8 +250,12 @@ extension ShortsView {
         case "FEED_LOAD":
             stopShimmerView()
             break
-        case "PLAY_CLICK": break
-        case "PAUSE_CLICK": break
+        case "PLAY_CLICK":
+            videoPlayerState = "PLAY_CLICK"
+            break
+        case "PAUSE_CLICK":
+            videoPlayerState = "PAUSE_CLICK"
+            break
         case "MUTE_CLICK":
             isMuted = true
             UserDefaults.isShortsMuted = true
@@ -315,6 +322,7 @@ extension ShortsView {
     }
     
     @objc internal func appBecomeActive() {
+        
           //startVideo()
     }
     
@@ -351,6 +359,7 @@ extension ShortsView {
      Call this method if you want to start video
      */
     public func startVideo() {
+        guard isSetupCompleted else { return print("SDK is not yet initialised")}
         checkInitialisation()
         webView.evaluateJavaScript("activeVideoPlayer.start()")
     }
