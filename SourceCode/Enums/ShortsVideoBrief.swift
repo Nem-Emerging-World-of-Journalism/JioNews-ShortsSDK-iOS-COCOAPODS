@@ -7,17 +7,17 @@
 
 import Foundation
 
-public struct ShortsVideoBrief: Decodable {
-    public struct EventVideo: Decodable {
+public struct ShortsVideoBrief: Codable {
+    public struct EventVideo: Codable {
         let url: String?
     }
 
-    public struct Publisher: Decodable {
+    public struct Publisher: Codable {
         let id: String?
         let name: String?
     }
 
-    public struct PublishedAt: Decodable {
+    public struct PublishedAt: Codable {
         let date: String?
         let agoFromNow: String?
     }

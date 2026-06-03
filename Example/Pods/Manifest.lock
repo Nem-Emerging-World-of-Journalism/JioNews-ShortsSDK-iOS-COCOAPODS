@@ -1,16 +1,29 @@
 PODS:
-  - jionews-shortssdk-cocoapod (2.0.5)
+  - CleverTap-iOS-SDK (7.7.0):
+    - SDWebImage (~> 5.11)
+  - jionews-shortssdk-cocoapod (3.0.0):
+    - CleverTap-iOS-SDK
+  - SDWebImage (5.21.7):
+    - SDWebImage/Core (= 5.21.7)
+  - SDWebImage/Core (5.21.7)
 
 DEPENDENCIES:
   - jionews-shortssdk-cocoapod (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - CleverTap-iOS-SDK
+    - SDWebImage
 
 EXTERNAL SOURCES:
   jionews-shortssdk-cocoapod:
     :path: "../"
 
 SPEC CHECKSUMS:
-  jionews-shortssdk-cocoapod: 40584497abdb23cf3058fec6327da0ef240c6bca
+  CleverTap-iOS-SDK: b9c6d3f351c81c6289a86d358bb5c72377156212
+  jionews-shortssdk-cocoapod: e744718165358f88699977ec42b77369898286cb
+  SDWebImage: e9fc87c1aab89a8ab1bbd74eba378c6f53be8abf
 
-PODFILE CHECKSUM: be66dd8ea7914631ab68927421622001c1c19784
+PODFILE CHECKSUM: 6810f30430c152f58e4f6446a02ce3e0b8ecd7ac
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.16.2

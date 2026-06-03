@@ -8,7 +8,8 @@
 import Foundation
 
 internal struct Constants {
-    static let shortsURL = "https://jionews.com/short_video"
+    /// JioNews GraphQL endpoint backing the native `getSTBShorts` feed.
+    static let graphQLEndpoint = URL(string: "https://stgmobileservice.jionews.com/graphql")!
     static let platform = "iOS"
     static let language = "English"
     static let source = "Direct"

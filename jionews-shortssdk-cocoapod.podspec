@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'jionews-shortssdk-cocoapod'
-  s.version          = '2.2.0'
-  s.summary          = 'A short description of jionews-shortssdk-cocoapod. This is SDK/Cocoapod to access Jio Short Video feature.'
+  s.version          = '3.0.0'
+  s.summary          = 'SDK/Cocoapod to access the JioNews Short Video feature, powered by a native AVPlayer feed.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -28,17 +28,15 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/Nem-Emerging-World-of-Journalism/JioNews-ShortsSDK-iOS-COCOAPODS.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '13.0'
+  s.ios.deployment_target = '17.0'
 
   s.swift_versions = ['5.9']
   s.source_files = 'SourceCode/**/*.{swift,m,h}'
+  s.frameworks = 'UIKit', 'SwiftUI', 'AVFoundation', 'AVKit'
 
-  
-  # s.resource_bundles = {
-  #   'jionews-shortssdk-cocoapod' => ['jionews-shortssdk-cocoapod/Assets/*.png']
-  # }
+  s.resource_bundles = {
+    'JioNewsShortsSDK' => ['SourceCode/**/*.xcassets']
+  }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'CleverTap-iOS-SDK'
 end

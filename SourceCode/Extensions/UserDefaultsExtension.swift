@@ -12,7 +12,7 @@ extension UserDefaults {
         static let isShortsMuted = "SHORTS_SDK_MUTED"
         static let hid = "SHORTS_SDK_HID"
     }
-    
+
     internal class var isShortsMuted: Bool? {
         get {
             return UserDefaults.standard.value(forKey: Keys.isShortsMuted) as? Bool
@@ -22,7 +22,9 @@ extension UserDefaults {
             UserDefaults.standard.synchronize()
         }
     }
-    
+
+    /// Last `hid` (Authorization token) passed to `configure`, kept so the SDK
+    /// can fall back to it when a later call omits the value.
     internal class var hid: String? {
         get {
             return UserDefaults.standard.value(forKey: Keys.hid) as? String

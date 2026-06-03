@@ -10,43 +10,31 @@ import UIKit
 import jionews_shortssdk_cocoapod
 
 class ViewController: UIViewController {
-    
+
     @IBOutlet weak var shortsView: ShortsView!
+
+    // Staging Authorization (JWT) token for the JioNews GraphQL endpoint.
     
+    private var hid = "dc42fc9ac83f04260a505fa20e8654af3711e1d268e1511a46f745113ee082bc"
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        shortsView.configure(with: "12b63202a4158c50076d6cf3e00c29f5434f375d2f91050273c1731f996a2147")
-        //shortsView.openShortsByBriefId(briefId: "65c1d56dbe473f0b88adebef")
-        shortsView.delegate = self
-        
-        // Add observer for application did become active
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(applicationDidBecomeActive),
-            name: UIApplication.didBecomeActiveNotification,
-            object: nil
-        )
+        shortsView
+            .initData(hid: hid, redirectSource: 0, theme: ShortsView.THEME_LIGHT)
+        shortsView.setOnEventListener(self)
+        shortsView.shortload()
+        shortsView.loadShorts()
     }
-    
-    // Handler for the didBecomeActive notification
-    @objc private func applicationDidBecomeActive() {
-        print("Application did become active")
-        // Perform any required actions, e.g., refresh UI, resume videos, etc.
-        shortsView.startVideo() // Example action
-    }
-    
-    deinit {
-        // Remove observer
-        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
-    }
-    
-    
 }
 
-extension ViewController: ShortsViewDelegate {
-    
-    func didTapOnShareButton(_ brief: ShortsVideoBrief) {
-        print("Tapped on share button for \(brief.title ?? "")")
+extension ViewController: ShortsEventListener {
+
+    func onShareClick(_ brief: ShortsVideoBrief) {
+        print("Share tapped: \(brief.id ?? "")")
     }
-    
+
+    func onSwipe(_ brief: ShortsVideoBrief) {
+        print("Swiped to: \(brief.title ?? "")")
+    }
 }

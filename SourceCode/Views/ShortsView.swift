@@ -2,440 +2,346 @@
 //  ShortsView.swift
 //  JioNewsShortsSDK
 //
-//  Created by Bhavin Bhadani on 11/01/24.
+//  Public SDK surface. A UIKit `UIView` that hosts the native (AVPlayer)
+//  STB shorts feed via a SwiftUI `UIHostingController`.
+//
+//  Public API (mirrors the Android ShortsView):
+//    initData(hid:redirectSource:briefId:theme:) -> ShortsView
+//    cashShorts()
+//    loadShorts()
+//    playVideo(isMute:)
+//    pauseVideo()
+//    stopVideo()
+//    muteVideo()
+//    unMuteVideo()
+//    getCurrentVideoUrl() -> String?
+//    getCurrentVideoBrief() -> [String: Any]?
+//    setOnEventListener(_:)
+//    shareCompleted()
 //
 
 import UIKit
-import WebKit
+import SwiftUI
+import AVFoundation
+import CleverTapSDK
 
-public protocol ShortsViewDelegate: AnyObject {
-    func didTapOnShareButton(_ brief: ShortsVideoBrief)
+/// Callback for share-click and swipe events, each carrying the video object.
+public protocol ShortsEventListener: AnyObject {
+    /// Fired when the user taps Share on the current short.
+    func onShareClick(_ brief: ShortsVideoBrief)
+    /// Fired when the user swipes to a different short (the new current video).
+    func onSwipe(_ brief: ShortsVideoBrief)
 }
 
 public class ShortsView: UIView {
-    
+
+    // MARK: - Theme constants (Int, to mirror the Android API)
+    public static let THEME_LIGHT = 0
+    public static let THEME_DARK = 1
+
     private lazy var shimmerView: ShortsShimmerView = {
         let view = ShortsShimmerView(frame: .zero, theme: self.theme)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    private var webView: WKWebView
-    private var hid: String?
+
+    private var hostingController: UIHostingController<NativeShortsFeedView>?
+    private var controller: ShortsController?
+
+    private var hid: String = ""
     private var briefId: String?
     private var client: JioShortsClient = .myJio
-    private var theme: JioShortsTheme = .dark
-    private var shortsModel: JioShortsModel!
-    private var webURL = "https://jionews.com/short_video"
-    private var currentBrief: ShortsVideoBrief?
+    private var redirectSource: Int = 0
+    private var theme: JioShortsTheme = .light
     private var isMuted: Bool = false
-    public var isSetupCompleted = false
-    public var videoPlayerState = ""
-    public weak var delegate: ShortsViewDelegate?
-    
+
+    internal var isSetupCompleted = false
+    internal weak var eventListener: ShortsEventListener?
+
     override public init(frame: CGRect) {
-        self.webView = WKWebView()
         super.init(frame: frame)
     }
-    
+
     required public init?(coder: NSCoder) {
-        self.webView = WKWebView()
         super.init(coder: coder)
     }
-    
-    /***
-     This function call is mandatory to initiate data for shorts feature
-     Call this mehod on VIewDidLoad as it sets up WKWebView instance with cookies
-     - Parameters
-     - hid: Required, for the use of shorts view
-     - briefId: Optional, Shorts item id
-     - redirectSource: Required JioShortsClient enum value. Default value .myJio
-     - theme: Required JioShortsTheme enum value dark or light based on app theme. Default value .dark
+
+    // MARK: - Public API
+
+    /**
+     Initialise the shorts feature. Call this first; then call `loadShorts()`
+     (or `cashShorts()`) to mount and load the feed.
+     - Parameters:
+        - hid: The Authorization token sent to the JioNews GraphQL endpoint.
+               Persisted to local storage and reused if a later call omits it.
+        - redirectSource: Client/source identifier (Int).
+        - briefId: Optional, Shorts item id to target.
+        - theme: `THEME_LIGHT` or `THEME_DARK`. Default `THEME_LIGHT`.
+     - Returns: This `ShortsView`, for chaining.
      */
-    public func configure(
-        with hid: String,
+    @discardableResult
+    public func initData(
+        hid: String,
+        redirectSource: Int,
         briefId: String? = nil,
-        redirectSource: JioShortsClient = .myJio,
-        theme: JioShortsTheme = .dark
-    ) {
-        self.hid = hid
+        theme: Int = ShortsView.THEME_LIGHT
+    ) -> ShortsView {
+        // Initialise CleverTap before anything else (before any API call).
+        ShortsView.initCleverTapIfNeeded()
+
+        // Reset any previous mount so a subsequent load rebuilds fresh.
+        hostingController?.view.removeFromSuperview()
+        hostingController = nil
+        controller = nil
+
+        applyHid(hid)
+        self.redirectSource = redirectSource
+        self.client = .myJio
         self.briefId = briefId
-        self.client = redirectSource
-        self.theme = theme
+        self.theme = (theme == ShortsView.THEME_DARK) ? .dark : .light
         isSetupCompleted = true
         checkInitialisation()
-        setupBaseView()
+        return self
     }
-    
-    /***
-     This function call is for initiate data with briefId for shorts feature
-     Call this mehod only if  you already called "configure()" method once
-     - Parameters
-     - hid: Optional, for the use of shorts view
-     - briefId: Required, Shorts item id
-     - redirectSource: Required JioShortsClient enum value. Default value .myJio
-     - theme: Required JioShortsTheme enum value dark or light based on app theme. Default value .dark
-     */
-    public func openShortsByBriefId(
-        hid: String? = nil,
-        redirectSource: JioShortsClient = .myJio,
-        briefId: String,
-        theme: JioShortsTheme = .dark
-    ) {
-        self.briefId = briefId
-        self.client = redirectSource
-        self.theme = theme
-        if let hid = hid {
-            self.hid = hid
-        } else if let hid = UserDefaults.hid {
-            self.hid = hid
+
+    /// Pre-loads / caches the shorts feed (mounts it so the first page begins
+    /// fetching). Safe to call before `loadShorts()`.
+    public func cashShorts() {
+        mountIfNeeded()
+    }
+
+    /// Loads and displays the shorts feed.
+    public func loadShorts() {
+        mountIfNeeded()
+    }
+
+    /// Alias for `loadShorts()` (kept because the integration calls `shortload()`).
+    public func shortload() {
+        mountIfNeeded()
+    }
+
+    /// Registers a listener for share-click and swipe events.
+    public func setOnEventListener(_ listener: ShortsEventListener) {
+        self.eventListener = listener
+    }
+
+    /// Call when the host app's share completes **successfully** — e.g. from
+    /// `UIActivityViewController.completionWithItemsHandler` when `completed == true`.
+    /// Fires the `content_share_submit` analytics event for the short that was shared.
+    public func shareCompleted() {
+        controller?.recordShareSubmitted()
+    }
+
+    /// Current video URL, if any.
+    public func getCurrentVideoUrl() -> String? {
+        return controller?.currentBrief?.video?.url
+    }
+
+    /// Current video brief as a JSON dictionary, if any.
+    public func getCurrentVideoBrief() -> [String: Any]? {
+        guard let brief = controller?.currentBrief?.asShortsVideoBrief(),
+              let data = try? JSONEncoder().encode(brief),
+              let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            return nil
         }
+        return json
+    }
+
+    // MARK: - Playback controls
+
+    /// Play the current video.
+    /// - Parameter isMute: mute while playing. Default `false`.
+    public func playVideo(isMute: Bool = false) {
+        controller?.setMuted(isMute)
+        controller?.play()
+    }
+
+    /// Pause the current video.
+    public func pauseVideo() {
+        controller?.pause()
+    }
+
+    /// Stop the current video.
+    public func stopVideo() {
+        controller?.pause()
+    }
+
+    /// Mute the current video.
+    public func muteVideo() {
+        controller?.setMuted(true)
+    }
+
+    /// Unmute the current video.
+    public func unMuteVideo() {
+        controller?.setMuted(false)
+    }
+
+    // MARK: - Internal helpers
+
+    // CleverTap credentials — mirrors web `clevertap.init(CLEVERTAP_ID, "8R5-4K5-466Z")`.
+    // iOS needs (accountID, token); set the Account ID to the CLEVERTAP_ID value.
+    private static let cleverTapAccountId = "8R5-4K5-466Z" //Staging TEST-9R5-4K5-466Z  ----  Prod 8R5-4K5-466Z
+    private static let cleverTapToken = "534-52b" //Staging TEST-534-52c ----  Prod 534-52b
+
+    private static var didInitCleverTap = false
+
+    /// Initialises CleverTap once per process (mirrors `clevertap.init(...)`).
+    private static func initCleverTapIfNeeded() {
+        guard !didInitCleverTap else { return }
+        didInitCleverTap = true
+        CleverTap.setDebugLevel(CleverTapLogLevel.debug.rawValue) // verbose logs: see events being recorded/sent
+        CleverTap.setCredentialsWithAccountID(cleverTapAccountId, andToken: cleverTapToken)
+        _ = CleverTap.sharedInstance()
+    }
+
+    /// `hid` carries the Authorization token. When provided it is used and
+    /// persisted; when omitted, the last saved value is reused.
+    private func applyHid(_ hid: String?) {
+        if let hid = hid, !hid.isEmpty {
+            self.hid = hid
+            UserDefaults.hid = hid
+        } else if self.hid.isEmpty, let stored = UserDefaults.hid {
+            self.hid = stored
+        }
+    }
+
+    private func mountIfNeeded() {
+        guard isSetupCompleted else {
+            print("[ShortsView] initData(...) must be called before loadShorts()/cashShorts()")
+            return
+        }
+        guard hostingController == nil else { return }
         setupBaseView()
     }
-    
+
+    // Internal playback hooks (not part of the public client API).
+    internal func startVideo() {
+        controller?.play()
+    }
+
+    internal func setPlaybackDisable(_ isDisable: Bool = false) {
+        controller?.setPlaybackDisabled(isDisable)
+    }
+
+    internal func cleanup() {
+        hostingController?.view.removeFromSuperview()
+        hostingController = nil
+        controller = nil
+        removeObservers()
+    }
 }
 
-// MARK: - Helper Methods
+// MARK: - Setup
 
 extension ShortsView {
-    
+
     private func setupBaseView() {
         checkInitialisation()
-        
-        guard let hid = hid else {
-            fatalError(SDKInitializationError.hidEmpty.message)
-        }
-        
-        shortsModel = JioShortsModel(
-            theme: theme,
-            localisation: JioShortsLocalisation(endFeedMessage: "", exploreVideoTitle: ""),
-            analyticsValue: JioShortsAnalyticsValue(theme: theme)
-        )
-        
-        UserDefaults.hid = hid
-        
+
         if let isShortsMuted = UserDefaults.isShortsMuted {
             isMuted = isShortsMuted
         } else {
             UserDefaults.isShortsMuted = false
             isMuted = false
         }
+
         self.backgroundColor = (theme == .dark) ? .black : .white
-        webURL = "\(webURL)?hid=\(hid)&id=\(briefId ?? "")"
-        setupWebView()
+
+        // Allow audio with the silent switch on, like other shorts players.
+        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .moviePlayback)
+        try? AVAudioSession.sharedInstance().setActive(true)
+
+        setupFeed()
         setupShimmerView()
         addObservers()
     }
-    
+
     private func checkInitialisation() {
-        if hid == nil || (hid?.isEmpty ?? false) {
+        if hid.isEmpty {
             fatalError(SDKInitializationError.hidEmpty.message)
         }
-        
+
         let clientPackageName = Bundle.main.bundleIdentifier
         if !(clientPackageName == "com.jio.myjio" || clientPackageName == "com.jio.shorts" || clientPackageName == "com.jio.media.jioxpressnews" || clientPackageName == "org.cocoapods.demo.jionews-shortssdk-cocoapod-Example" || clientPackageName == "com.jio.staging.myjio") {
             fatalError(SDKInitializationError.invalidClient.message)
         }
     }
-    
-    private func setupView() {
-        webView.backgroundColor = (self.theme == .dark) ? .black : .white
-        insertSubview(webView, at: 0)
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            webView.topAnchor.constraint(equalTo: topAnchor),
-            webView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            webView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            webView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-    }
-    
-    private func setupWebView() {
-        let config = WKWebViewConfiguration()
-        config.allowsInlineMediaPlayback = true
-        config.mediaTypesRequiringUserActionForPlayback = []
 
-        let source = """
-            window.addEventListener('message', function(e) {
-                if(e.origin==="https://devjionews.pie.news" ||e.origin==="https://stgjionews.pie.news" || e.origin==="https://jionews.pie.news" || e.origin==="https://stgapp.jionews.com" || e.origin==="https://jionews.com") {
-                    window.webkit.messageHandlers.shortsEventListner.postMessage(e.data);
-                }
-            });
-        """
-        let script = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-        config.userContentController.addUserScript(script)
-        config.userContentController.add(self, name: "shortsEventListner")
-        
-        config.set(cookies: createCookies()) { [weak self] in
-            guard let self = self else { return }
-            // add webview
-            let wv = WKWebView(frame: self.frame, configuration: config)
-            wv.scrollView.contentInsetAdjustmentBehavior = .never
-            wv.backgroundColor = (self.theme == .dark) ? .black : .white
-            self.webView = wv
-            self.webView.navigationDelegate = self
-            self.setupView()
-            
-            // load webview
-            self.loadWebView()
+    private func setupFeed() {
+        hostingController?.view.removeFromSuperview()
+        hostingController = nil
+
+        let controller = ShortsController(
+            hid: hid,
+            theme: theme,
+            isMuted: isMuted,
+            initialBriefId: briefId
+        )
+        controller.onFeedLoaded = { [weak self] in
+            self?.stopShimmerView()
         }
+        controller.onShareTapped = { [weak self] brief in
+            self?.eventListener?.onShareClick(brief.asShortsVideoBrief())
+        }
+        controller.onCurrentBriefChanged = { [weak self] brief in
+            guard let self = self else { return }
+            self.isMuted = self.controller?.isMuted ?? false
+            if let brief = brief {
+                self.eventListener?.onSwipe(brief.asShortsVideoBrief())
+            }
+        }
+        self.controller = controller
+
+        let feed = NativeShortsFeedView(controller: controller)
+        let host = UIHostingController(rootView: feed)
+        host.view.translatesAutoresizingMaskIntoConstraints = false
+        host.view.backgroundColor = (theme == .dark) ? .black : .white
+        insertSubview(host.view, at: 0)
+        NSLayoutConstraint.activate([
+            host.view.topAnchor.constraint(equalTo: topAnchor),
+            host.view.bottomAnchor.constraint(equalTo: bottomAnchor),
+            host.view.leadingAnchor.constraint(equalTo: leadingAnchor),
+            host.view.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+        self.hostingController = host
     }
-    
+
     private func setupShimmerView() {
         addSubview(shimmerView)
-        
+
         NSLayoutConstraint.activate([
             shimmerView.topAnchor.constraint(equalTo: self.topAnchor),
             shimmerView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
             shimmerView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
             shimmerView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
         ])
-        
+
         startShimmerView()
     }
-    
+
     private func startShimmerView() {
         shimmerView.startShimmer()
         shimmerView.isHidden = false
     }
-    
+
     private func stopShimmerView() {
         shimmerView.stopShimmer()
         shimmerView.isHidden = true
     }
-    
-    // Create cookies for webview
-    private func createCookies() -> [HTTPCookie] {
-        guard let finalURL = URL(string: webURL) else {
-            return []
-        }
-        
-        return shortsModel.asParameters().compactMap { name, value in
-            HTTPCookie(properties: [
-                .domain: finalURL.host ?? "",
-                .path: "/",
-                .name: name,
-                .value: value,
-                .secure: "TRUE"
-            ])
-        }
-    }
-    
-    // load web view
-    private func loadWebView() {
-        if let finalURL = URL(string: webURL) {
-            var request = URLRequest(url: finalURL)
-            request.timeoutInterval = 30
-            webView.loadWithCookies(request: request)
-        }
-    }
-    
-    private func manageEvent(_ data: [String: Any]) {
-        guard let eventName = data["eventName"] as? String,
-              let eventData = data["eventData"] as? [String: Any] else {
-            return
-        }
-        //print("Event: \(eventName)")
-        
-        if eventName == "SWIPE",
-           let currentBrief = eventData["currentlyPlaying"] as? [String: Any] {
-            setBrief(from: currentBrief)
-        }
-        
-        if let currentBrief = eventData as? [String: Any] {
-            setBrief(from: currentBrief)
-        }
-        
-        switch eventName {
-        case "FEED_LOAD":
-            stopShimmerView()
-            break
-        case "PLAY_CLICK":
-            videoPlayerState = "PLAY_CLICK"
-            break
-        case "PAUSE_CLICK":
-            videoPlayerState = "PAUSE_CLICK"
-            break
-        case "MUTE_CLICK":
-            isMuted = true
-            UserDefaults.isShortsMuted = true
-            break
-        case "UNMUTE_CLICK":
-            isMuted = false
-            UserDefaults.isShortsMuted = false
-            break
-        case "SHARE_CLICK":
-            if let brief = currentVideoBrief {
-                delegate?.didTapOnShareButton(brief)
-            }
-            break
-        case "SWIPE": break
-        case "SWIPE_UP": break
-        case "SWIPE_DOWN": break
-        case "LIKE_CLICK": break
-        case "RESET_LIKE_CLICK": break
-        case "PLAYER_READY":
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.manageMuteState()
-            }
-            break
-        case "VIDEO_STARTED": break
-        case "VIDEO_STOPPED": break
-        case "VIDEO_PAUSED": break
-        case "EXPLORE_VIDEOS_CLICK": break
-        case "FEED_ERROR": break
-        case "EMPTY_FEED": break
-        case "INITIALIZATION_ERROR": break
-        case "SEARCH_PAGE_LOADED": break
-        default: break
-        }
-    }
-    
-    private func setBrief(from data: [String: Any]) {
-        do {
-            let brief = try JSONSerialization.data(withJSONObject: data)
-            guard let video = try? JSONDecoder().decode(ShortsVideoBrief.self, from: brief) else {
-                return
-            }
-            self.currentBrief = video
-        } catch let e {
-            print("Error: \(String(describing: e))")
-        }
-    }
-    
-    private func manageMuteState() {
-        if isMuted {
-            muteVideo()
-        } else {
-            unmuteVideo()
-        }
-    }
-    
+
     internal func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(appBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(appResignActive), name: UIApplication.willResignActiveNotification, object: nil)
     }
-    
+
     internal func removeObservers() {
         NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
     }
-    
-    @objc internal func appBecomeActive() {
-        
-          //startVideo()
-    }
-    
-    @objc internal func appResignActive() {
-        
-    }
-    
-    /**
-     Call this method to clean up WKWebView configurations and release memory
-     */
-    public func cleanup() {
-        webView.configuration.userContentController.removeScriptMessageHandler(forName: "shortsEventListner")
-        webView.configuration.userContentController.removeAllUserScripts()
-        removeObservers()
-    }
-    
-    /**
-     Get current video URL if any
-     */
-    public var currentVideoURL: String? {
-        return currentBrief?.video?.url
-    }
-    
-    /**
-     Get current video model if any
-     */
-    public var currentVideoBrief: ShortsVideoBrief? {
-        return currentBrief
-    }
-    
-    // MARK: - Player Events
-    
-    /**
-     Call this method if you want to start video
-     */
-    public func startVideo() {
-        guard isSetupCompleted else { return print("SDK is not yet initialised")}
-        checkInitialisation()
-        webView.evaluateJavaScript("activeVideoPlayer.start()")
-    }
-    
-    /**
-     Call this method if you want to play video
-     - Parameter isMute: Required, Boolean value to make shorts either mute or unmute. Default value false
-     */
-    public func playVideo(isMute: Bool = false) {
-        checkInitialisation()
-        if isMute {
-            webView.evaluateJavaScript("activeVideoPlayer.play();activeVideoPlayer.mute()")
-        } else {
-            webView.evaluateJavaScript("activeVideoPlayer.play();activeVideoPlayer.unmute()")
-        }
-    }
-    
-    /**
-     Call this method if you want to stop video
-     */
-    public func stopVideo() {
-        checkInitialisation()
-        webView.evaluateJavaScript("activeVideoPlayer.stop()")
-    }
-    
-    /**
-     Call this method if you want to pause video
-     */
-    public func pauseVideo() {
-        checkInitialisation()
-        webView.evaluateJavaScript("activeVideoPlayer.pause()")
-    }
-    
-    /**
-     Call this method if you want to mute video
-     */
-    public func muteVideo() {
-        checkInitialisation()
-        webView.evaluateJavaScript("activeVideoPlayer.mute()")
-    }
-    
-    /**
-     Call this method if you want to unmute video
-     */
-    public func unmuteVideo() {
-        checkInitialisation()
-        webView.evaluateJavaScript("activeVideoPlayer.unmute()")
-    }
-    
-    /**
-     Call this method if you want to enable/disable playback
-     - Parameter isDisable: Required, Boolean value to make playback enable or disable. Default value false
-     */
-    public func setPlaybackDisable(_ isDisable: Bool = false) {
-        checkInitialisation()
-        webView.evaluateJavaScript("activeVideoPlayer.disablePlayback(\(isDisable))")
-    }
-    
-}
 
-extension ShortsView: WKNavigationDelegate, WKScriptMessageHandler {
-    public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        guard !message.name.isEmpty else { return }
-        if message.name == "shortsEventListner" {
-            if let body = message.body as? String,
-               let data = body.data(using: .utf8) {
-                do {
-                    guard let jsonData = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-                        return
-                    }
-                    manageEvent(jsonData)
-                } catch let e {
-                    print("Error: \(String(describing: e))")
-                }
-            }
-        }
+    @objc internal func appBecomeActive() {
     }
-    
+
+    @objc internal func appResignActive() {
+    }
 }
