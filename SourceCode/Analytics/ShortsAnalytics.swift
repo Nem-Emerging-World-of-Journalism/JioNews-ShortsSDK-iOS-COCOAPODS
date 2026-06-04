@@ -93,8 +93,8 @@ final class ShortsAnalytics {
 
     private func content(_ item: STBNewsBrief, swipe: String) -> [String: Any] {
         [
-            "category": "NA",
-            "category_id": "NA",
+            "category": item.category?.title ?? "NA",
+            "category_id": item.category?.id ?? "NA",
             "pub_date_time": item.publishedAt?.date ?? "NA",
             "publisher_id": item.publisher?.id ?? "NA",
             "publisher_name": item.publisher?.name ?? "NA",

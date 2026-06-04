@@ -2,7 +2,7 @@
 //  NativeShortsFeedView.swift
 //  JioNewsShortsSDK
 //
-//  Native (AVPlayer) vertical shorts feed backed by the `getSTBShorts`
+//  Native (AVPlayer) vertical shorts feed backed by the `getNativeShorts`
 //  query. Ported from the DemoShorts native feed and wired to the shared
 //  `ShortsController` so the UIKit `ShortsView` can drive playback/mute and
 //  read back the current brief.
@@ -49,7 +49,7 @@ final class NativeShortsViewModel: ObservableObject {
         }
         do {
             let token = try await controller.token()
-            let result = try await GraphQLService.shared.fetchSTBShortsDecoded(token: token, page: 1, size: pageSize)
+            let result = try await GraphQLService.shared.fetchNativeShortsDecoded(token: token, page: 1, size: pageSize)
             currentPage = 1
             totalPages = result.cursor?.totalPages
             let raw = result.newsBriefs ?? []
@@ -60,7 +60,6 @@ final class NativeShortsViewModel: ObservableObject {
                     : "Returned \(raw.count) item(s), but none had a usable video URL."
             }
         } catch {
-            print("[STB API] ❌ GetSTBShorts failed: \(error)")
             errorMessage = (error as? LocalizedError)?.errorDescription ?? "\(error)"
         }
     }
@@ -74,7 +73,7 @@ final class NativeShortsViewModel: ObservableObject {
         let nextPage = currentPage + 1
         do {
             let token = try await controller.token()
-            let result = try await GraphQLService.shared.fetchSTBShortsDecoded(token: token, page: nextPage, size: pageSize)
+            let result = try await GraphQLService.shared.fetchNativeShortsDecoded(token: token, page: nextPage, size: pageSize)
             let raw = result.newsBriefs ?? []
             let newItems = raw.filter { $0.videoURL != nil }
             currentPage = nextPage
@@ -82,9 +81,8 @@ final class NativeShortsViewModel: ObservableObject {
             let existing = Set(items.map(\.id))
             let appended = newItems.filter { !existing.contains($0.id) }
             items.append(contentsOf: appended)
-            print("[STB Pagination] page \(nextPage): +\(appended.count) items (total=\(items.count))")
         } catch {
-            print("[STB Pagination] ❌ page \(nextPage) failed: \(error)")
+            // Pagination failed; keep the items already loaded.
         }
     }
 }
@@ -161,10 +159,12 @@ struct NativeShortsFeedView: View {
             if currentID == nil {
                 currentID = vm.items.first?.id
                 controller.recordCurrentBrief(brief(for: currentID), swipe: "NA")
+                prefetchUpcomingThumbnails(after: currentID)
             }
         }
         .onChange(of: currentID) { oldID, newID in
             controller.recordCurrentBrief(brief(for: newID), swipe: swipeDirection(from: oldID, to: newID))
+            prefetchUpcomingThumbnails(after: newID)
             guard let newID,
                   let idx = vm.items.firstIndex(where: { $0.id == newID }) else { return }
             Task { await vm.loadMoreIfNeeded(currentIndex: idx) }
@@ -186,6 +186,20 @@ struct NativeShortsFeedView: View {
         if ni > oi { return "next" }
         if ni < oi { return "previous" }
         return "NA"
+    }
+
+    /// Warms the thumbnail cache for the next few **already-loaded** items so they
+    /// don't flash black while downloading. Only looks at items already in
+    /// `vm.items` and stops at the end of the list — never triggers pagination.
+    private func prefetchUpcomingThumbnails(after id: String?) {
+        guard let id, let idx = vm.items.firstIndex(where: { $0.id == id }) else { return }
+        for offset in 1...3 {
+            let next = idx + offset
+            guard next < vm.items.count else { break }   // no more loaded items → stop
+            if let thumb = vm.items[next].bestThumbnailURLString, let url = URL(string: thumb) {
+                ThumbnailCache.prefetch(url)
+            }
+        }
     }
 }
 
@@ -439,6 +453,29 @@ private enum ThumbnailCache {
         c.countLimit = 50
         return c
     }()
+
+    private static let lock = NSLock()
+    private static var inFlight = Set<String>()
+
+    /// Downloads and caches a thumbnail ahead of time. No-op if it's already
+    /// cached or a prefetch is already in flight for the same URL.
+    static func prefetch(_ url: URL) {
+        let keyString = url.absoluteString
+        let key = keyString as NSString
+        if cache.object(forKey: key) != nil { return }
+
+        lock.lock()
+        if inFlight.contains(keyString) { lock.unlock(); return }
+        inFlight.insert(keyString)
+        lock.unlock()
+
+        Task.detached(priority: .utility) {
+            defer { lock.lock(); inFlight.remove(keyString); lock.unlock() }
+            guard let (data, _) = try? await URLSession.shared.data(from: url),
+                  let img = UIImage(data: data) else { return }
+            cache.setObject(img, forKey: key)
+        }
+    }
 }
 
 struct ThumbnailImage: View {
@@ -468,9 +505,7 @@ struct ThumbnailImage: View {
                 ThumbnailCache.cache.setObject(img, forKey: key)
                 image = img
             } catch {
-                if !(error is CancellationError) {
-                    print("[Thumb] ❌ \(url.lastPathComponent): \(error.localizedDescription)")
-                }
+                // Ignore (including cancellation); the thumbnail just won't show.
             }
         }
     }

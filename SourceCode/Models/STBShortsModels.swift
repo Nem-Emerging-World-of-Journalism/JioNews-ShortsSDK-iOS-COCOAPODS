@@ -2,8 +2,8 @@
 //  STBShortsModels.swift
 //  JioNewsShortsSDK
 //
-//  GraphQL models for the native (AVPlayer) STB shorts feed — the
-//  `getSTBShorts` query. Ported from the DemoShorts native feed; the
+//  GraphQL models for the native (AVPlayer) shorts feed — the
+//  `getNativeShorts` query. Ported from the DemoShorts native feed; the
 //  YouTube (`getShorts`) models are intentionally omitted.
 //
 
@@ -37,18 +37,18 @@ struct Cursor: Decodable {
     let size: Int?
 }
 
-// MARK: - getSTBShorts response
+// MARK: - getNativeShorts response
 
-struct GetSTBShortsResponseRoot: Decodable {
-    let data: GetSTBShortsResponseData?
+struct GetNativeShortsResponseRoot: Decodable {
+    let data: GetNativeShortsResponseData?
     let errors: [GraphQLErrorEntry]?
 }
 
-struct GetSTBShortsResponseData: Decodable {
-    let getSTBShorts: GetSTBShortsResult?
+struct GetNativeShortsResponseData: Decodable {
+    let getNativeShorts: GetNativeShortsResult?
 }
 
-struct GetSTBShortsResult: Decodable {
+struct GetNativeShortsResult: Decodable {
     let newsBriefs: [STBNewsBrief]?
     let cursor: Cursor?
     let dateTime: String?
@@ -71,6 +71,13 @@ struct STBNewsBrief: Decodable, Identifiable {
     let thumbnailURL_v2: STBThumbnailURLv2?
     let redirectionURLV1: String?
     let source: String?
+    let category: STBCategory?
+}
+
+struct STBCategory: Decodable {
+    let title: String?
+    let id: String?
+    let parentName: String?
 }
 
 struct STBVideo: Decodable {

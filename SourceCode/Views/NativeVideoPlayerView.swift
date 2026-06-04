@@ -2,7 +2,7 @@
 //  NativeVideoPlayerView.swift
 //  JioNewsShortsSDK
 //
-//  AVPlayer-backed player for the native (getSTBShorts) shorts feed.
+//  AVPlayer-backed player for the native (getNativeShorts) shorts feed.
 //  Ported from the DemoShorts native feed.
 //
 

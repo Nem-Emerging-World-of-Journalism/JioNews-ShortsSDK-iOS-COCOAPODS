@@ -189,7 +189,7 @@ public class ShortsView: UIView {
     private static func initCleverTapIfNeeded() {
         guard !didInitCleverTap else { return }
         didInitCleverTap = true
-        CleverTap.setDebugLevel(CleverTapLogLevel.debug.rawValue) // verbose logs: see events being recorded/sent
+        CleverTap.setDebugLevel(CleverTapLogLevel.off.rawValue) // silence CleverTap logging in production
         CleverTap.setCredentialsWithAccountID(cleverTapAccountId, andToken: cleverTapToken)
         _ = CleverTap.sharedInstance()
     }
@@ -207,7 +207,6 @@ public class ShortsView: UIView {
 
     private func mountIfNeeded() {
         guard isSetupCompleted else {
-            print("[ShortsView] initData(...) must be called before loadShorts()/cashShorts()")
             return
         }
         guard hostingController == nil else { return }

@@ -2,8 +2,8 @@
 //  GraphQLService.swift
 //  JioNewsShortsSDK
 //
-//  Thin GraphQL client for the native (AVPlayer) STB shorts feed.
-//  Only the `getSTBShorts` query is implemented; the Authorization
+//  Thin GraphQL client for the native (AVPlayer) shorts feed.
+//  Only the `getNativeShorts` query is implemented; the Authorization
 //  token is supplied per-request by the host app via `ShortsView.configure`.
 //
 
@@ -17,9 +17,11 @@ struct GraphQLRequest<Variables: Encodable>: Encodable {
     let variables: Variables
 }
 
-struct GetSTBShortsVariables: Encodable {
+struct GetNativeShortsVariables: Encodable {
     let page: Int
     let size: Int
+    let categoryId: String?
+    let dateTime: String?
 }
 
 struct AddReactionVariables: Encodable {
@@ -94,16 +96,15 @@ final class GraphQLService {
         return URLSession(configuration: config)
     }()
 
-    private static let getSTBShortsQuery = """
-    query GetSTBShorts($page: Int!, $size: Int!, $categoryId: ID, $dateTime: DateTime) {
-        getSTBShorts(page: $page, size: $size, categoryId: $categoryId, dateTime: $dateTime) {
+    private static let getNativeShortsQuery = """
+    query GetNativeShorts($page: Int!, $size: Int!, $categoryId: ID, $dateTime: DateTime) {
+        getNativeShorts(page: $page, size: $size, categoryId: $categoryId, dateTime: $dateTime) {
             cursor { prev curr next totalDocs totalPages size }
             dateTime
             newsBriefs {
                 id
                 video { duration url }
                 title
-                thumbnail { url }
                 videoId
                 shareCount { text unit count }
                 publishedAt { date agoFromNow prettyDateTime }
@@ -115,7 +116,6 @@ final class GraphQLService {
                     reactionType: reactions { type count text unit }
                 }
                 dataSource
-                publisherLink
                 language { id name }
                 thumbnailURL_v2 {
                     default { url }
@@ -126,16 +126,17 @@ final class GraphQLService {
                 }
                 redirectionURLV1
                 source
+                category { title id parentName }
             }
         }
     }
     """
 
-    func fetchSTBShortsDecoded(token: String, page: Int = 1, size: Int = 10) async throws -> GetSTBShortsResult {
+    func fetchNativeShortsDecoded(token: String, page: Int = 1, size: Int = 10) async throws -> GetNativeShortsResult {
         let payload = GraphQLRequest(
-            operationName: "GetSTBShorts",
-            query: Self.getSTBShortsQuery,
-            variables: GetSTBShortsVariables(page: page, size: size)
+            operationName: "GetNativeShorts",
+            query: Self.getNativeShortsQuery,
+            variables: GetNativeShortsVariables(page: page, size: size, categoryId: nil, dateTime: nil)
         )
 
         var request = URLRequest(url: Constants.graphQLEndpoint)
@@ -156,11 +157,11 @@ final class GraphQLService {
             throw GraphQLServiceError.httpStatus(http.statusCode, body: body)
         }
 
-        let root = try JSONDecoder().decode(GetSTBShortsResponseRoot.self, from: data)
+        let root = try JSONDecoder().decode(GetNativeShortsResponseRoot.self, from: data)
         if let errors = root.errors, !errors.isEmpty {
             throw GraphQLServiceError.graphQLErrors(errors.map(\.message))
         }
-        return root.data?.getSTBShorts ?? GetSTBShortsResult(newsBriefs: nil, cursor: nil, dateTime: nil)
+        return root.data?.getNativeShorts ?? GetNativeShortsResult(newsBriefs: nil, cursor: nil, dateTime: nil)
     }
 
     // MARK: - Reactions (like / remove like)

@@ -8,7 +8,7 @@
 import Foundation
 
 internal struct Constants {
-    /// JioNews GraphQL endpoint backing the native `getSTBShorts` feed.
+    /// JioNews GraphQL endpoint backing the native `getNativeShorts` feed.
     static let graphQLEndpoint = URL(string: "https://stgmobileservice.jionews.com/graphql")!
     static let platform = "iOS"
     static let language = "English"

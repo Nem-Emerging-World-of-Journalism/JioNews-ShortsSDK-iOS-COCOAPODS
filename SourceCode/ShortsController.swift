@@ -77,7 +77,6 @@ final class ShortsController: ObservableObject {
         authToken = minted
 
         // Mirror web: clevertap.profile.push({ Site: { Identity, Name } }).
-        print("🟢 [CleverTap] session.id = \(session.id ?? "nil")  ← search this in the CleverTap dashboard")
         if let id = session.id, !id.isEmpty {
             analytics.userId = id
             CleverTap.sharedInstance()?.profilePush(["Identity": id, "Name": id])
