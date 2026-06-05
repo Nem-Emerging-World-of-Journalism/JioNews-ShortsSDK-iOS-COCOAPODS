@@ -8,8 +8,8 @@
 import Foundation
 
 internal struct Constants {
-    /// JioNews GraphQL endpoint backing the native `getNativeShorts` feed.
-    static let graphQLEndpoint = URL(string: "https://stgmobileservice.jionews.com/graphql")!
+    // GraphQL endpoint is now environment-driven — see `JioShortsEnvironment`
+    // and `GraphQLService.endpoint` (set via `ShortsView.initData(env:)`).
     static let platform = "iOS"
     static let language = "English"
     static let source = "Direct"

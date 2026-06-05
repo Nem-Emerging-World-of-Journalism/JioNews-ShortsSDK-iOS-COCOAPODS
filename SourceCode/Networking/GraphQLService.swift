@@ -40,6 +40,11 @@ struct TapShareVariables: Encodable {
     let contentType: String
 }
 
+struct NewsBriefByIdVariables: Encodable {
+    let newsBriefByIdId: String
+    let contentType: String?
+}
+
 struct LoginWebVariables: Encodable {
     let deviceName: String
     let deviceType: String
@@ -90,6 +95,9 @@ final class GraphQLService {
     static let shared = GraphQLService()
     private init() {}
 
+    /// GraphQL endpoint; set per-session by `ShortsView.initData(env:)`. Defaults to production.
+    var endpoint: URL = JioShortsEnvironment.prod.graphQLURL
+
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
         config.timeoutIntervalForRequest = 60
@@ -139,7 +147,7 @@ final class GraphQLService {
             variables: GetNativeShortsVariables(page: page, size: size, categoryId: nil, dateTime: nil)
         )
 
-        var request = URLRequest(url: Constants.graphQLEndpoint)
+        var request = URLRequest(url: endpoint)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -162,6 +170,49 @@ final class GraphQLService {
             throw GraphQLServiceError.graphQLErrors(errors.map(\.message))
         }
         return root.data?.getNativeShorts ?? GetNativeShortsResult(newsBriefs: nil, cursor: nil, dateTime: nil)
+    }
+
+    // MARK: - Single brief (deep-link)
+
+    private static let newsBriefByIdQuery = """
+    query NewsBriefById($newsBriefByIdId: ID!, $contentType: NewsBriefType) {
+        newsBriefById(id: $newsBriefByIdId, contentType: $contentType) {
+            newsBrief {
+                id
+                type
+                title
+                source
+                publisherLink
+                redirectionURLV1
+                thumbnail { url }
+                video { duration url }
+                shareCount { text unit count }
+                publishedAt { date agoFromNow prettyDateTime }
+                publisher { id name }
+                category { id title }
+                reactions {
+                    total
+                    userReaction
+                    reactionType: reactions { type count text unit }
+                }
+            }
+        }
+    }
+    """
+
+    /// Fetches a single brief by id — used to pin a deep-linked short to the top of the feed.
+    func fetchNewsBriefById(token: String, newsBriefId: String, contentType: String? = nil) async throws -> STBNewsBrief? {
+        let payload = GraphQLRequest(
+            operationName: "NewsBriefById",
+            query: Self.newsBriefByIdQuery,
+            variables: NewsBriefByIdVariables(newsBriefByIdId: newsBriefId, contentType: contentType)
+        )
+        let data = try await perform(token: token, payload: payload)
+        let root = try JSONDecoder().decode(NewsBriefByIdResponseRoot.self, from: data)
+        if let errors = root.errors, !errors.isEmpty {
+            throw GraphQLServiceError.graphQLErrors(errors.map(\.message))
+        }
+        return root.data?.newsBriefById?.newsBrief
     }
 
     // MARK: - Reactions (like / remove like)
@@ -291,7 +342,7 @@ final class GraphQLService {
     // MARK: - Transport
 
     private func perform<V: Encodable>(token: String, payload: GraphQLRequest<V>) async throws -> Data {
-        var request = URLRequest(url: Constants.graphQLEndpoint)
+        var request = URLRequest(url: endpoint)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")

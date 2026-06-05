@@ -11,6 +11,19 @@
 import SwiftUI
 import Combine
 
+private extension Color {
+    /// Creates a color from a 24-bit RGB hex value, e.g. `Color(hex: 0x141414)`.
+    init(hex: UInt32) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xFF) / 255,
+            green: Double((hex >> 8) & 0xFF) / 255,
+            blue: Double(hex & 0xFF) / 255,
+            opacity: 1
+        )
+    }
+}
+
 @MainActor
 final class NativeShortsViewModel: ObservableObject {
     @Published var items: [STBNewsBrief] = []
@@ -49,11 +62,24 @@ final class NativeShortsViewModel: ObservableObject {
         }
         do {
             let token = try await controller.token()
+            controller.log("API: getNativeShorts page 1 (size=\(pageSize))…")
             let result = try await GraphQLService.shared.fetchNativeShortsDecoded(token: token, page: 1, size: pageSize)
             currentPage = 1
             totalPages = result.cursor?.totalPages
             let raw = result.newsBriefs ?? []
-            items = raw.filter { $0.videoURL != nil }
+            var loaded = raw.filter { $0.videoURL != nil }
+
+            // Deep-link: if a specific brief was requested, fetch it and pin it to the top (index 0).
+            if let briefId = controller.initialBriefId, !briefId.isEmpty,
+               let pinned = try? await GraphQLService.shared.fetchNewsBriefById(token: token, newsBriefId: briefId, contentType: Constants.contentType),
+               pinned.videoURL != nil {
+                loaded.removeAll { $0.id == pinned.id }   // avoid a duplicate if it's also in page 1
+                loaded.insert(pinned, at: 0)
+                controller.log("Deep-link: pinned brief \(pinned.id) at top")
+            }
+            items = loaded
+            controller.log("API: getNativeShorts ✓ \(items.count) playable / \(raw.count) returned (totalPages=\(totalPages ?? -1))")
+
             if items.isEmpty {
                 errorMessage = raw.isEmpty
                     ? "No videos returned. (Check Authorization token.)"
@@ -61,6 +87,7 @@ final class NativeShortsViewModel: ObservableObject {
             }
         } catch {
             errorMessage = (error as? LocalizedError)?.errorDescription ?? "\(error)"
+            controller.log("API: ❌ getNativeShorts page 1 failed — \(error)")
         }
     }
 
@@ -73,6 +100,7 @@ final class NativeShortsViewModel: ObservableObject {
         let nextPage = currentPage + 1
         do {
             let token = try await controller.token()
+            controller.log("Pagination: fetching page \(nextPage)…")
             let result = try await GraphQLService.shared.fetchNativeShortsDecoded(token: token, page: nextPage, size: pageSize)
             let raw = result.newsBriefs ?? []
             let newItems = raw.filter { $0.videoURL != nil }
@@ -81,8 +109,9 @@ final class NativeShortsViewModel: ObservableObject {
             let existing = Set(items.map(\.id))
             let appended = newItems.filter { !existing.contains($0.id) }
             items.append(contentsOf: appended)
+            controller.log("Pagination: page \(nextPage) +\(appended.count) (total=\(items.count))")
         } catch {
-            // Pagination failed; keep the items already loaded.
+            controller.log("Pagination: ❌ page \(nextPage) failed — \(error)")
         }
     }
 }
@@ -101,14 +130,18 @@ struct NativeShortsFeedView: View {
         controller.theme == .dark ? .black : .white
     }
 
+    private var errorBackgroundColor: Color {
+        controller.theme == .dark ? Color(hex: 0x141414) : Color(hex: 0xF4F4F4)
+    }
+
     var body: some View {
         ZStack {
             backgroundColor.ignoresSafeArea()
 
             if vm.isLoading && vm.items.isEmpty {
                 ProgressView().tint(.white).scaleEffect(1.2)
-            } else if let msg = vm.errorMessage, vm.items.isEmpty {
-                errorView(msg)
+            } else if vm.errorMessage != nil, vm.items.isEmpty {
+                errorView()
             } else {
                 feed
             }
@@ -118,26 +151,28 @@ struct NativeShortsFeedView: View {
         }
     }
 
-    private func errorView(_ msg: String) -> some View {
-        VStack(spacing: 14) {
-            Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundStyle(.yellow)
-                .font(.system(size: 44))
-            Text(msg)
-                .foregroundStyle(.white)
-                .font(.footnote)
+    private func errorView() -> some View {
+        VStack(spacing: 28) {
+            Text("Something went wrong!\nCheck back later for more shorts.")
+                .font(.system(size: 16))
+                .foregroundColor(Color(hex: 0x8E8E8E))
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 32)
+                .lineSpacing(4)
+
             Button {
                 Task { await vm.loadFirstPage() }
             } label: {
                 Text("Retry")
-                    .padding(.horizontal, 24)
-                    .padding(.vertical, 8)
-                    .background(.white.opacity(0.15), in: Capsule())
-                    .foregroundStyle(.white)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 48)
+                    .padding(.vertical, 14)
+                    .background(Color(hex: 0xC2002F), in: Capsule())
             }
         }
+        .padding(24)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(errorBackgroundColor.ignoresSafeArea())
     }
 
     private var feed: some View {
@@ -226,6 +261,7 @@ struct NativeShortCardView: View {
                     isPlaying: isCurrent && controller.shouldPlay,
                     isMuted: controller.isMuted,
                     onPlaybackStarted: {
+                        controller.log("Playback: started \(item.id)")
                         withAnimation(.easeOut(duration: 0.25)) {
                             hasStartedPlaying = true
                         }
@@ -411,12 +447,12 @@ struct LikeButton: View {
             controller.toggleLike(item)
         } label: {
             VStack(spacing: 4) {
-                Image(shorts: "ic_like_white")
-                    .renderingMode(.template)
+                Image(shorts: state.isLiked ? "ic_like_selected_border" : "ic_like_white")
+                    .renderingMode(state.isLiked ? .original : .template)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 23, height: 23)
-                    .foregroundStyle(state.isLiked ? .green : .white)
+                    .foregroundStyle(.white)   // applies only to the unliked (template) icon
                     .shadow(radius: 4)
                 if state.count > 0 {
                     Text("\(state.count)")

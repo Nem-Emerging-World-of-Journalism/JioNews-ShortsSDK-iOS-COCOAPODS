@@ -6,7 +6,7 @@
 //  STB shorts feed via a SwiftUI `UIHostingController`.
 //
 //  Public API (mirrors the Android ShortsView):
-//    initData(hid:redirectSource:briefId:theme:) -> ShortsView
+//    initData(hid:redirectSource:briefId:theme:debug:env:) -> ShortsView
 //    cashShorts()
 //    loadShorts()
 //    playVideo(isMute:)
@@ -54,6 +54,7 @@ public class ShortsView: UIView {
     private var redirectSource: Int = 0
     private var theme: JioShortsTheme = .light
     private var isMuted: Bool = false
+    private var debug: Bool = false
 
     internal var isSetupCompleted = false
     internal weak var eventListener: ShortsEventListener?
@@ -77,6 +78,8 @@ public class ShortsView: UIView {
         - redirectSource: Client/source identifier (Int).
         - briefId: Optional, Shorts item id to target.
         - theme: `THEME_LIGHT` or `THEME_DARK`. Default `THEME_LIGHT`.
+        - debug: When `true`, prints verbose `[JioShorts]` lifecycle logs. Default `false`.
+        - env: API environment (`.stg` or `.prod`). Default `.prod`.
      - Returns: This `ShortsView`, for chaining.
      */
     @discardableResult
@@ -84,8 +87,13 @@ public class ShortsView: UIView {
         hid: String,
         redirectSource: Int,
         briefId: String? = nil,
-        theme: Int = ShortsView.THEME_LIGHT
+        theme: Int = ShortsView.THEME_LIGHT,
+        debug: Bool = false,
+        env: JioShortsEnvironment = .stg
     ) -> ShortsView {
+        // Point the GraphQL client at the requested environment before any API call.
+        GraphQLService.shared.endpoint = env.graphQLURL
+
         // Initialise CleverTap before anything else (before any API call).
         ShortsView.initCleverTapIfNeeded()
 
@@ -99,6 +107,7 @@ public class ShortsView: UIView {
         self.client = .myJio
         self.briefId = briefId
         self.theme = (theme == ShortsView.THEME_DARK) ? .dark : .light
+        self.debug = debug
         isSetupCompleted = true
         checkInitialisation()
         return self
@@ -274,7 +283,8 @@ extension ShortsView {
             hid: hid,
             theme: theme,
             isMuted: isMuted,
-            initialBriefId: briefId
+            initialBriefId: briefId,
+            debug: debug
         )
         controller.onFeedLoaded = { [weak self] in
             self?.stopShimmerView()

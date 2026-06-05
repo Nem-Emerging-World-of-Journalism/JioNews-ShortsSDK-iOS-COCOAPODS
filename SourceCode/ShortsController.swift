@@ -20,10 +20,12 @@ final class ShortsController: ObservableObject {
     let hid: String
     let theme: JioShortsTheme
     let initialBriefId: String?
+    /// When true, the SDK prints verbose `[JioShorts]` logs (set via `initData(debug:)`).
+    let debug: Bool
 
     // Device info sent to the loginWeb mutation.
     private let deviceName: String
-    private let deviceType = "browser"
+    private let deviceType = "ios"
     private let fingerprint: String
 
     /// Authorization token minted from `hid` via loginWeb; cached for the session.
@@ -54,14 +56,24 @@ final class ShortsController: ObservableObject {
     var onShareTapped: ((STBNewsBrief) -> Void)?
     var onCurrentBriefChanged: ((STBNewsBrief?) -> Void)?
 
-    init(hid: String, theme: JioShortsTheme, isMuted: Bool, initialBriefId: String?) {
+    init(hid: String, theme: JioShortsTheme, isMuted: Bool, initialBriefId: String?, debug: Bool = false) {
         self.hid = hid
         self.theme = theme
         self.isMuted = isMuted
         self.initialBriefId = initialBriefId
-        self.deviceName = "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
+        self.debug = debug
+        self.deviceName = UIDevice.current.marketingModelName
         self.fingerprint = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
         self.analytics = ShortsAnalytics(theme: theme)
+    }
+
+    // MARK: - Debug logging
+
+    /// Prints a line only when the SDK was initialised with `debug: true`.
+    /// `@autoclosure` keeps the message-building cost at zero when debug is off.
+    func log(_ message: @autoclosure () -> String) {
+        guard debug else { return }
+        print("🟣 [JioShorts] \(message())")
     }
 
     // MARK: Auth
@@ -70,11 +82,13 @@ final class ShortsController: ObservableObject {
     /// and caching the result for the session.
     func token() async throws -> String {
         if let authToken = authToken, !authToken.isEmpty { return authToken }
+        log("Auth: logging in with hid…")
         let session = try await GraphQLService.shared.loginWeb(
             hid: hid, deviceName: deviceName, deviceType: deviceType, fingerprint: fingerprint
         )
         let minted = session.token ?? ""
         authToken = minted
+        log("Auth: token minted ✓ (session.id=\(session.id ?? "nil"))")
 
         // Mirror web: clevertap.profile.push({ Site: { Identity, Name } }).
         if let id = session.id, !id.isEmpty {
@@ -121,6 +135,7 @@ final class ShortsController: ObservableObject {
     /// Call when the first page has loaded. Fires `shorts_feed_load`.
     func recordFeedLoad(loadTime: Int, apiError: String?) {
         feedLoadDate = Date()
+        log("Feed: loaded (loadTime=\(loadTime)s, apiError=\(apiError ?? "NA"))")
         analytics.feedLoad(loadTime: loadTime, apiError: apiError)
     }
 
@@ -142,6 +157,7 @@ final class ShortsController: ObservableObject {
         if let prev = previousBrief {
             analytics.shortsView(item: prev, swipe: swipe, watchedTime: secondsSinceShortStart(), contentDuration: duration(for: prev))
         }
+        log("Scroll: current=\(brief?.id ?? "nil") swipe=\(swipe)")
         lastSwipe = swipe
         previousBrief = brief
         currentShortStartDate = Date()
@@ -157,6 +173,7 @@ final class ShortsController: ObservableObject {
             analytics.shortsView(item: prev, swipe: "NA", watchedTime: secondsSinceShortStart(), contentDuration: duration(for: prev))
         }
         let viewTime = feedLoadDate.map { Int(Date().timeIntervalSince($0)) } ?? 0
+        log("Feed: exit (viewTime=\(viewTime)s, viewCount=\(viewedShortIds.count))")
         analytics.feedExit(viewTime: viewTime, viewCount: viewedShortIds.count)
         // Reset so a re-entry starts fresh.
         previousBrief = nil
@@ -173,6 +190,7 @@ final class ShortsController: ObservableObject {
     /// and any error are intentionally ignored. Also fires `content_share_select`.
     func tapShare(_ item: STBNewsBrief) {
         lastSharedBrief = item
+        log("Share: tapped \(item.id)")
         analytics.shareSelect(item: item, swipe: lastSwipe)
         Task {
             guard let token = try? await token() else { return }
@@ -186,6 +204,7 @@ final class ShortsController: ObservableObject {
     /// by the host (via `ShortsView.shareCompleted()`) when its share actually succeeds.
     func recordShareSubmitted() {
         guard let brief = lastSharedBrief ?? currentBrief else { return }
+        log("Share: submitted ✓ \(brief.id)")
         analytics.shareSubmit(item: brief, swipe: lastSwipe)
     }
 
@@ -215,6 +234,7 @@ final class ShortsController: ObservableObject {
         let willLike = !previous.isLiked
         let newCount = max(0, previous.count + (willLike ? 1 : -1))
         likeStates[item.id] = LikeState(isLiked: willLike, count: newCount)
+        log("Like: \(willLike ? "LIKE" : "UNLIKE") \(item.id) (count=\(newCount))")
 
         if willLike {
             analytics.contentLike(item: item, swipe: lastSwipe)

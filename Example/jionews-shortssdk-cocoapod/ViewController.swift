@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         shortsView
-            .initData(hid: hid, redirectSource: 0, theme: ShortsView.THEME_LIGHT)
+            .initData(hid: hid, redirectSource: 0, theme: ShortsView.THEME_LIGHT, debug: false, env: .stg)
         shortsView.setOnEventListener(self)
         shortsView.shortload()
         shortsView.loadShorts()

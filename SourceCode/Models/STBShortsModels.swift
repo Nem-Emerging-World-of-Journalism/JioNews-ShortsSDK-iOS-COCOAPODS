@@ -54,6 +54,21 @@ struct GetNativeShortsResult: Decodable {
     let dateTime: String?
 }
 
+// MARK: - newsBriefById response
+
+struct NewsBriefByIdResponseRoot: Decodable {
+    let data: NewsBriefByIdData?
+    let errors: [GraphQLErrorEntry]?
+}
+
+struct NewsBriefByIdData: Decodable {
+    let newsBriefById: NewsBriefByIdResult?
+}
+
+struct NewsBriefByIdResult: Decodable {
+    let newsBrief: STBNewsBrief?
+}
+
 struct STBNewsBrief: Decodable, Identifiable {
     let id: String
     let video: STBVideo?
