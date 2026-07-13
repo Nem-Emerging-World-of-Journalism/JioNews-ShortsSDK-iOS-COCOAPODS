@@ -15,16 +15,33 @@ class ViewController: UIViewController {
 
     // Staging Authorization (JWT) token for the JioNews GraphQL endpoint.
     
-    private var hid = "dc42fc9ac83f04260a505fa20e8654af3711e1d268e1511a46f745113ee082bc"
+    private var hid = "4388842af19d80e20860dbc76fd6e76ce204422092e19015940c02cf5186e14c"
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         shortsView
-            .initData(hid: hid, redirectSource: 0, theme: ShortsView.THEME_LIGHT, debug: false, env: .stg)
+            .initData(hid: hid, redirectSource: "org.cocoapods.demo.jionews-shortssdk-cocoapod-Example", theme: ShortsView.THEME_LIGHT, debug: false, env: .stg)
         shortsView.setOnEventListener(self)
         shortsView.shortload()
         shortsView.loadShorts()
+        
+        NotificationCenter.default.addObserver(self,
+                                                       selector: #selector(handleApplicationDidBecomeActive),
+                                                       name: UIApplication.didBecomeActiveNotification,
+                                                       object: nil)
+    }
+    
+    @objc
+    func handleApplicationDidBecomeActive() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            guard let self, self.shortsView.isSetupCompleted else { return }
+            if self.shortsView.isPlaying {
+                self.shortsView.playVideo()   // was set to play → resume
+            } else {
+                self.shortsView.pauseVideo()  // was paused → keep paused
+            }
+        }
     }
 }
 

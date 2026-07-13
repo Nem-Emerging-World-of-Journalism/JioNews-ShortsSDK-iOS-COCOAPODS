@@ -16,6 +16,8 @@
 //    unMuteVideo()
 //    getCurrentVideoUrl() -> String?
 //    getCurrentVideoBrief() -> [String: Any]?
+//    isPlaying -> Bool
+//    isSetupCompleted -> Bool
 //    setOnEventListener(_:)
 //    shareCompleted()
 //
@@ -51,12 +53,13 @@ public class ShortsView: UIView {
     private var hid: String = ""
     private var briefId: String?
     private var client: JioShortsClient = .myJio
-    private var redirectSource: Int = 0
+    private var redirectSource: String = ""
     private var theme: JioShortsTheme = .light
     private var isMuted: Bool = false
     private var debug: Bool = false
 
-    internal var isSetupCompleted = false
+    /// True once `initData(...)` has been called. Readable by the host; set internally.
+    public internal(set) var isSetupCompleted = false
     internal weak var eventListener: ShortsEventListener?
 
     override public init(frame: CGRect) {
@@ -75,7 +78,8 @@ public class ShortsView: UIView {
      - Parameters:
         - hid: The Authorization token sent to the JioNews GraphQL endpoint.
                Persisted to local storage and reused if a later call omits it.
-        - redirectSource: Client/source identifier (Int).
+        - redirectSource: Client bundle identifier (String, mandatory). Must match an
+                          allowlisted JioNews client, e.g. `"com.jio.myjio"`.
         - briefId: Optional, Shorts item id to target.
         - theme: `THEME_LIGHT` or `THEME_DARK`. Default `THEME_LIGHT`.
         - debug: When `true`, prints verbose `[JioShorts]` lifecycle logs. Default `false`.
@@ -85,7 +89,7 @@ public class ShortsView: UIView {
     @discardableResult
     public func initData(
         hid: String,
-        redirectSource: Int,
+        redirectSource: String,
         briefId: String? = nil,
         theme: Int = ShortsView.THEME_LIGHT,
         debug: Bool = false,
@@ -185,6 +189,12 @@ public class ShortsView: UIView {
         controller?.setMuted(false)
     }
 
+    /// Whether the current short is set to play (false when paused or playback is
+    /// disabled). Handy for restoring state, e.g. on app foreground.
+    public var isPlaying: Bool {
+        controller?.shouldPlay ?? false
+    }
+
     // MARK: - Internal helpers
 
     // CleverTap credentials — mirrors web `clevertap.init(CLEVERTAP_ID, "8R5-4K5-466Z")`.
@@ -265,11 +275,15 @@ extension ShortsView {
     }
 
     private func checkInitialisation() {
-        if hid.isEmpty {
-            fatalError(SDKInitializationError.hidEmpty.message)
+        let blankHid = hid.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        let blankSource = redirectSource.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        if blankHid || blankSource {
+            fatalError(SDKInitializationError.missingRequiredData.message)
         }
 
-        let clientPackageName = Bundle.main.bundleIdentifier
+        // Client is identified by the caller-provided `redirectSource` (a bundle identifier),
+        // validated against the allowlisted JioNews clients.
+        let clientPackageName = redirectSource
         if !(clientPackageName == "com.jio.myjio" || clientPackageName == "com.jio.shorts" || clientPackageName == "com.jio.media.jioxpressnews" || clientPackageName == "org.cocoapods.demo.jionews-shortssdk-cocoapod-Example" || clientPackageName == "com.jio.staging.myjio") {
             fatalError(SDKInitializationError.invalidClient.message)
         }

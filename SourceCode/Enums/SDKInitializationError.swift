@@ -8,15 +8,15 @@
 import Foundation
 
 enum SDKInitializationError: Error {
-    case hidEmpty
+    case missingRequiredData
     case invalidClient
 
     var message: String {
         switch self {
-        case .hidEmpty:
-            return "hid is empty. call configure() method with a valid hid (and none is saved in local storage)"
+        case .missingRequiredData:
+            return "One or more required initial data properties are blank. Call initData() with all mandatory params (hid, redirectSource)."
         case .invalidClient:
-            return "Invalid client, to enable shorts SDK for your client, contact JioNews Team!!"
+            return "Invalid client, to enable shorts library for your client, contact JioNews Team!!"
         }
     }
 }
