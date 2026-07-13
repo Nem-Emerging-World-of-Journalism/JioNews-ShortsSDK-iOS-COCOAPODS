@@ -1,9 +1,8 @@
 #import "CTDisplayUnitController.h"
-#import "CTConstants.h"
 #import "CTPreferences.h"
 
 @interface CTDisplayUnitController() {
-
+    
 }
 
 @property (nonatomic, copy, readonly) NSString *accountId;
@@ -25,46 +24,31 @@
     return self;
 }
 
-#pragma mark - CleverTapDisplayUnitCache
-
-- (NSArray<CleverTapDisplayUnit *> *)getAllDisplayUnits {
-    @synchronized (self) {
-        NSArray *units = self.displayUnits;
-        if (units.count == 0) {
-            CleverTapLogStaticDebug(@"DisplayUnit: Failed to return Display Units, nothing found in the cache");
-            return nil;
-        }
-        return units;
-    }
+- (void)updateDisplayUnits:(NSArray<NSDictionary *> *)displayUnits {
+    [self _updateDisplayUnits:displayUnits];
 }
 
-- (CleverTapDisplayUnit *)getDisplayUnitForID:(NSString *)unitID {
-    if (unitID.length == 0) return nil;
-    @synchronized (self) {
-        for (CleverTapDisplayUnit *displayUnit in self.displayUnits) {
-            if ([displayUnit.unitID isEqualToString:unitID]) {
-                return displayUnit;
-            }
-        }
+// be sure to call off the main thread
+- (void)_updateDisplayUnits:(NSArray<NSDictionary*> *)displayUnits {
+    NSMutableArray *units = [NSMutableArray new];
+    NSMutableArray *tempArray = [displayUnits mutableCopy];
+    for (NSDictionary *obj in tempArray) {
+        CleverTapDisplayUnit *displayUnit = [[CleverTapDisplayUnit alloc] initWithJSON:obj];
+        [units addObject:displayUnit];
     }
-    return nil;
-}
-
-- (void)updateDisplayUnits:(NSArray<CleverTapDisplayUnit *> *)displayUnits {
-    @synchronized (self) {
-        _displayUnits = [displayUnits copy];
-    }
-}
-
-- (void)reset {
-    @synchronized (self) {
-        _displayUnits = nil;
-    }
+    _displayUnits = units;
+    [self notifyUpdate];
 }
 
 - (NSArray *)displayUnits {
     if (!self.isInitialized) return nil;
     return _displayUnits;
+}
+
+- (void)notifyUpdate {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(displayUnitsDidUpdate)]) {
+        [self.delegate displayUnitsDidUpdate];
+    }
 }
 
 @end

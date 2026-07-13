@@ -19,14 +19,12 @@
                        subcaptionColor:(NSString * _Nullable)subcaptionColor
                               imageUrl:(NSString * _Nonnull)imageUrl
                              actionUrl:(NSString * _Nullable)actionUrl
-                      orientationKnown:(BOOL)orientationKnown
                    orientationPortrait:(BOOL)orientationPortrait
                       imageDescription:(NSString * _Nonnull)imageDescription;
 
 - (instancetype _Nonnull)initWithFrame:(CGRect)frame
                               imageUrl:(NSString * _Nonnull)imageUrl
                              actionUrl:(NSString * _Nullable)actionUrl
-                      orientationKnown:(BOOL)orientationKnown
                    orientationPortrait:(BOOL)orientationPortrait
                       imageDescription:(NSString * _Nonnull)imageDescription;
 

@@ -168,16 +168,19 @@ final class ShortsController: ObservableObject {
     }
 
     /// Call when the feed is dismissed. Fires the trailing `shorts_view` and `shorts_feed_exit`.
+    /// No-ops if the feed never finished loading (guards the transient appear/disappear at startup).
     func recordFeedExit() {
+        guard let loadedAt = feedLoadDate else { return }
         if let prev = previousBrief {
             analytics.shortsView(item: prev, swipe: "NA", watchedTime: secondsSinceShortStart(), contentDuration: duration(for: prev))
         }
-        let viewTime = feedLoadDate.map { Int(Date().timeIntervalSince($0)) } ?? 0
+        let viewTime = Int(Date().timeIntervalSince(loadedAt))
         log("Feed: exit (viewTime=\(viewTime)s, viewCount=\(viewedShortIds.count))")
         analytics.feedExit(viewTime: viewTime, viewCount: viewedShortIds.count)
         // Reset so a re-entry starts fresh.
         previousBrief = nil
         currentShortStartDate = nil
+        feedLoadDate = nil
     }
 
     private func secondsSinceShortStart() -> Int {

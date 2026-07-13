@@ -24,7 +24,6 @@
 @property (nonatomic, copy, readwrite) NSString *contentType;
 @property (nonatomic, copy, readwrite) NSString *landscapeContentType;
 @property (nonatomic, copy, readwrite) NSString *mediaUrl;
-@property (nonatomic, copy, readwrite) NSString *mediaUrlLandscape;
 @property (nonatomic, copy, readwrite) NSString *contentDescription;
 @property (nonatomic, copy, readwrite) NSString *landscapeContentDescription;
 
@@ -173,8 +172,6 @@
                 if (![self.landscapeContentType isEqualToString:@"image/gif"] ) {
                     _mediaIsImage = YES;
                 }
-            } else if ([self.landscapeContentType hasPrefix:@"video"]) {
-                self.mediaUrlLandscape = _mediaUrlLandscape;
             }
         }
     }
@@ -206,8 +203,7 @@
     switch (self.inAppType) {
         case CTInAppTypeHeader:
         case CTInAppTypeFooter:
-            // GIF support added, video and audio not supported
-            if  (_mediaIsAudio || _mediaIsVideo){
+            if  (_mediaIsGif || _mediaIsAudio || _mediaIsVideo){
                 self.imageURL = nil;
                 CleverTapLogStaticDebug(@"unable to download media, wrong media type for template");
             }
@@ -215,15 +211,13 @@
         case CTInAppTypeCoverImage:
         case CTInAppTypeInterstitialImage:
         case CTInAppTypeHalfInterstitialImage:
-            // GIF and Video support added for image-only templates
-            if  (_mediaIsAudio){
+            if  (_mediaIsGif || _mediaIsAudio || _mediaIsVideo || !_mediaIsImage){
                 self.error = [NSString stringWithFormat:@"wrong media type for template"];
             }
             break;
         case CTInAppTypeCover:
         case CTInAppTypeHalfInterstitial:
-            // GIF support added, video and audio not supported
-            if  (_mediaIsAudio || _mediaIsVideo){
+            if  (_mediaIsGif || _mediaIsAudio || _mediaIsVideo){
                 self.imageURL = nil;
                 CleverTapLogStaticDebug(@"unable to download media, wrong media type for template");
             }
@@ -299,7 +293,7 @@
 
 - (void)setPreparedInAppImageLandscape:(UIImage *)inAppImageLandscape
                inAppImageLandscapeData:(NSData *)inAppImageLandscapeData error:(NSString *)error {
-    self.errorLandscape = error;
+    self.error = error;
     self.inAppImageLandscape = inAppImageLandscape;
     self.imageLandscapeData = inAppImageLandscapeData;
 }

@@ -10,6 +10,7 @@
 
 import SwiftUI
 import Combine
+import UIKit
 
 private extension Color {
     /// Creates a color from a 24-bit RGB hex value, e.g. `Color(hex: 0x141414)`.
@@ -119,7 +120,6 @@ final class NativeShortsViewModel: ObservableObject {
 struct NativeShortsFeedView: View {
     @ObservedObject var controller: ShortsController
     @StateObject private var vm: NativeShortsViewModel
-    @State private var currentID: String?
 
     init(controller: ShortsController) {
         self.controller = controller
@@ -176,51 +176,20 @@ struct NativeShortsFeedView: View {
     }
 
     private var feed: some View {
-        ScrollView(.vertical) {
-            LazyVStack(spacing: 0) {
-                ForEach(vm.items) { item in
-                    NativeShortCardView(item: item, controller: controller, currentID: currentID)
-                        .containerRelativeFrame([.horizontal, .vertical])
-                        .id(item.id)
-                }
-            }
-            .scrollTargetLayout()
+        VerticalFeedPager(items: vm.items, controller: controller) { index, swipe in
+            handlePageChange(to: index, swipe: swipe)
         }
-        .scrollTargetBehavior(.paging)
-        .scrollPosition(id: $currentID)
-        .scrollIndicators(.hidden)
         .ignoresSafeArea()
-        .onAppear {
-            if currentID == nil {
-                currentID = vm.items.first?.id
-                controller.recordCurrentBrief(brief(for: currentID), swipe: "NA")
-                prefetchUpcomingThumbnails(after: currentID)
-            }
-        }
-        .onChange(of: currentID) { oldID, newID in
-            controller.recordCurrentBrief(brief(for: newID), swipe: swipeDirection(from: oldID, to: newID))
-            prefetchUpcomingThumbnails(after: newID)
-            guard let newID,
-                  let idx = vm.items.firstIndex(where: { $0.id == newID }) else { return }
-            Task { await vm.loadMoreIfNeeded(currentIndex: idx) }
-        }
-        .onDisappear {
-            controller.recordFeedExit()
-        }
+        .onDisappear { controller.recordFeedExit() }
     }
 
-    private func brief(for id: String?) -> STBNewsBrief? {
-        vm.items.first { $0.id == id }
-    }
-
-    /// Swipe direction between two items by their index in the feed.
-    private func swipeDirection(from old: String?, to new: String?) -> String {
-        guard let old, let new,
-              let oi = vm.items.firstIndex(where: { $0.id == old }),
-              let ni = vm.items.firstIndex(where: { $0.id == new }) else { return "NA" }
-        if ni > oi { return "next" }
-        if ni < oi { return "previous" }
-        return "NA"
+    /// Called when the pager settles on a page (and once for the initial page).
+    private func handlePageChange(to index: Int, swipe: String) {
+        guard vm.items.indices.contains(index) else { return }
+        let item = vm.items[index]
+        controller.recordCurrentBrief(item, swipe: swipe)   // updates currentBrief, fires shorts_view + onSwipe
+        prefetchUpcomingThumbnails(after: item.id)
+        Task { await vm.loadMoreIfNeeded(currentIndex: index) }
     }
 
     /// Warms the thumbnail cache for the next few **already-loaded** items so they
@@ -243,12 +212,11 @@ struct NativeShortsFeedView: View {
 struct NativeShortCardView: View {
     let item: STBNewsBrief
     @ObservedObject var controller: ShortsController
-    let currentID: String?
 
     @State private var hasStartedPlaying: Bool = false
     @State private var progress: Double = 0
 
-    private var isCurrent: Bool { item.id == currentID }
+    private var isCurrent: Bool { controller.currentBrief?.id == item.id }
 
     var body: some View {
         ZStack {
@@ -381,11 +349,112 @@ struct NativeShortCardView: View {
             }
         }
         .clipped()
-        .onChange(of: isCurrent) { _, nowCurrent in
+        .onChange(of: isCurrent) { nowCurrent in
             if !nowCurrent {
                 hasStartedPlaying = false
                 progress = 0
             }
+        }
+    }
+}
+
+// MARK: - Vertical pager (UIPageViewController — works on iOS 15+)
+
+/// Full-screen vertical pager backing the shorts feed. Uses `UIPageViewController`
+/// so it runs on iOS 15.1 (the iOS 17 `ScrollView` paging APIs are avoided).
+struct VerticalFeedPager: UIViewControllerRepresentable {
+    let items: [STBNewsBrief]
+    let controller: ShortsController
+    /// Fires when the visible page settles (and once for the initial page). `swipe` is next/previous/NA.
+    let onPageChanged: (_ index: Int, _ swipe: String) -> Void
+
+    func makeCoordinator() -> Coordinator { Coordinator(self) }
+
+    func makeUIViewController(context: Context) -> UIPageViewController {
+        let pager = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .vertical)
+        pager.dataSource = context.coordinator
+        pager.delegate = context.coordinator
+        pager.view.backgroundColor = .black
+        context.coordinator.installInitialPageIfNeeded(pager)
+        return pager
+    }
+
+    func updateUIViewController(_ pager: UIPageViewController, context: Context) {
+        context.coordinator.parent = self
+        // Handles items arriving after the first render (no-op once installed).
+        context.coordinator.installInitialPageIfNeeded(pager)
+    }
+
+    final class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+        var parent: VerticalFeedPager
+        private var currentIndex = 0
+        private var didInstallInitial = false
+        /// Hosting controllers by brief id, pruned to a small window around the current page.
+        private var pages: [String: UIViewController] = [:]
+
+        init(_ parent: VerticalFeedPager) { self.parent = parent }
+
+        private func page(at index: Int) -> UIViewController? {
+            guard parent.items.indices.contains(index) else { return nil }
+            let item = parent.items[index]
+            if let cached = pages[item.id] { return cached }
+            let host = UIHostingController(rootView: NativeShortCardView(item: item, controller: parent.controller))
+            host.view.backgroundColor = .clear
+            pages[item.id] = host
+            return host
+        }
+
+        private func index(of vc: UIViewController) -> Int? {
+            guard let id = pages.first(where: { $0.value === vc })?.key else { return nil }
+            return parent.items.firstIndex { $0.id == id }
+        }
+
+        /// Drops cached pages far from the current one to bound memory.
+        private func prunePages() {
+            let lower = max(0, currentIndex - 2)
+            let upper = currentIndex + 2
+            let keep = Set((lower...upper).compactMap { idx -> String? in
+                parent.items.indices.contains(idx) ? parent.items[idx].id : nil
+            })
+            pages = pages.filter { keep.contains($0.key) }
+        }
+
+        func installInitialPageIfNeeded(_ pager: UIPageViewController) {
+            guard !didInstallInitial, let first = page(at: 0) else { return }
+            didInstallInitial = true
+            currentIndex = 0
+            pager.setViewControllers([first], direction: .forward, animated: false)
+            // Deferred: this runs during a SwiftUI view-update pass, and onPageChanged
+            // mutates @Published state — doing it synchronously triggers "Publishing
+            // changes from within view updates".
+            DispatchQueue.main.async { [weak self] in
+                self?.parent.onPageChanged(0, "NA")
+            }
+        }
+
+        // MARK: DataSource
+        func pageViewController(_ pvc: UIPageViewController, viewControllerBefore vc: UIViewController) -> UIViewController? {
+            guard let idx = index(of: vc) else { return nil }
+            return page(at: idx - 1)
+        }
+
+        func pageViewController(_ pvc: UIPageViewController, viewControllerAfter vc: UIViewController) -> UIViewController? {
+            guard let idx = index(of: vc) else { return nil }
+            return page(at: idx + 1)
+        }
+
+        // MARK: Delegate
+        func pageViewController(_ pvc: UIPageViewController,
+                                didFinishAnimating finished: Bool,
+                                previousViewControllers: [UIViewController],
+                                transitionCompleted completed: Bool) {
+            guard completed,
+                  let visible = pvc.viewControllers?.first,
+                  let idx = index(of: visible) else { return }
+            let swipe = idx > currentIndex ? "next" : (idx < currentIndex ? "previous" : "NA")
+            currentIndex = idx
+            prunePages()
+            parent.onPageChanged(idx, swipe)
         }
     }
 }

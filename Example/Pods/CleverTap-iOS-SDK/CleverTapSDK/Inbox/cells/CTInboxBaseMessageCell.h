@@ -17,13 +17,10 @@ typedef NS_OPTIONS(NSUInteger , CTMediaPlayerCellType) {
     CTMediaPlayerCellTypeNone,
     CTMediaPlayerCellTypeTopLandscape,
     CTMediaPlayerCellTypeTopPortrait,
-    CTMediaPlayerCellTypeTopDefault,
     CTMediaPlayerCellTypeMiddleLandscape,
     CTMediaPlayerCellTypeMiddlePortrait,
-    CTMediaPlayerCellTypeMiddleDefault,
     CTMediaPlayerCellTypeBottomLandscape,
-    CTMediaPlayerCellTypeBottomPortrait,
-    CTMediaPlayerCellTypeBottomDefault
+    CTMediaPlayerCellTypeBottomPortrait
 };
 
 @interface CTInboxBaseMessageCell : UITableViewCell <CTInboxActionViewDelegate>
@@ -63,11 +60,6 @@ typedef NS_OPTIONS(NSUInteger , CTMediaPlayerCellType) {
 @property (atomic, assign) CTMediaPlayerCellType mediaPlayerCellType;
 @property (atomic, assign) CTInboxMessageType messageType;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property (nonatomic, strong) SDAnimatedImageView *defaultCellImageView;
-@property (nonatomic, strong) NSLayoutConstraint *defaultMediaHeightConstraint;
-@property (nonatomic, assign) CGFloat originalImageViewHeightConstant;
-@property (nonatomic, assign) UILayoutPriority originalImageViewHeightPriority;
-@property (nonatomic, assign) BOOL didCaptureImageViewHeightDefaults;
 
 
 @property (nonatomic, assign) SDWebImageOptions sdWebImageOptions;
@@ -79,15 +71,9 @@ typedef NS_OPTIONS(NSUInteger , CTMediaPlayerCellType) {
 - (void)configureActionView:(BOOL)hide;
 - (BOOL)mediaIsEmpty;
 - (BOOL)orientationIsPortrait;
-- (BOOL)shouldUseDefaultMediaLayout;
 - (BOOL)deviceOrientationIsLandscape;
 - (UIImage *)getPortraitPlaceHolderImage;
 - (UIImage *)getLandscapePlaceHolderImage;
-- (SDAnimatedImageView *)activeMediaImageView;
-- (void)configureDefaultMediaViewIfNeeded;
-- (void)resetDefaultMediaView;
-- (void)configureDefaultMediaLayoutWithFallbackRatio:(CGFloat)fallbackRatio;
-- (void)updateDefaultMediaLayoutForImage:(UIImage *)image fallbackRatio:(CGFloat)fallbackRatio;
 
 - (BOOL)hasAudio;
 - (BOOL)hasVideo;

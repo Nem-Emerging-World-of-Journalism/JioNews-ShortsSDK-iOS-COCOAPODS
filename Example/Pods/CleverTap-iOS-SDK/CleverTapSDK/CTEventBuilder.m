@@ -230,7 +230,6 @@ static CTDataValidator *_eventDataValidator;
  */
 + (void)buildInboxMessageStateEvent:(BOOL)clicked
                          forMessage:(CleverTapInboxMessage *)message
-                        isV2Message:(BOOL)isV2Message
                  andQueryParameters:(NSDictionary *)params
                   completionHandler:(void(^)(NSDictionary* event, NSArray<CTValidationResult*> *errors))completion {
     NSMutableDictionary *event = [[NSMutableDictionary alloc] init];
@@ -242,9 +241,6 @@ static CTDataValidator *_eventDataValidator;
                 continue;
             id value = data[x];
             notif[x] = value;
-        }
-        if (isV2Message && message.messageId) {
-            notif[@"wzrk_mid"] = message.messageId;
         }
         if (params) {
             [notif addEntriesFromDictionary:params];
@@ -279,14 +275,6 @@ static CTDataValidator *_eventDataValidator;
             NSString *key = [x stringByReplacingOccurrencesOfString:CLTAP_NOTIFICATION_TAG withString:CLTAP_WZRK_PREFIX];
             id value = data[x];
             notif[key] = value;
-        }
-        // Merge caller-supplied params (e.g. `wzrk_element_id` and
-        // `additionalProperties` from the element-aware click selector).
-        // Mirrors the inbox-event path above (~line 361) which already did
-        // this; the display-unit path missed it. Existing callers pass nil
-        // for `params` so they are unaffected.
-        if (params) {
-            [notif addEntriesFromDictionary:params];
         }
         notif[CLTAP_NOTIFICATION_CLICKED_TAG] = @((long) [[NSDate date] timeIntervalSince1970]);
         event[CLTAP_EVENT_NAME] = clicked ? CLTAP_NOTIFICATION_CLICKED_EVENT_NAME : CLTAP_NOTIFICATION_VIEWED_EVENT_NAME;

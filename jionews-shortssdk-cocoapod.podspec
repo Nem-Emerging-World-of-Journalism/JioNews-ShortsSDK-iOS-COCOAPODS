@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'jionews-shortssdk-cocoapod'
-  s.version          = '3.0.0'
+  s.version          = '3.1.0'
   s.summary          = 'SDK/Cocoapod to access the JioNews Short Video feature, powered by a native AVPlayer feed.'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/Nem-Emerging-World-of-Journalism/JioNews-ShortsSDK-iOS-COCOAPODS.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '17.0'
+  s.ios.deployment_target = '15.1'
 
   s.swift_versions = ['5.9']
   s.source_files = 'SourceCode/**/*.{swift,m,h}'
@@ -38,5 +38,5 @@ TODO: Add long description of the pod here.
     'JioNewsShortsSDK' => ['SourceCode/**/*.xcassets']
   }
 
-  s.dependency 'CleverTap-iOS-SDK'
+  s.dependency 'CleverTap-iOS-SDK', '7.5.1'
 end

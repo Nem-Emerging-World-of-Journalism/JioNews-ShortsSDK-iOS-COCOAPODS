@@ -17,7 +17,7 @@
         NSString *imageDescription = content.mediaDescription ? content.mediaDescription : [NSString stringWithFormat:@"Message Image %d", imageNumber];
         imageNumber = imageNumber + 1;
         
-        if (imageUrl == nil || imageUrl.length == 0) {
+        if (imageUrl == nil) {
             continue;
         }
         CTCarouselImageView *itemView;
@@ -27,8 +27,7 @@
             frame.size.width = frame.size.width;
             itemView = [[CTCarouselImageView alloc] initWithFrame:frame
                                                          imageUrl:imageUrl actionUrl:actionUrl
-                                                 orientationKnown:![self shouldUseDefaultMediaLayout]
-                                              orientationPortrait:[self orientationIsPortrait]
+                                              orientationPortrait: [self orientationIsPortrait]
                                                  imageDescription:imageDescription];
         }
         
@@ -51,19 +50,12 @@
         CGFloat viewWidth = (CGFloat)[[UIScreen mainScreen] bounds].size.width - margins*2;
         CGFloat viewHeight = viewWidth / 3.5;
         self.carouselViewHeight.constant  = viewHeight;
-        if ([self shouldUseDefaultMediaLayout]) {
-            self.carouselLandRatioConstraint.priority = 250;
-            self.carouselPortRatioConstraint.priority = 250;
-        } else {
-            self.carouselLandRatioConstraint.priority = [self orientationIsPortrait] ? 750 : 999;
-            self.carouselPortRatioConstraint.priority = [self orientationIsPortrait] ? 999 : 750;
-        }
+        self.carouselLandRatioConstraint.priority = [self orientationIsPortrait] ? 750 : 999;
+        self.carouselPortRatioConstraint.priority = [self orientationIsPortrait] ? 999 : 750;
     } else {
         CGFloat viewWidth = (CGFloat)  [[UIScreen mainScreen] bounds].size.width;
         CGFloat viewHeight = viewWidth;
-        if ([self shouldUseDefaultMediaLayout]) {
-            viewHeight = (viewWidth * [self getLandscapeMultiplier]);
-        } else if (![self orientationIsPortrait]) {
+        if (![self orientationIsPortrait]) {
             viewHeight = (viewWidth*[self getLandscapeMultiplier]);
         }
         CGRect frame = CGRectMake(0, 0, viewWidth, viewHeight);

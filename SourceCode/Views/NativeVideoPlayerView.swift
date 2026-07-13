@@ -58,6 +58,7 @@ final class NativePlayerContainerView: UIView {
     var onProgress: (Double) -> Void = { _ in }
     var onDuration: (Double) -> Void = { _ in }
     private var hasFiredDuration = false
+    private var hasResolvedGravity = false
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -74,6 +75,7 @@ final class NativePlayerContainerView: UIView {
         currentURL = url
         hasFiredPlaybackStarted = false
         hasFiredDuration = false
+        hasResolvedGravity = false
 
         let item = AVPlayerItem(url: url)
         let p = AVPlayer(playerItem: item)
@@ -83,27 +85,9 @@ final class NativePlayerContainerView: UIView {
         player = p
         playerLayer.player = p
 
-        // Default to fit; switch to fill (center-crop) once we know the video
-        // is landscape — portrait clips stay fit (no cropping).
+        // Default to fit; refined to fill (center-crop) for landscape clips once
+        // the presentation size is known (portrait stays fit — no crop).
         playerLayer.videoGravity = .resizeAspect
-        let asset = item.asset
-        Task { [weak self] in
-            // Report the real total duration once asset metadata is available.
-            if let duration = try? await asset.load(.duration) {
-                let secs = duration.seconds
-                if secs.isFinite, secs > 0 {
-                    await MainActor.run { self?.fireDurationOnce(secs) }
-                }
-            }
-            guard let track = try? await asset.loadTracks(withMediaType: .video).first,
-                  let size = try? await track.load(.naturalSize),
-                  let transform = try? await track.load(.preferredTransform) else { return }
-            let resolved = size.applying(transform)
-            let isLandscape = abs(resolved.width) > abs(resolved.height)
-            await MainActor.run {
-                self?.playerLayer.videoGravity = isLandscape ? .resizeAspectFill : .resizeAspect
-            }
-        }
 
         // Loop at end.
         endObserver = NotificationCenter.default.addObserver(
@@ -115,18 +99,33 @@ final class NativePlayerContainerView: UIView {
             self?.player?.play()
         }
 
-        // Detect first frame for thumbnail fade-out.
+        // First-frame detection, aspect, duration + progress — all read from
+        // AVPlayerItem so there are no iOS 16-only AVAsset load APIs.
         timeObserver = p.addPeriodicTimeObserver(
             forInterval: CMTime(value: 1, timescale: 10),
             queue: .main
         ) { [weak self] time in
             guard let self else { return }
+
             if time.seconds > 0.05, !self.hasFiredPlaybackStarted {
                 self.hasFiredPlaybackStarted = true
                 self.onPlaybackStarted()
             }
+
+            // Resolve aspect once the real video size is known.
+            if !self.hasResolvedGravity,
+               let size = self.player?.currentItem?.presentationSize,
+               size.width > 0, size.height > 0 {
+                self.hasResolvedGravity = true
+                self.playerLayer.videoGravity = size.width > size.height ? .resizeAspectFill : .resizeAspect
+            }
+
             if let duration = self.player?.currentItem?.duration.seconds,
                duration.isFinite, duration > 0 {
+                if !self.hasFiredDuration {
+                    self.hasFiredDuration = true
+                    self.onDuration(duration)
+                }
                 let fraction = min(max(time.seconds / duration, 0), 1)
                 self.onProgress(fraction)
             }
@@ -141,12 +140,6 @@ final class NativePlayerContainerView: UIView {
     func play() { player?.play() }
     func pause() { player?.pause() }
     func setMuted(_ muted: Bool) { player?.isMuted = muted }
-
-    private func fireDurationOnce(_ seconds: Double) {
-        guard !hasFiredDuration else { return }
-        hasFiredDuration = true
-        onDuration(seconds)
-    }
 
     func dismantle() { teardownPlayer() }
 

@@ -101,51 +101,6 @@ static const int kMaxTags = 3;
     [self addObservers];
     [self registerNibs];
     [self setUpInboxLayout];
-
-    BOOL inboxV2Enabled = NO;
-    if ([self.analyticsDelegate respondsToSelector:@selector(inboxViewControllerIsInboxV2Enabled)]) {
-        inboxV2Enabled = [self.analyticsDelegate inboxViewControllerIsInboxV2Enabled];
-    }
-    if (inboxV2Enabled) {
-        UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-        [refreshControl addTarget:self
-                           action:@selector(_handlePullToRefresh:)
-                 forControlEvents:UIControlEventValueChanged];
-        self.refreshControl = refreshControl;
-    }
-}
-
-- (void)_handlePullToRefresh:(UIRefreshControl *)sender {
-    if (![self.analyticsDelegate respondsToSelector:
-            @selector(inboxViewControllerDidRequestRefreshWithCallback:)]) {
-        [sender endRefreshing];
-        return;
-    }
-
-    __weak typeof(self) weakSelf = self;
-    NSTimer *watchdog = [NSTimer scheduledTimerWithTimeInterval:30.0 repeats:NO block:^(NSTimer * _Nonnull t) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.refreshControl endRefreshing];
-        });
-    }];
-
-    [self.analyticsDelegate inboxViewControllerDidRequestRefreshWithCallback:^(BOOL success) {
-        [watchdog invalidate];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.refreshControl endRefreshing];
-            if (success && [weakSelf.analyticsDelegate respondsToSelector:@selector(inboxViewControllerGetMessages)]) {
-                NSArray *updatedMessages = [weakSelf.analyticsDelegate inboxViewControllerGetMessages];
-                weakSelf.messages = updatedMessages;
-                if (weakSelf.selectedSegmentIndex > 0 && weakSelf.selectedSegmentIndex < (int)weakSelf.tags.count) {
-                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.tagString CONTAINS[c] %@", weakSelf.tags[weakSelf.selectedSegmentIndex]];
-                    weakSelf.filterMessages = [updatedMessages filteredArrayUsingPredicate:predicate];
-                } else {
-                    weakSelf.filterMessages = updatedMessages;
-                }
-                [weakSelf _reloadTableView];
-            }
-        });
-    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -595,10 +550,6 @@ static const int kMaxTags = 3;
             topOffset = 80.0 * multiplier;
             bottomOffset = 150.0 * multiplier;
             break;
-        case CTMediaPlayerCellTypeTopDefault:
-            topOffset = 60.0 * multiplier;
-            bottomOffset = 120.0 * multiplier;
-            break;
         case CTMediaPlayerCellTypeMiddleLandscape:
             topOffset = 75.0 * multiplier;
             bottomOffset = 100.0 * multiplier;
@@ -607,10 +558,6 @@ static const int kMaxTags = 3;
             topOffset = 125.0 * multiplier;
             bottomOffset = 150.0 * multiplier;
             break;
-        case CTMediaPlayerCellTypeMiddleDefault:
-            topOffset = 100.0 * multiplier;
-            bottomOffset = 130.0 * multiplier;
-            break;
         case CTMediaPlayerCellTypeBottomLandscape:
             topOffset = 100.0 * multiplier;
             bottomOffset = 50.0 * multiplier;
@@ -618,10 +565,6 @@ static const int kMaxTags = 3;
         case CTMediaPlayerCellTypeBottomPortrait:
             topOffset = 150.0 * multiplier;
             bottomOffset = 100.0 * multiplier;
-            break;
-        case CTMediaPlayerCellTypeBottomDefault:
-            topOffset = 120.0 * multiplier;
-            bottomOffset = 80.0 * multiplier;
             break;
         default:
             return NO;

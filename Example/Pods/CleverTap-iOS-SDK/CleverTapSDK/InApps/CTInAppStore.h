@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTSwitchUserDelegate.h"
 
 @class CleverTapInstanceConfig;
 @class CTMultiDelegateManager;
 
-@interface CTInAppStore : NSObject
+@interface CTInAppStore : NSObject <CTSwitchUserDelegate>
 
 @property (nonatomic, strong, nullable) NSString *mode;
 

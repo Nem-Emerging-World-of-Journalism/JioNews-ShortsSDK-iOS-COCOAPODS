@@ -18,16 +18,15 @@
 NSString *const kREDIRECT_HEADER = @"X-WZRK-RD";
 NSString *const kREDIRECT_NOTIF_VIEWED_HEADER = @"X-WZRK-SPIKY-RD";
 NSString *const kMUTE_HEADER = @"X-WZRK-MUTE";
-NSString *const kMUTE_DURATION_HEADER = @"X-WZRK-MUTE-DURATION";
 
-NSString *const kMUTE_EXPIRY_TS_KEY = @"CLTAP_MUTE_EXPIRY_TS_KEY";
+NSString *const kMUTED_TS_KEY = @"CLTAP_MUTED_TS_KEY";
 NSTimeInterval const kMUTE_SECONDS = 24 * 60 * 60;
 
 @interface CTDomainFactory ()
 @property (nonatomic, strong) CleverTapInstanceConfig *config;
 @property (nonatomic, strong) CTRequestSender *requestSender;
 
-@property (nonatomic, assign) NSTimeInterval muteExpiryTs;
+@property (nonatomic, assign) NSTimeInterval lastMutedTs;
 
 #if CLEVERTAP_SSL_PINNING
 @property(nonatomic, strong) CTPinnedNSURLSessionDelegate *urlSessionDelegate;
@@ -72,23 +71,22 @@ NSTimeInterval const kMUTE_SECONDS = 24 * 60 * 60;
 
 - (void)loadMutedTs {
     if (self.config.isDefaultInstance) {
-        self.muteExpiryTs = [CTPreferences getIntForKey:[CTPreferences storageKeyWithSuffix:kMUTE_EXPIRY_TS_KEY config: self.config] withResetValue:[CTPreferences getIntForKey:kMUTE_EXPIRY_TS_KEY withResetValue:0]];
+        self.lastMutedTs = [CTPreferences getIntForKey:[CTPreferences storageKeyWithSuffix:kMUTED_TS_KEY config: self.config] withResetValue:[CTPreferences getIntForKey:kMUTED_TS_KEY withResetValue:0]];
     } else {
-        self.muteExpiryTs = [CTPreferences getIntForKey:[CTPreferences storageKeyWithSuffix:kMUTE_EXPIRY_TS_KEY config: self.config] withResetValue:0];
+        self.lastMutedTs = [CTPreferences getIntForKey:[CTPreferences storageKeyWithSuffix:kMUTED_TS_KEY config: self.config] withResetValue:0];
     }
 }
 
 - (BOOL)isMuted {
-    return [NSDate new].timeIntervalSince1970 < self.muteExpiryTs;
+    return [NSDate new].timeIntervalSince1970 - self.lastMutedTs < kMUTE_SECONDS;
 }
 
 - (void)clearRedirectDomain {
     self.redirectDomain = nil;
     self.redirectNotifViewedDomain = nil;
     [self persistRedirectDomain]; // if nil persist will remove
-    [self persistRedirectNotifViewedDomain]; // if nil persist will remove
     self.redirectDomain = [self loadRedirectDomain]; // reload explicit domain if we have one else will be nil
-    self.redirectNotifViewedDomain = [self loadRedirectNotifViewedDomain]; // reload explicit notification viewed domain if we have one else will be nil
+    self.redirectNotifViewedDomain = [self loadRedirectNotifViewedDomain]; // reload explicit notification viewe domain if we have one else will be nil
 }
 
 - (NSString *)loadRedirectDomain {
@@ -169,19 +167,8 @@ NSTimeInterval const kMUTE_SECONDS = 24 * 60 * 60;
 }
 
 - (void)persistMutedTs {
-    NSTimeInterval expiryTs = [NSDate new].timeIntervalSince1970 + kMUTE_SECONDS;
-    self.muteExpiryTs = expiryTs;
-    [CTPreferences putInt:self.muteExpiryTs forKey:[CTPreferences storageKeyWithSuffix:kMUTE_EXPIRY_TS_KEY config: self.config]];
-}
-
-- (void)persistMutedExpiry:(NSTimeInterval)expiryTs {
-    self.muteExpiryTs = expiryTs;
-    [CTPreferences putInt:self.muteExpiryTs forKey:[CTPreferences storageKeyWithSuffix:kMUTE_EXPIRY_TS_KEY config: self.config]];
-}
-
-- (void)unmute {
-    self.muteExpiryTs = 0;
-    [CTPreferences putInt:0 forKey:[CTPreferences storageKeyWithSuffix:kMUTE_EXPIRY_TS_KEY config:self.config]];
+    self.lastMutedTs = [NSDate new].timeIntervalSince1970;
+    [CTPreferences putInt:self.lastMutedTs forKey:[CTPreferences storageKeyWithSuffix:kMUTED_TS_KEY config: self.config]];
 }
 
 #pragma mark - Handshake Handling
@@ -257,13 +244,7 @@ NSTimeInterval const kMUTE_SECONDS = 24 * 60 * 60;
     NSString *mutedString = headers[kMUTE_HEADER];
     BOOL muted = (mutedString == nil ? NO : [mutedString boolValue]);
     if (muted) {
-        NSString *muteDurationString = headers[kMUTE_DURATION_HEADER];
-        if (muteDurationString != nil) {
-            long long muteExpiryMs = [muteDurationString longLongValue];
-            [self persistMutedExpiry:muteExpiryMs / 1000.0];
-        } else {
-            [self persistMutedTs];
-        }
+        [self persistMutedTs];
         if (self.domainResolverDelegate && [self.domainResolverDelegate respondsToSelector:@selector(onMute)]) {
             [self.domainResolverDelegate onMute];
         }

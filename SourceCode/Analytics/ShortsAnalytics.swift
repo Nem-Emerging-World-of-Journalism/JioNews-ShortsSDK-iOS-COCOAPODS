@@ -112,6 +112,11 @@ final class ShortsAnalytics {
     private static let appVersion: String =
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "NA"
 
-    private static let language: String =
-        Locale.current.language.languageCode?.identifier ?? "NA"
+    private static let language: String = {
+        if #available(iOS 16.0, *) {
+            return Locale.current.language.languageCode?.identifier ?? "NA"
+        } else {
+            return Locale.current.languageCode ?? "NA"
+        }
+    }()
 }

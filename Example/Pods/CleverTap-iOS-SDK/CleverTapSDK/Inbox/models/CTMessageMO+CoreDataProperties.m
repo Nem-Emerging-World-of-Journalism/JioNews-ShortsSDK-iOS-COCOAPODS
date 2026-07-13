@@ -46,11 +46,6 @@
         
         NSUInteger expires = [json[@"wzrk_ttl"] longValue];
         self.expires = expires ? expires : 0;
-
-        // Apply backend-provided read state on first insert (V2 response includes isRead).
-        if (json[@"isRead"] != nil) {
-            self.isRead = [json[@"isRead"] boolValue];
-        }
     }
     return self;
 }

@@ -53,7 +53,6 @@ NS_ASSUME_NONNULL_BEGIN
 #endif
 
 - (BOOL)isMuted;
-- (void)unmute;
 - (BOOL)updateDomainFromResponseHeaders:(NSDictionary *)headers;
 - (BOOL)updateNotificationViewedDomainFromResponseHeaders:(NSDictionary *)headers;
 - (void)updateMutedFromResponseHeaders:(NSDictionary *)headers;
